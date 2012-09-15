@@ -77,7 +77,7 @@
 	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
 //    SinglePlayerGameScene *gameScene = [[SinglePlayerGameScene alloc] init];
 //	[director_ pushScene:[SinglePlayerGameScene node]];
-    [[GameManager sharedGameManager] runSceneWithID:kGameSinglePlayer];
+    [[GameManager sharedGameManager] runSceneWithID:kMainMenuScene];
 
 	
 	// Create a Navigation Controller with the Director

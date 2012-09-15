@@ -14,12 +14,14 @@
 
 @property (nonatomic, strong) EffectLayer *effectLayer;
 @property (nonatomic, strong) SinglePlayerGamePlayLayer *gamePlayLayer;
+@property (nonatomic, strong) SinglePlayerGameInterfaceLayer *interfaceLayer;
 
 @end
 
 @implementation SinglePlayerGameScene
 @synthesize effectLayer = _effectLayer;
 @synthesize gamePlayLayer = _gamePlayLayer;
+@synthesize interfaceLayer = _interfaceLayer;
 
 - (id)init {
     self = [super init];
@@ -34,9 +36,9 @@
         self.effectLayer = [EffectLayer node];
         [self addChild:_effectLayer z:2];
         
-        SinglePlayerGameInterfaceLayer *interfaceLayer = [SinglePlayerGameInterfaceLayer node];
-        interfaceLayer.delegate = self;
-        [self addChild:interfaceLayer z:3];
+        self.interfaceLayer = [SinglePlayerGameInterfaceLayer node];
+        _interfaceLayer.delegate = self;
+        [self addChild:_interfaceLayer z:3];
     }
     return self;
 }
@@ -48,6 +50,9 @@
     [_effectLayer drawLineWithPoints:points andDirections:directions];
 }
 
+- (void)gamePlayLayerNeedUpdateTimeLeft:(SinglePlayerGamePlayLayer *)gamePlayLayer WithValue:(float)value {
+    [_interfaceLayer updateTimeBarWithValue:value];
+}
 
 #pragma mark - SinglePlayerGameInterfaceLayer
 

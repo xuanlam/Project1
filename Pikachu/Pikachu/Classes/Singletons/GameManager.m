@@ -8,6 +8,7 @@
 
 #import "GameManager.h"
 #import "SinglePlayerGameScene.h"
+#import "MainMenuScene.h"
 
 @implementation GameManager
 @synthesize currentScene = _currentScene;
@@ -59,6 +60,9 @@ static GameManager* _sharedGameManager = nil;
     switch (sceneID) {
         case kGameSinglePlayer:
             sceneToRun = [SinglePlayerGameScene node];
+            break;
+        case kMainMenuScene:
+            sceneToRun = [MainMenuScene node];
             break;
         default:
             CCLOG(@"Unknown ID, cannot switch scenes");

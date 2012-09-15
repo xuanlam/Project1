@@ -144,6 +144,21 @@
 		A08745E715CC447D007E2351 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A08745E615CC447D007E2351 /* AppDelegate.m */; };
 		A08745EA15CC447D007E2351 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A08745E915CC447D007E2351 /* HelloWorldLayer.m */; };
 		A08745ED15CC447D007E2351 /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A08745EC15CC447D007E2351 /* IntroLayer.m */; };
+		A08A962F160457F00051A733 /* bar_time_center.png in Resources */ = {isa = PBXBuildFile; fileRef = A08A9628160457F00051A733 /* bar_time_center.png */; };
+		A08A9630160457F00051A733 /* bar_time_left.png in Resources */ = {isa = PBXBuildFile; fileRef = A08A9629160457F00051A733 /* bar_time_left.png */; };
+		A08A9631160457F00051A733 /* bar_time_right.png in Resources */ = {isa = PBXBuildFile; fileRef = A08A962A160457F00051A733 /* bar_time_right.png */; };
+		A08A9632160457F00051A733 /* bar_time_center@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A08A962C160457F00051A733 /* bar_time_center@2x.png */; };
+		A08A9633160457F00051A733 /* bar_time_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A08A962D160457F00051A733 /* bar_time_left@2x.png */; };
+		A08A9634160457F00051A733 /* bar_time_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A08A962E160457F00051A733 /* bar_time_right@2x.png */; };
+		A08A963C16047D850051A733 /* MainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A08A963B16047D850051A733 /* MainMenuScene.m */; };
+		A08A964116047E4C0051A733 /* MainMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A08A964016047E4C0051A733 /* MainMenuLayer.m */; };
+		A08A964416047F240051A733 /* menu_button_more_down.png in Resources */ = {isa = PBXBuildFile; fileRef = A08A964216047F240051A733 /* menu_button_more_down.png */; };
+		A08A964516047F240051A733 /* menu_button_more.png in Resources */ = {isa = PBXBuildFile; fileRef = A08A964316047F240051A733 /* menu_button_more.png */; };
+		A08A964816047F380051A733 /* menu_button_play_down.png in Resources */ = {isa = PBXBuildFile; fileRef = A08A964616047F380051A733 /* menu_button_play_down.png */; };
+		A08A964916047F380051A733 /* menu_button_play.png in Resources */ = {isa = PBXBuildFile; fileRef = A08A964716047F380051A733 /* menu_button_play.png */; };
+		A08A964C16047F5B0051A733 /* Pikachu-Battle-HD.png in Resources */ = {isa = PBXBuildFile; fileRef = A08A964A16047F5B0051A733 /* Pikachu-Battle-HD.png */; };
+		A08A964D16047F5B0051A733 /* Pikachu-shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = A08A964B16047F5B0051A733 /* Pikachu-shadow.png */; };
+		A08A9651160480A00051A733 /* MainMenuBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A08A9650160480A00051A733 /* MainMenuBackground.jpg */; };
 		A09039BB15D181AA0042FE4E /* 0000.png in Resources */ = {isa = PBXBuildFile; fileRef = A090397A15D181AA0042FE4E /* 0000.png */; };
 		A09039BC15D181AA0042FE4E /* 0001.png in Resources */ = {isa = PBXBuildFile; fileRef = A090397B15D181AA0042FE4E /* 0001.png */; };
 		A09039BD15D181AA0042FE4E /* 0002.png in Resources */ = {isa = PBXBuildFile; fileRef = A090397C15D181AA0042FE4E /* 0002.png */; };
@@ -496,6 +511,23 @@
 		A08745E915CC447D007E2351 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		A08745EB15CC447D007E2351 /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		A08745EC15CC447D007E2351 /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
+		A08A9628160457F00051A733 /* bar_time_center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar_time_center.png; sourceTree = "<group>"; };
+		A08A9629160457F00051A733 /* bar_time_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar_time_left.png; sourceTree = "<group>"; };
+		A08A962A160457F00051A733 /* bar_time_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar_time_right.png; sourceTree = "<group>"; };
+		A08A962C160457F00051A733 /* bar_time_center@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_time_center@2x.png"; sourceTree = "<group>"; };
+		A08A962D160457F00051A733 /* bar_time_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_time_left@2x.png"; sourceTree = "<group>"; };
+		A08A962E160457F00051A733 /* bar_time_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_time_right@2x.png"; sourceTree = "<group>"; };
+		A08A963A16047D840051A733 /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMenuScene.h; path = SinglePlayerGameScene/MainMenuScene.h; sourceTree = "<group>"; };
+		A08A963B16047D850051A733 /* MainMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainMenuScene.m; path = SinglePlayerGameScene/MainMenuScene.m; sourceTree = "<group>"; };
+		A08A963F16047E4C0051A733 /* MainMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuLayer.h; sourceTree = "<group>"; };
+		A08A964016047E4C0051A733 /* MainMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuLayer.m; sourceTree = "<group>"; };
+		A08A964216047F240051A733 /* menu_button_more_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button_more_down.png; sourceTree = "<group>"; };
+		A08A964316047F240051A733 /* menu_button_more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button_more.png; sourceTree = "<group>"; };
+		A08A964616047F380051A733 /* menu_button_play_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button_play_down.png; sourceTree = "<group>"; };
+		A08A964716047F380051A733 /* menu_button_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button_play.png; sourceTree = "<group>"; };
+		A08A964A16047F5B0051A733 /* Pikachu-Battle-HD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pikachu-Battle-HD.png"; sourceTree = "<group>"; };
+		A08A964B16047F5B0051A733 /* Pikachu-shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pikachu-shadow.png"; sourceTree = "<group>"; };
+		A08A9650160480A00051A733 /* MainMenuBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MainMenuBackground.jpg; sourceTree = "<group>"; };
 		A090397115D1805C0042FE4E /* SinglePlayerGameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SinglePlayerGameScene.h; sourceTree = "<group>"; };
 		A090397215D1805C0042FE4E /* SinglePlayerGameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SinglePlayerGameScene.m; sourceTree = "<group>"; };
 		A090397415D180980042FE4E /* SinglePlayerGameBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinglePlayerGameBackgroundLayer.h; sourceTree = "<group>"; };
@@ -639,6 +671,7 @@
 		A05E21FC15D1228300EA13AA /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				A08A963D16047E080051A733 /* MainMenuScene */,
 				A0A4B16815DFB0350011C45D /* EffectLayer.h */,
 				A0A4B16915DFB0350011C45D /* EffectLayer.m */,
 				A090396F15D1800F0042FE4E /* SinglePlayerGameScene */,
@@ -708,6 +741,7 @@
 		A087446E15CC447A007E2351 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A08A9626160457F00051A733 /* Interface */,
 				A0A4B17615DFDEEB0011C45D /* click.mp3 */,
 				A0A4B17215DFD9FD0011C45D /* line@2x.png */,
 				A0A4B17015DFC3640011C45D /* line.png */,
@@ -1074,6 +1108,62 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A08A9626160457F00051A733 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				A08A9627160457F00051A733 /* normal */,
+				A08A962B160457F00051A733 /* Retina */,
+			);
+			name = Interface;
+			path = Resources/Interface;
+			sourceTree = "<group>";
+		};
+		A08A9627160457F00051A733 /* normal */ = {
+			isa = PBXGroup;
+			children = (
+				A08A9650160480A00051A733 /* MainMenuBackground.jpg */,
+				A08A964A16047F5B0051A733 /* Pikachu-Battle-HD.png */,
+				A08A964B16047F5B0051A733 /* Pikachu-shadow.png */,
+				A08A964616047F380051A733 /* menu_button_play_down.png */,
+				A08A964716047F380051A733 /* menu_button_play.png */,
+				A08A964216047F240051A733 /* menu_button_more_down.png */,
+				A08A964316047F240051A733 /* menu_button_more.png */,
+				A08A9628160457F00051A733 /* bar_time_center.png */,
+				A08A9629160457F00051A733 /* bar_time_left.png */,
+				A08A962A160457F00051A733 /* bar_time_right.png */,
+			);
+			path = normal;
+			sourceTree = "<group>";
+		};
+		A08A962B160457F00051A733 /* Retina */ = {
+			isa = PBXGroup;
+			children = (
+				A08A962C160457F00051A733 /* bar_time_center@2x.png */,
+				A08A962D160457F00051A733 /* bar_time_left@2x.png */,
+				A08A962E160457F00051A733 /* bar_time_right@2x.png */,
+			);
+			path = Retina;
+			sourceTree = "<group>";
+		};
+		A08A963D16047E080051A733 /* MainMenuScene */ = {
+			isa = PBXGroup;
+			children = (
+				A08A963E16047E180051A733 /* Layers */,
+				A08A963A16047D840051A733 /* MainMenuScene.h */,
+				A08A963B16047D850051A733 /* MainMenuScene.m */,
+			);
+			name = MainMenuScene;
+			sourceTree = "<group>";
+		};
+		A08A963E16047E180051A733 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				A08A963F16047E4C0051A733 /* MainMenuLayer.h */,
+				A08A964016047E4C0051A733 /* MainMenuLayer.m */,
+			);
+			name = Layers;
+			sourceTree = "<group>";
+		};
 		A090396F15D1800F0042FE4E /* SinglePlayerGameScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -1333,6 +1423,19 @@
 				A059CC2C15EA904200022E9A /* buttonRandom-Highlighted.png in Resources */,
 				A059CC2D15EA904200022E9A /* buttonRandom-Normal.png in Resources */,
 				A059CC3015EA94A000022E9A /* background_main.png in Resources */,
+				A08A962F160457F00051A733 /* bar_time_center.png in Resources */,
+				A08A9630160457F00051A733 /* bar_time_left.png in Resources */,
+				A08A9631160457F00051A733 /* bar_time_right.png in Resources */,
+				A08A9632160457F00051A733 /* bar_time_center@2x.png in Resources */,
+				A08A9633160457F00051A733 /* bar_time_left@2x.png in Resources */,
+				A08A9634160457F00051A733 /* bar_time_right@2x.png in Resources */,
+				A08A964416047F240051A733 /* menu_button_more_down.png in Resources */,
+				A08A964516047F240051A733 /* menu_button_more.png in Resources */,
+				A08A964816047F380051A733 /* menu_button_play_down.png in Resources */,
+				A08A964916047F380051A733 /* menu_button_play.png in Resources */,
+				A08A964C16047F5B0051A733 /* Pikachu-Battle-HD.png in Resources */,
+				A08A964D16047F5B0051A733 /* Pikachu-shadow.png in Resources */,
+				A08A9651160480A00051A733 /* MainMenuBackground.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1455,6 +1558,8 @@
 				A02E5C4815D2490B00656EC4 /* GameCell.m in Sources */,
 				A074875B15D78AF800B02ACF /* KSArray2D.m in Sources */,
 				A0A4B16A15DFB0350011C45D /* EffectLayer.m in Sources */,
+				A08A963C16047D850051A733 /* MainMenuScene.m in Sources */,
+				A08A964116047E4C0051A733 /* MainMenuLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

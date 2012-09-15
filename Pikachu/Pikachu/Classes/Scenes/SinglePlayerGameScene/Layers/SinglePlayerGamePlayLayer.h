@@ -31,5 +31,6 @@ typedef enum {
 @protocol SinglePlayerGamePlayDelegate <NSObject>
 
 - (void)gamePlayLayerNeedDrawLine:(SinglePlayerGamePlayLayer *)gamePlayLayer withPoints:(NSArray *)points andDirections:(NSArray *)directions;
+- (void)gamePlayLayerNeedUpdateTimeLeft:(SinglePlayerGamePlayLayer *)gamePlayLayer WithValue:(float)value;
 
 @end

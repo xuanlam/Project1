@@ -14,6 +14,7 @@
 @interface SinglePlayerGameInterfaceLayer : CCLayer
 @property (nonatomic, unsafe_unretained) id<SinglePlayerGameInterfaceLayerDelegate> delegate;
 
+- (void)updateTimeBarWithValue:(float)value;
 @end
 
 @protocol SinglePlayerGameInterfaceLayerDelegate <NSObject>
