@@ -28,12 +28,13 @@
 @synthesize timeBarRight = _timeBarRight;
 
 - (void)setUpInterface {
+    
+    //Button
     CCMenuItemImage *button = [CCMenuItemImage itemWithNormalImage:@"buttonHint-Normal.png" selectedImage:@"buttonHint-Highlighted.png" disabledImage:@"buttonHint-Highlighted.png" target:self selector:@selector(buttonHintSender)];
     
     CCMenu *hintButton = [CCMenu menuWithItems:button, nil];
     hintButton.position = ccp(55.0f, 735.0f);
     [self addChild:hintButton];
-    
     
     CCMenuItemImage *button2 = [CCMenuItemImage itemWithNormalImage:@"buttonRandom-Normal.png" selectedImage:@"buttonRandom-Highlighted.png" disabledImage:@"buttonRandom-Highlighted.png" target:self selector:@selector(buttonRandomSender)];
     
@@ -41,6 +42,19 @@
     randomButton.position = ccp(150.0f, 735.0f);
     [self addChild:randomButton];
     
+    
+    //Label
+    self.levelLabel = [[CCLabelTTF alloc] initWithString:@"0 :Level" fontName:@"PokemonNormal" fontSize:24];
+    _levelLabel.anchorPoint = CGPointMake(1.0f, 0.5f);
+    _levelLabel.horizontalAlignment = CCTextAlignmentRight;
+    _levelLabel.position = CGPointMake(1010, 750.0f);
+    [self addChild:_levelLabel];
+    
+    self.scoreLabel = [[CCLabelTTF alloc] initWithString:@"0 :Score" fontName:@"PokemonNormal" fontSize:24];
+    _scoreLabel.anchorPoint = CGPointMake(1.0f, 0.5f);
+    _scoreLabel.horizontalAlignment = CCTextAlignmentRight;
+    _scoreLabel.position = CGPointMake(1010, 720.0f);
+    [self addChild:_scoreLabel];
     
     //Time bar
     CCSprite *backgroundTimeBarLeft = [CCSprite spriteWithFile:@"bgTime_left.png"];
@@ -74,7 +88,6 @@
     [_timeBarRight setAnchorPoint:ccp(0, 0.5)];
     [self addChild:_timeBarRight];
         
-    
     [self updateTimeBarWithValue:100.0f];
 }
 
@@ -105,6 +118,14 @@
     float width = value * PKCTIMEBAR_WIDTH / 100;
     [_timeBar setScaleX:width];
     _timeBarRight.position = ccp(_timeBar.position.x + _timeBar.boundingBox.size.width, 735.0f);
+}
+
+- (void)setScore:(NSInteger)score {
+    _scoreLabel.string = [NSString stringWithFormat:@"%d :Score", score];
+}
+
+- (void)setLevel:(NSInteger)level {
+    _levelLabel.string = [NSString stringWithFormat:@"%d :Level", level];
 }
 
 @end

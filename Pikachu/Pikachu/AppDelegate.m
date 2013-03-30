@@ -12,6 +12,7 @@
 #import "IntroLayer.h"
 #import "SinglePlayerGameScene.h"
 #import "GameManager.h"
+#import "UIFont+NAB.h"
 
 @implementation AppController
 
@@ -91,6 +92,8 @@
 	// make main window visible
 	[window_ makeKeyAndVisible];
 	
+    [UIFont listAllFonts];
+    
 	return YES;
 }
 

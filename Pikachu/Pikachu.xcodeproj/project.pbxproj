@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A0148BF115D1FA2E00F6132E /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A0148BF015D1FA2E00F6132E /* GameManager.m */; };
 		A0148BF215D205B300F6132E /* SinglePlayerGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A090397215D1805C0042FE4E /* SinglePlayerGameScene.m */; };
+		A0239D571706E71000BD5242 /* UIFont+NAB.m in Sources */ = {isa = PBXBuildFile; fileRef = A0239D561706E71000BD5242 /* UIFont+NAB.m */; };
 		A02E5C3715D21D3F00656EC4 /* SinglePlayerGamePlayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A02E5C3615D21D3F00656EC4 /* SinglePlayerGamePlayLayer.m */; };
 		A02E5C3A15D21D8700656EC4 /* SinglePlayerGameBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A02E5C3915D21D8700656EC4 /* SinglePlayerGameBackgroundLayer.m */; };
 		A02E5C3D15D21EE400656EC4 /* SinglePlayerGameInterfaceLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A02E5C3C15D21EE400656EC4 /* SinglePlayerGameInterfaceLayer.m */; };
@@ -244,11 +245,20 @@
 		A0A4B17715DFDEEB0011C45D /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A0A4B17615DFDEEB0011C45D /* click.mp3 */; };
 		A0E415AC15E9F6D10008DF35 /* buttonHint-Highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = A0E415AA15E9F6D10008DF35 /* buttonHint-Highlighted.png */; };
 		A0E415AD15E9F6D10008DF35 /* buttonHint-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = A0E415AB15E9F6D10008DF35 /* buttonHint-Normal.png */; };
+		A0EECC671706DA0500BDC4E9 /* background_statusbar.png in Resources */ = {isa = PBXBuildFile; fileRef = A0EECC651706DA0500BDC4E9 /* background_statusbar.png */; };
+		A0EECC681706DA0500BDC4E9 /* background_statusbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A0EECC661706DA0500BDC4E9 /* background_statusbar@2x.png */; };
+		A0EECC6D1706DA1700BDC4E9 /* button30s_down.png in Resources */ = {isa = PBXBuildFile; fileRef = A0EECC691706DA1700BDC4E9 /* button30s_down.png */; };
+		A0EECC6E1706DA1700BDC4E9 /* button30s_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A0EECC6A1706DA1700BDC4E9 /* button30s_down@2x.png */; };
+		A0EECC6F1706DA1700BDC4E9 /* button30s.png in Resources */ = {isa = PBXBuildFile; fileRef = A0EECC6B1706DA1700BDC4E9 /* button30s.png */; };
+		A0EECC701706DA1700BDC4E9 /* button30s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A0EECC6C1706DA1700BDC4E9 /* button30s@2x.png */; };
+		A0EECC731706E13900BDC4E9 /* Pokemon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0EECC721706E13900BDC4E9 /* Pokemon.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A0148BEF15D1FA2E00F6132E /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		A0148BF015D1FA2E00F6132E /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
+		A0239D551706E71000BD5242 /* UIFont+NAB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+NAB.h"; sourceTree = "<group>"; };
+		A0239D561706E71000BD5242 /* UIFont+NAB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+NAB.m"; sourceTree = "<group>"; };
 		A02E5C3515D21D3F00656EC4 /* SinglePlayerGamePlayLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinglePlayerGamePlayLayer.h; sourceTree = "<group>"; };
 		A02E5C3615D21D3F00656EC4 /* SinglePlayerGamePlayLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinglePlayerGamePlayLayer.m; sourceTree = "<group>"; };
 		A02E5C3915D21D8700656EC4 /* SinglePlayerGameBackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinglePlayerGameBackgroundLayer.m; sourceTree = "<group>"; };
@@ -630,6 +640,13 @@
 		A0A4B17615DFDEEB0011C45D /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
 		A0E415AA15E9F6D10008DF35 /* buttonHint-Highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "buttonHint-Highlighted.png"; path = "../Images/buttonHint-Highlighted.png"; sourceTree = "<group>"; };
 		A0E415AB15E9F6D10008DF35 /* buttonHint-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "buttonHint-Normal.png"; path = "../Images/buttonHint-Normal.png"; sourceTree = "<group>"; };
+		A0EECC651706DA0500BDC4E9 /* background_statusbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_statusbar.png; sourceTree = "<group>"; };
+		A0EECC661706DA0500BDC4E9 /* background_statusbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_statusbar@2x.png"; sourceTree = "<group>"; };
+		A0EECC691706DA1700BDC4E9 /* button30s_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button30s_down.png; sourceTree = "<group>"; };
+		A0EECC6A1706DA1700BDC4E9 /* button30s_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button30s_down@2x.png"; sourceTree = "<group>"; };
+		A0EECC6B1706DA1700BDC4E9 /* button30s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button30s.png; sourceTree = "<group>"; };
+		A0EECC6C1706DA1700BDC4E9 /* button30s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button30s@2x.png"; sourceTree = "<group>"; };
+		A0EECC721706E13900BDC4E9 /* Pokemon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pokemon.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -807,6 +824,7 @@
 		A087446E15CC447A007E2351 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A0EECC711706E13900BDC4E9 /* Fonts */,
 				A041AAF91706D008009277AF /* App Settings */,
 				A041AAF81706CFFE009277AF /* Images */,
 				A041AAF71706CFDB009277AF /* Sounds */,
@@ -1160,6 +1178,12 @@
 		A08A9626160457F00051A733 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				A0EECC691706DA1700BDC4E9 /* button30s_down.png */,
+				A0EECC6A1706DA1700BDC4E9 /* button30s_down@2x.png */,
+				A0EECC6B1706DA1700BDC4E9 /* button30s.png */,
+				A0EECC6C1706DA1700BDC4E9 /* button30s@2x.png */,
+				A0EECC651706DA0500BDC4E9 /* background_statusbar.png */,
+				A0EECC661706DA0500BDC4E9 /* background_statusbar@2x.png */,
 				A041AB021706D4E8009277AF /* bgTime_center.png */,
 				A041AB031706D4E8009277AF /* bgTime_center@2x.png */,
 				A041AB041706D4E8009277AF /* bgTime_left.png */,
@@ -1340,6 +1364,17 @@
 			path = rentina;
 			sourceTree = "<group>";
 		};
+		A0EECC711706E13900BDC4E9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A0239D551706E71000BD5242 /* UIFont+NAB.h */,
+				A0239D561706E71000BD5242 /* UIFont+NAB.m */,
+				A0EECC721706E13900BDC4E9 /* Pokemon.ttf */,
+			);
+			name = Fonts;
+			path = Resources/Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1504,6 +1539,13 @@
 				A041AB0B1706D4E8009277AF /* bgTime_left@2x.png in Resources */,
 				A041AB0C1706D4E8009277AF /* bgTime_right.png in Resources */,
 				A041AB0D1706D4E8009277AF /* bgTime_right@2x.png in Resources */,
+				A0EECC671706DA0500BDC4E9 /* background_statusbar.png in Resources */,
+				A0EECC681706DA0500BDC4E9 /* background_statusbar@2x.png in Resources */,
+				A0EECC6D1706DA1700BDC4E9 /* button30s_down.png in Resources */,
+				A0EECC6E1706DA1700BDC4E9 /* button30s_down@2x.png in Resources */,
+				A0EECC6F1706DA1700BDC4E9 /* button30s.png in Resources */,
+				A0EECC701706DA1700BDC4E9 /* button30s@2x.png in Resources */,
+				A0EECC731706E13900BDC4E9 /* Pokemon.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1628,6 +1670,7 @@
 				A0A4B16A15DFB0350011C45D /* EffectLayer.m in Sources */,
 				A08A963C16047D850051A733 /* MainMenuScene.m in Sources */,
 				A08A964116047E4C0051A733 /* MainMenuLayer.m in Sources */,
+				A0239D571706E71000BD5242 /* UIFont+NAB.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

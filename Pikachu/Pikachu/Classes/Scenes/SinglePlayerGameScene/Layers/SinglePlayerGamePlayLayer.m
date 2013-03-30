@@ -180,6 +180,11 @@ const int CardSizeH = 80;
                             
                             if (_RemainingCount == 0) {
                                 _level += 1;
+                                
+                                if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateLevelWithLevel:)]) {
+                                    [_delegate gamePlayLayer:self needUpdateLevelWithLevel:_level];
+                                }
+                                
                                 [self setUpNewGameWithLevel:_level];
                             }
                             
@@ -303,8 +308,8 @@ const int CardSizeH = 80;
         [points addObject:[NSValue valueWithCGPoint:point]];
     }
     
-    if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayerNeedDrawLine:withPoints:andDirections:)]) {
-        [_delegate gamePlayLayerNeedDrawLine:self withPoints:points andDirections:_d];
+    if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needDrawLineWithPoints:andDirections:)]) {
+        [_delegate gamePlayLayer:self needDrawLineWithPoints:points andDirections:_d];
     }
 
     //Play effect sound
@@ -350,8 +355,8 @@ const int CardSizeH = 80;
         [self setUpNewGameWithLevel:_level];
     }
     
-    if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayerNeedUpdateTimeLeft:WithValue:)]) {
-        [_delegate gamePlayLayerNeedUpdateTimeLeft:self WithValue:_timeLeft];
+    if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateTimeLeftWithValue:)]) {
+        [_delegate gamePlayLayer:self needUpdateTimeLeftWithValue:_timeLeft];
     }
 }
 

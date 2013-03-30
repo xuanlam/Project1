@@ -15,6 +15,9 @@
 @property (nonatomic, unsafe_unretained) id<SinglePlayerGameInterfaceLayerDelegate> delegate;
 
 - (void)updateTimeBarWithValue:(float)value;
+- (void)setScore:(NSInteger)score;
+- (void)setLevel:(NSInteger)level;
+
 @end
 
 @protocol SinglePlayerGameInterfaceLayerDelegate <NSObject>
