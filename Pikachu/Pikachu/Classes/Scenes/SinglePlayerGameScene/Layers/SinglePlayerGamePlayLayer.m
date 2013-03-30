@@ -100,10 +100,8 @@ const int CardSizeH = 80;
     //    NSArray *array = [[GameManager sharedGameManager] pathImages];
     
     for (i = 1; i <= GameHeight; i++) {
-        for (j = 1; j <= GameWidth; j++)
-        {
-            do
-            {
+        for (j = 1; j <= GameWidth; j++) {
+            do {
                 k = arc4random() % CardNo;
             } while ([[CardCount objectAtIndex:k] intValue] == 0);    // Nếu CardCount[k] == 0 nghĩa là
             //hình thứ k đã sử dụng hết
@@ -111,7 +109,9 @@ const int CardSizeH = 80;
             [_CardMatrix setObject:[NSNumber numberWithInt:k] forRow:i atColumn:j];    //thẻ hình tại ô i, j là hình thứ k
             
             GameCell *cell = [self cellForRow:i atColumn:j];
+            
             if (cell) {
+                
                 [self addChild:cell z:1 tag:cell.cellID];
             }
             
@@ -124,6 +124,7 @@ const int CardSizeH = 80;
     int MAX = (GameHeight + 2) * (GameWidth + 2);
     
     for (int i = 0; i < MAX; i++) {
+        
         [_rX addObject:[NSNull null]];
         [_rY addObject:[NSNull null]];
         [_tX addObject:[NSNull null]];
@@ -152,22 +153,22 @@ const int CardSizeH = 80;
         if ([cell isContainPoint:touchLocation]) {
             
             if (!_highlightedCellIndex) {
+                
                 _highlightedCellIndex = 1;
                 _CardColumn = cell.column;
                 _CardRow = cell.row;
                 
             } else {
+                
                 if (cell.column != _CardColumn || cell.row != _CardRow) {
                     
                     if ([[_CardMatrix objectForRow:_CardRow atColumn:_CardColumn] intValue] == [[_CardMatrix objectForRow:cell.row atColumn:cell.column] intValue]) {
                         
                         //Find route
-                        
                         BOOL canEat = [self checkRouteFormX1:_CardRow Y1:_CardColumn toX2:cell.row Y2:cell.column];
                         
                         //Process Result
-                        if (canEat)   
-                        {
+                        if (canEat) {
                             [_CardMatrix setObject:[NSNumber numberWithInt:-1] forRow:cell.row atColumn:cell.column];
                             [_CardMatrix setObject:[NSNumber numberWithInt:-1] forRow:_CardRow atColumn:_CardColumn];
                             
@@ -181,17 +182,19 @@ const int CardSizeH = 80;
                                 _level += 1;
                                 [self setUpNewGameWithLevel:_level];
                             }
-                        } else {  //nếu không tìm thấy đường đi 
+                            
+                        } else {  //nếu không tìm thấy đường đi
+                            
                             _highlightedCellIndex = 0;   // hủy chọn thẻ hình thứ nhất
                             [self drawGame];
                         }
+                        
                     } else {
+                        
                         _highlightedCellIndex = 0;
                         [self drawGame];
                     }
-                    
                 }
-
             }
             
             break;
@@ -341,7 +344,7 @@ const int CardSizeH = 80;
 #pragma mark - Actions
 
 - (void)updateTime {
-    _timeLeft -= (_level * 2);
+    _timeLeft -= (_level * 0.2f);
     
     if (_timeLeft <= 0.0f) {
         [self setUpNewGameWithLevel:_level];

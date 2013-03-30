@@ -18,7 +18,7 @@
         [background setAnchorPoint:CGPointZero];
         [self addChild:background];
         
-        CCMenuItemImage *button = [CCMenuItemImage itemWithNormalImage:@"menu_button_play.png" selectedImage:@"menu_button_play_don.png" disabledImage:@"menu_button_play_don.png" target:self selector:@selector(buttonPlaySender)];
+        CCMenuItemImage *button = [CCMenuItemImage itemWithNormalImage:@"menu_button_play.png" selectedImage:@"menu_button_play_down.png" disabledImage:@"menu_button_play_down.png" target:self selector:@selector(buttonPlaySender)];
         
         CCMenu *playButton = [CCMenu menuWithItems:button, nil];
         playButton.position = ccp(512.0f, 400.0f);

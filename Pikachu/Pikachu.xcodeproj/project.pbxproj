@@ -14,9 +14,12 @@
 		A02E5C3D15D21EE400656EC4 /* SinglePlayerGameInterfaceLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A02E5C3C15D21EE400656EC4 /* SinglePlayerGameInterfaceLayer.m */; };
 		A02E5C4415D2335700656EC4 /* path1.plist in Resources */ = {isa = PBXBuildFile; fileRef = A02E5C4315D2335700656EC4 /* path1.plist */; };
 		A02E5C4815D2490B00656EC4 /* GameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A02E5C4715D2490B00656EC4 /* GameCell.m */; };
+		A041AAEF1706C158009277AF /* buttonHint-Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A041AAEE1706C158009277AF /* buttonHint-Normal@2x.png */; };
+		A041AAF11706C16F009277AF /* buttonHint-Highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A041AAF01706C16F009277AF /* buttonHint-Highlighted@2x.png */; };
+		A041AAF41706C1AE009277AF /* buttonRandom-Highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A041AAF21706C1AE009277AF /* buttonRandom-Highlighted@2x.png */; };
+		A041AAF51706C1AE009277AF /* buttonRandom-Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A041AAF31706C1AE009277AF /* buttonRandom-Normal@2x.png */; };
 		A059CC2C15EA904200022E9A /* buttonRandom-Highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = A059CC2A15EA904200022E9A /* buttonRandom-Highlighted.png */; };
 		A059CC2D15EA904200022E9A /* buttonRandom-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = A059CC2B15EA904200022E9A /* buttonRandom-Normal.png */; };
-		A059CC3015EA94A000022E9A /* background_main.png in Resources */ = {isa = PBXBuildFile; fileRef = A059CC2F15EA94A000022E9A /* background_main.png */; };
 		A074875B15D78AF800B02ACF /* KSArray2D.m in Sources */ = {isa = PBXBuildFile; fileRef = A074875A15D78AF800B02ACF /* KSArray2D.m */; };
 		A087445C15CC447A007E2351 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A087445B15CC447A007E2351 /* QuartzCore.framework */; };
 		A087445E15CC447A007E2351 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A087445D15CC447A007E2351 /* OpenGLES.framework */; };
@@ -244,9 +247,12 @@
 		A02E5C4315D2335700656EC4 /* path1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = path1.plist; sourceTree = "<group>"; };
 		A02E5C4615D2490B00656EC4 /* GameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCell.h; sourceTree = "<group>"; };
 		A02E5C4715D2490B00656EC4 /* GameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCell.m; sourceTree = "<group>"; };
-		A059CC2A15EA904200022E9A /* buttonRandom-Highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonRandom-Highlighted.png"; sourceTree = "<group>"; };
-		A059CC2B15EA904200022E9A /* buttonRandom-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonRandom-Normal.png"; sourceTree = "<group>"; };
-		A059CC2F15EA94A000022E9A /* background_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_main.png; sourceTree = "<group>"; };
+		A041AAEE1706C158009277AF /* buttonHint-Normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonHint-Normal@2x.png"; sourceTree = "<group>"; };
+		A041AAF01706C16F009277AF /* buttonHint-Highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonHint-Highlighted@2x.png"; sourceTree = "<group>"; };
+		A041AAF21706C1AE009277AF /* buttonRandom-Highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonRandom-Highlighted@2x.png"; sourceTree = "<group>"; };
+		A041AAF31706C1AE009277AF /* buttonRandom-Normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonRandom-Normal@2x.png"; sourceTree = "<group>"; };
+		A059CC2A15EA904200022E9A /* buttonRandom-Highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "buttonRandom-Highlighted.png"; path = "../../Images/buttonRandom-Highlighted.png"; sourceTree = "<group>"; };
+		A059CC2B15EA904200022E9A /* buttonRandom-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "buttonRandom-Normal.png"; path = "../../Images/buttonRandom-Normal.png"; sourceTree = "<group>"; };
 		A074875915D78AF800B02ACF /* KSArray2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSArray2D.h; sourceTree = "<group>"; };
 		A074875A15D78AF800B02ACF /* KSArray2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSArray2D.m; sourceTree = "<group>"; };
 		A087445715CC447A007E2351 /* Pikachu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pikachu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -602,8 +608,8 @@
 		A0A4B17015DFC3640011C45D /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line.png; sourceTree = "<group>"; };
 		A0A4B17215DFD9FD0011C45D /* line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line@2x.png"; sourceTree = "<group>"; };
 		A0A4B17615DFDEEB0011C45D /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
-		A0E415AA15E9F6D10008DF35 /* buttonHint-Highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonHint-Highlighted.png"; sourceTree = "<group>"; };
-		A0E415AB15E9F6D10008DF35 /* buttonHint-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonHint-Normal.png"; sourceTree = "<group>"; };
+		A0E415AA15E9F6D10008DF35 /* buttonHint-Highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "buttonHint-Highlighted.png"; path = "../../Images/buttonHint-Highlighted.png"; sourceTree = "<group>"; };
+		A0E415AB15E9F6D10008DF35 /* buttonHint-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "buttonHint-Normal.png"; path = "../../Images/buttonHint-Normal.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -629,11 +635,6 @@
 		A0148A8215D1F58500F6132E /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				A059CC2F15EA94A000022E9A /* background_main.png */,
-				A059CC2A15EA904200022E9A /* buttonRandom-Highlighted.png */,
-				A059CC2B15EA904200022E9A /* buttonRandom-Normal.png */,
-				A0E415AA15E9F6D10008DF35 /* buttonHint-Highlighted.png */,
-				A0E415AB15E9F6D10008DF35 /* buttonHint-Normal.png */,
 			);
 			name = Images;
 			path = Pikachu/Resources/Images;
@@ -1131,6 +1132,10 @@
 				A08A9628160457F00051A733 /* bar_time_center.png */,
 				A08A9629160457F00051A733 /* bar_time_left.png */,
 				A08A962A160457F00051A733 /* bar_time_right.png */,
+				A059CC2A15EA904200022E9A /* buttonRandom-Highlighted.png */,
+				A059CC2B15EA904200022E9A /* buttonRandom-Normal.png */,
+				A0E415AA15E9F6D10008DF35 /* buttonHint-Highlighted.png */,
+				A0E415AB15E9F6D10008DF35 /* buttonHint-Normal.png */,
 			);
 			path = normal;
 			sourceTree = "<group>";
@@ -1138,6 +1143,10 @@
 		A08A962B160457F00051A733 /* Retina */ = {
 			isa = PBXGroup;
 			children = (
+				A041AAF21706C1AE009277AF /* buttonRandom-Highlighted@2x.png */,
+				A041AAF31706C1AE009277AF /* buttonRandom-Normal@2x.png */,
+				A041AAF01706C16F009277AF /* buttonHint-Highlighted@2x.png */,
+				A041AAEE1706C158009277AF /* buttonHint-Normal@2x.png */,
 				A08A962C160457F00051A733 /* bar_time_center@2x.png */,
 				A08A962D160457F00051A733 /* bar_time_left@2x.png */,
 				A08A962E160457F00051A733 /* bar_time_right@2x.png */,
@@ -1311,7 +1320,7 @@
 		A087444E15CC4479007E2351 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = A087445115CC4479007E2351 /* Build configuration list for PBXProject "Pikachu" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1422,7 +1431,6 @@
 				A0E415AD15E9F6D10008DF35 /* buttonHint-Normal.png in Resources */,
 				A059CC2C15EA904200022E9A /* buttonRandom-Highlighted.png in Resources */,
 				A059CC2D15EA904200022E9A /* buttonRandom-Normal.png in Resources */,
-				A059CC3015EA94A000022E9A /* background_main.png in Resources */,
 				A08A962F160457F00051A733 /* bar_time_center.png in Resources */,
 				A08A9630160457F00051A733 /* bar_time_left.png in Resources */,
 				A08A9631160457F00051A733 /* bar_time_right.png in Resources */,
@@ -1436,6 +1444,10 @@
 				A08A964C16047F5B0051A733 /* Pikachu-Battle-HD.png in Resources */,
 				A08A964D16047F5B0051A733 /* Pikachu-shadow.png in Resources */,
 				A08A9651160480A00051A733 /* MainMenuBackground.jpg in Resources */,
+				A041AAEF1706C158009277AF /* buttonHint-Normal@2x.png in Resources */,
+				A041AAF11706C16F009277AF /* buttonHint-Highlighted@2x.png in Resources */,
+				A041AAF41706C1AE009277AF /* buttonRandom-Highlighted@2x.png in Resources */,
+				A041AAF51706C1AE009277AF /* buttonRandom-Normal@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1570,6 +1582,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1580,6 +1596,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -1592,6 +1609,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1600,6 +1621,7 @@
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
