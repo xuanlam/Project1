@@ -323,7 +323,7 @@ const int CardSizeH = 80;
         int type = [[_CardMatrix objectForRow:row atColumn:column] intValue];
         cell = [GameCell spriteWithFile:[array objectAtIndex:type]];
         
-        CGPoint cellPosition = CGPointMake((column -1 ) * 60 + 32, (row - 1) * 80 + 65);
+        CGPoint cellPosition = CGPointMake((column -1 ) * 60 + 32, (row - 1) * 80 + 45);
         cell.anchorPoint = CGPointZero;
         [cell setPosition:cellPosition];
         cell.cellID = cellTag;
@@ -336,7 +336,7 @@ const int CardSizeH = 80;
 }
 
 - (CGPoint)pointForCellWithRow:(NSInteger)row andColumn:(NSInteger)column {
-    CGPoint location = CGPointMake((column -1 ) * 60 + 62, (row - 1) * 80 + 105);
+    CGPoint location = CGPointMake((column -1 ) * 60 + 62, (row - 1) * 80 + 85);
     return location;
 }
 

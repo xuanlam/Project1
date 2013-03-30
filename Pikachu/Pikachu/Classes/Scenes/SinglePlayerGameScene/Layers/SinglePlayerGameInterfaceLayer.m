@@ -11,9 +11,13 @@
 
 @interface SinglePlayerGameInterfaceLayer ()
 
-@property (nonatomic, strong) CCSprite *timeBar;
-@property (nonatomic, strong) CCSprite *timeBarLeft;
-@property (nonatomic, strong) CCSprite *timeBarRight;
+@property (nonatomic, strong) CCSprite      *timeBar;
+@property (nonatomic, strong) CCSprite      *timeBarLeft;
+@property (nonatomic, strong) CCSprite      *timeBarRight;
+
+@property (nonatomic, strong) CCLabelTTF    *levelLabel;
+@property (nonatomic, strong) CCLabelTTF    *scoreLabel;
+
 
 @end
 
@@ -37,21 +41,39 @@
     randomButton.position = ccp(150.0f, 735.0f);
     [self addChild:randomButton];
     
+    
+    //Time bar
+    CCSprite *backgroundTimeBarLeft = [CCSprite spriteWithFile:@"bgTime_left.png"];
+    backgroundTimeBarLeft.position = ccp(300.0f, 735.0f);
+    [backgroundTimeBarLeft setAnchorPoint:ccp(0, 0.5)];
+    [self addChild:backgroundTimeBarLeft];
+
     self.timeBarLeft = [CCSprite spriteWithFile:@"bar_time_left.png"];
     _timeBarLeft.position = ccp(300.0f, 735.0f);
     [_timeBarLeft setAnchorPoint:ccp(0, 0.5)];
     [self addChild:_timeBarLeft];
     
+    CCSprite *backgroundTimeBarCenter = [CCSprite spriteWithFile:@"bgTime_center.png"];
+    backgroundTimeBarCenter.position = ccp(_timeBarLeft.position.x + _timeBarLeft.boundingBox.size.width, 735.0f);
+    [backgroundTimeBarCenter setAnchorPoint:ccp(0, 0.5)];
+    backgroundTimeBarCenter.scaleX = PKCTIMEBAR_WIDTH;
+    [self addChild:backgroundTimeBarCenter];
+    
     self.timeBar = [CCSprite spriteWithFile:@"bar_time_center.png"];
     _timeBar.position = ccp(_timeBarLeft.position.x + _timeBarLeft.boundingBox.size.width, 735.0f);
     [_timeBar setAnchorPoint:ccp(0, 0.5)];
-//    [_timeBar setScaleX:100.0f];
     [self addChild:_timeBar];
     
+    CCSprite *backgroundTimeBarRight = [CCSprite spriteWithFile:@"bgTime_right.png"];
+    backgroundTimeBarRight.position = ccp(backgroundTimeBarCenter.position.x + backgroundTimeBarCenter.boundingBox.size.width, 735.0f);
+    [backgroundTimeBarRight setAnchorPoint:ccp(0, 0.5)];
+    [self addChild:backgroundTimeBarRight];
+    
     self.timeBarRight = [CCSprite spriteWithFile:@"bar_time_right.png"];
-    _timeBarRight.position = ccp(_timeBar.position.x + _timeBar.boundingBox.size.width, 735.0f);
+    _timeBarRight.position = ccp(backgroundTimeBarCenter.position.x + backgroundTimeBarCenter.boundingBox.size.width, 735.0f);
     [_timeBarRight setAnchorPoint:ccp(0, 0.5)];
     [self addChild:_timeBarRight];
+        
     
     [self updateTimeBarWithValue:100.0f];
 }

@@ -13,9 +13,11 @@
 
 - (id)init {
     self = [super init];
-    if (self) {
+    if (self) {        
+        
         CCSprite *background = [CCSprite spriteWithFile:@"MainMenuBackground.jpg"];
         [background setAnchorPoint:CGPointZero];
+        background.scale = CC_CONTENT_SCALE_FACTOR();
         [self addChild:background];
         
         CCMenuItemImage *button = [CCMenuItemImage itemWithNormalImage:@"menu_button_play.png" selectedImage:@"menu_button_play_down.png" disabledImage:@"menu_button_play_down.png" target:self selector:@selector(buttonPlaySender)];
