@@ -5,6 +5,7 @@
 //  Created by Lam Xuan on 8/4/12.
 //  Copyright __MyCompanyName__ 2012. All rights reserved.
 //
+// Long
 
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
