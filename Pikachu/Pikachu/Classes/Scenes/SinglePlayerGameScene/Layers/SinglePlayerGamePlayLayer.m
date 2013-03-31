@@ -35,6 +35,10 @@ const int CardSizeH = 80;
 @property (nonatomic, strong)   NSMutableArray  *d;
 
 @property (nonatomic)           int             level;
+@property (nonatomic)           int             score;
+@property (nonatomic)           int             countHint;
+@property (nonatomic)           int             countRandom;
+@property (nonatomic)           int             countRushTime;
 @property (nonatomic)           float           timeLeft;
 
 @end
@@ -68,6 +72,10 @@ const int CardSizeH = 80;
         
         _timeLeft = 100.0f;
         _level = 1;
+        // init for score, count Hint & Random
+        _score = 0;
+        _countHint = 10;
+        _countRandom = 10;
         
         [self setUpNewGameWithLevel:1];
         
@@ -174,6 +182,11 @@ const int CardSizeH = 80;
                             
                             _RemainingCount -= 2;
                             _highlightedCellIndex = 0;
+                            // eat and add score throung delegate
+                            _score += 10;
+                            if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateScoreWithScore:)]) {
+                                [_delegate gamePlayLayer:self needUpdateScoreWithScore:_score];
+                            }
                             
                             [self drawLineConnect];
                             [self drawGame];

@@ -44,7 +44,7 @@
     
     
     //Label
-    self.levelLabel = [[CCLabelTTF alloc] initWithString:@"0 :Level" fontName:@"PokemonNormal" fontSize:24];
+    self.levelLabel = [[CCLabelTTF alloc] initWithString:@"1 :Level" fontName:@"PokemonNormal" fontSize:24];
     _levelLabel.anchorPoint = CGPointMake(1.0f, 0.5f);
     _levelLabel.horizontalAlignment = CCTextAlignmentRight;
     _levelLabel.position = CGPointMake(1010, 750.0f);

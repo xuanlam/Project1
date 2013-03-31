@@ -46,12 +46,28 @@
 
 #pragma mark - gamePlayLayerDelegate
 
-- (void)gamePlayLayerNeedDrawLine:(SinglePlayerGamePlayLayer *)gamePlayLayer withPoints:(NSArray *)points andDirections:(NSArray *)directions {
+//- (void)gamePlayLayerNeedDrawLine:(SinglePlayerGamePlayLayer *)gamePlayLayer withPoints:(NSArray *)points andDirections:(NSArray *)directions {
+//    [_effectLayer drawLineWithPoints:points andDirections:directions];
+//}
+//
+//- (void)gamePlayLayerNeedUpdateTimeLeft:(SinglePlayerGamePlayLayer *)gamePlayLayer WithValue:(float)value {
+//    [_interfaceLayer updateTimeBarWithValue:value];
+//}
+
+- (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needDrawLineWithPoints:(NSArray *)points andDirections:(NSArray *)directions {
     [_effectLayer drawLineWithPoints:points andDirections:directions];
 }
 
-- (void)gamePlayLayerNeedUpdateTimeLeft:(SinglePlayerGamePlayLayer *)gamePlayLayer WithValue:(float)value {
+- (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needUpdateTimeLeftWithValue:(float)value {
     [_interfaceLayer updateTimeBarWithValue:value];
+}
+
+- (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needUpdateLevelWithLevel:(NSInteger)level {
+    [_interfaceLayer setLevel:level];
+}
+
+- (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needUpdateScoreWithScore:(NSInteger)score {
+     [_interfaceLayer setScore:score];
 }
 
 #pragma mark - SinglePlayerGameInterfaceLayer
