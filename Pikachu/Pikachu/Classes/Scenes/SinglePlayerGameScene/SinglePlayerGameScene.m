@@ -67,7 +67,15 @@
 }
 
 - (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needUpdateScoreWithScore:(NSInteger)score {
-     [_interfaceLayer setScore:score];
+    [_interfaceLayer setScore:score];
+}
+
+- (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needUpdateCountHintWithNumber:(NSInteger)countHint {
+    [_interfaceLayer setHint:countHint];
+}
+
+- (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needUpdateCountRandomWithNumber:(NSInteger)countRandom {
+    [_interfaceLayer setRandom:countRandom];
 }
 
 #pragma mark - SinglePlayerGameInterfaceLayer

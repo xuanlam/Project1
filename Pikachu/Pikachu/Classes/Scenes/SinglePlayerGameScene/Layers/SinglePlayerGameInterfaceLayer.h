@@ -17,6 +17,8 @@
 - (void)updateTimeBarWithValue:(float)value;
 - (void)setScore:(NSInteger)score;
 - (void)setLevel:(NSInteger)level;
+- (void)setRandom:(NSInteger)countRandom;
+- (void)setHint:(NSInteger)countHint;
 
 @end
 

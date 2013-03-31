@@ -453,10 +453,15 @@ const int CardSizeH = 80;
 }
 
 - (void)showHint {
-    if ([self isNoWay]) {
+    if ([self isNoWay] || _countHint <= 0) {
         CCLOG(@"No way");
+        return;
     } else {
         [self drawLineConnect];
+        _countHint -= 1;
+        if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateCountHintWithNumber:)]) {
+            [_delegate gamePlayLayer:self needUpdateCountHintWithNumber:_countHint];
+        }
     }
 }
 
