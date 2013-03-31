@@ -252,6 +252,19 @@
 		A0EECC6F1706DA1700BDC4E9 /* button30s.png in Resources */ = {isa = PBXBuildFile; fileRef = A0EECC6B1706DA1700BDC4E9 /* button30s.png */; };
 		A0EECC701706DA1700BDC4E9 /* button30s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A0EECC6C1706DA1700BDC4E9 /* button30s@2x.png */; };
 		A0EECC731706E13900BDC4E9 /* Pokemon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0EECC721706E13900BDC4E9 /* Pokemon.ttf */; };
+		F8AD3E9A170820AE00F8277B /* button_Store_down.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3E96170820AC00F8277B /* button_Store_down.png */; };
+		F8AD3E9B170820AE00F8277B /* button_Store_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3E97170820AD00F8277B /* button_Store_down@2x.png */; };
+		F8AD3E9C170820AE00F8277B /* button_Store.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3E98170820AD00F8277B /* button_Store.png */; };
+		F8AD3E9D170820AE00F8277B /* button_Store@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3E99170820AD00F8277B /* button_Store@2x.png */; };
+		F8AD3EA11708218A00F8277B /* StoreMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F8AD3EA01708218A00F8277B /* StoreMenuLayer.m */; };
+		F8AD3EA7170826C300F8277B /* b_0000_button_Back_down.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3EA3170826C000F8277B /* b_0000_button_Back_down.png */; };
+		F8AD3EA8170826C300F8277B /* b_0000_button_Back_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3EA4170826C100F8277B /* b_0000_button_Back_down@2x.png */; };
+		F8AD3EA9170826C300F8277B /* b_0001_button_Back.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3EA5170826C200F8277B /* b_0001_button_Back.png */; };
+		F8AD3EAA170826C300F8277B /* b_0001_button_Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3EA6170826C200F8277B /* b_0001_button_Back@2x.png */; };
+		F8AD3EAD1708298700F8277B /* menu_button_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3EAB1708298500F8277B /* menu_button_pause.png */; };
+		F8AD3EAE1708298700F8277B /* menu_button_pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3EAC1708298600F8277B /* menu_button_pause@2x.png */; };
+		F8AD3EB117082A9100F8277B /* b_0011_Shop_WOOD.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3EAF17082A8F00F8277B /* b_0011_Shop_WOOD.png */; };
+		F8AD3EB217082A9100F8277B /* b_0011_Shop_WOOD@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3EB017082A9000F8277B /* b_0011_Shop_WOOD@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -647,6 +660,20 @@
 		A0EECC6B1706DA1700BDC4E9 /* button30s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button30s.png; sourceTree = "<group>"; };
 		A0EECC6C1706DA1700BDC4E9 /* button30s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button30s@2x.png"; sourceTree = "<group>"; };
 		A0EECC721706E13900BDC4E9 /* Pokemon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pokemon.ttf; sourceTree = "<group>"; };
+		F8AD3E96170820AC00F8277B /* button_Store_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_Store_down.png; sourceTree = "<group>"; };
+		F8AD3E97170820AD00F8277B /* button_Store_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_Store_down@2x.png"; sourceTree = "<group>"; };
+		F8AD3E98170820AD00F8277B /* button_Store.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_Store.png; sourceTree = "<group>"; };
+		F8AD3E99170820AD00F8277B /* button_Store@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_Store@2x.png"; sourceTree = "<group>"; };
+		F8AD3E9F1708218A00F8277B /* StoreMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreMenuLayer.h; sourceTree = "<group>"; };
+		F8AD3EA01708218A00F8277B /* StoreMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreMenuLayer.m; sourceTree = "<group>"; };
+		F8AD3EA3170826C000F8277B /* b_0000_button_Back_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b_0000_button_Back_down.png; sourceTree = "<group>"; };
+		F8AD3EA4170826C100F8277B /* b_0000_button_Back_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "b_0000_button_Back_down@2x.png"; sourceTree = "<group>"; };
+		F8AD3EA5170826C200F8277B /* b_0001_button_Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b_0001_button_Back.png; sourceTree = "<group>"; };
+		F8AD3EA6170826C200F8277B /* b_0001_button_Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "b_0001_button_Back@2x.png"; sourceTree = "<group>"; };
+		F8AD3EAB1708298500F8277B /* menu_button_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button_pause.png; sourceTree = "<group>"; };
+		F8AD3EAC1708298600F8277B /* menu_button_pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_button_pause@2x.png"; sourceTree = "<group>"; };
+		F8AD3EAF17082A8F00F8277B /* b_0011_Shop_WOOD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b_0011_Shop_WOOD.png; sourceTree = "<group>"; };
+		F8AD3EB017082A9000F8277B /* b_0011_Shop_WOOD@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "b_0011_Shop_WOOD@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -755,6 +782,7 @@
 		A05E21FC15D1228300EA13AA /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				F8AD3E9E1708210300F8277B /* Store */,
 				A041AAF61706C3B4009277AF /* Effect */,
 				A08A963D16047E080051A733 /* MainMenuScene */,
 				A090396F15D1800F0042FE4E /* SinglePlayerGameScene */,
@@ -1178,6 +1206,12 @@
 		A08A9626160457F00051A733 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				F8AD3EA3170826C000F8277B /* b_0000_button_Back_down.png */,
+				F8AD3EA4170826C100F8277B /* b_0000_button_Back_down@2x.png */,
+				F8AD3EA5170826C200F8277B /* b_0001_button_Back.png */,
+				F8AD3EA6170826C200F8277B /* b_0001_button_Back@2x.png */,
+				F8AD3EAF17082A8F00F8277B /* b_0011_Shop_WOOD.png */,
+				F8AD3EB017082A9000F8277B /* b_0011_Shop_WOOD@2x.png */,
 				A0EECC691706DA1700BDC4E9 /* button30s_down.png */,
 				A0EECC6A1706DA1700BDC4E9 /* button30s_down@2x.png */,
 				A0EECC6B1706DA1700BDC4E9 /* button30s.png */,
@@ -1205,6 +1239,12 @@
 				A08A964716047F380051A733 /* menu_button_play.png */,
 				A08A964216047F240051A733 /* menu_button_more_down.png */,
 				A08A964316047F240051A733 /* menu_button_more.png */,
+				F8AD3EAB1708298500F8277B /* menu_button_pause.png */,
+				F8AD3EAC1708298600F8277B /* menu_button_pause@2x.png */,
+				F8AD3E96170820AC00F8277B /* button_Store_down.png */,
+				F8AD3E97170820AD00F8277B /* button_Store_down@2x.png */,
+				F8AD3E98170820AD00F8277B /* button_Store.png */,
+				F8AD3E99170820AD00F8277B /* button_Store@2x.png */,
 				A08A9628160457F00051A733 /* bar_time_center.png */,
 				A08A9629160457F00051A733 /* bar_time_left.png */,
 				A08A962A160457F00051A733 /* bar_time_right.png */,
@@ -1373,6 +1413,15 @@
 			);
 			name = Fonts;
 			path = Resources/Fonts;
+			sourceTree = "<group>";
+		};
+		F8AD3E9E1708210300F8277B /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				F8AD3E9F1708218A00F8277B /* StoreMenuLayer.h */,
+				F8AD3EA01708218A00F8277B /* StoreMenuLayer.m */,
+			);
+			name = Store;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1546,6 +1595,18 @@
 				A0EECC6F1706DA1700BDC4E9 /* button30s.png in Resources */,
 				A0EECC701706DA1700BDC4E9 /* button30s@2x.png in Resources */,
 				A0EECC731706E13900BDC4E9 /* Pokemon.ttf in Resources */,
+				F8AD3E9A170820AE00F8277B /* button_Store_down.png in Resources */,
+				F8AD3E9B170820AE00F8277B /* button_Store_down@2x.png in Resources */,
+				F8AD3E9C170820AE00F8277B /* button_Store.png in Resources */,
+				F8AD3E9D170820AE00F8277B /* button_Store@2x.png in Resources */,
+				F8AD3EA7170826C300F8277B /* b_0000_button_Back_down.png in Resources */,
+				F8AD3EA8170826C300F8277B /* b_0000_button_Back_down@2x.png in Resources */,
+				F8AD3EA9170826C300F8277B /* b_0001_button_Back.png in Resources */,
+				F8AD3EAA170826C300F8277B /* b_0001_button_Back@2x.png in Resources */,
+				F8AD3EAD1708298700F8277B /* menu_button_pause.png in Resources */,
+				F8AD3EAE1708298700F8277B /* menu_button_pause@2x.png in Resources */,
+				F8AD3EB117082A9100F8277B /* b_0011_Shop_WOOD.png in Resources */,
+				F8AD3EB217082A9100F8277B /* b_0011_Shop_WOOD@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1671,6 +1732,7 @@
 				A08A963C16047D850051A733 /* MainMenuScene.m in Sources */,
 				A08A964116047E4C0051A733 /* MainMenuLayer.m in Sources */,
 				A0239D571706E71000BD5242 /* UIFont+NAB.m in Sources */,
+				F8AD3EA11708218A00F8277B /* StoreMenuLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
