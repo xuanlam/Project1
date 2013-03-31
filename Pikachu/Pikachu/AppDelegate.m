@@ -5,7 +5,7 @@
 //  Created by Lam Xuan on 8/4/12.
 //  Copyright __MyCompanyName__ 2012. All rights reserved.
 //
-
+// Long test
 //#import "cocos2d.h"
 
 #import "AppDelegate.h"
