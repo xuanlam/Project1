@@ -8,6 +8,7 @@
 #define PKCTIMEBAR_WIDTH 300.0f
 
 #import "SinglePlayerGameInterfaceLayer.h"
+#import "PKCUserInfo.h"
 
 @interface SinglePlayerGameInterfaceLayer ()
 
@@ -48,18 +49,18 @@
     [self addChild:add30sButton];
 
     
-    // add Label under Hint & Random & Add 30s Button
-    _countHintLabel = [[CCLabelTTF alloc]initWithString:@"10" fontName:@"PokemonNormal" fontSize:24];
+    // add Label under Hint & Random & Add 30s Button    
+    _countHintLabel = [[CCLabelTTF alloc]initWithString:[NSString stringWithFormat:@"%d", [PKCUserInfo numberOfHintCount]] fontName:@"PokemonNormal" fontSize:24];
     _countHintLabel.anchorPoint = CGPointMake(1.0f, 0.5f);
     _countHintLabel.position = CGPointMake(55.0f, 700.0f);
     [self addChild:_countHintLabel];
     
-    _countRandomLabel = [[CCLabelTTF alloc]initWithString:@"10" fontName:@"PokemonNormal" fontSize:24];
+    _countRandomLabel = [[CCLabelTTF alloc]initWithString:[NSString stringWithFormat:@"%d", [PKCUserInfo numberOfRandomCount]] fontName:@"PokemonNormal" fontSize:24];
     _countRandomLabel.anchorPoint = CGPointMake(1.0f, 0.5f);
     _countRandomLabel.position = CGPointMake(150.0f, 700.0f);
     [self addChild:_countRandomLabel];
 
-    _countAddTimeLabel = [[CCLabelTTF alloc]initWithString:@"10" fontName:@"PokemonNormal" fontSize:24];
+    _countAddTimeLabel = [[CCLabelTTF alloc]initWithString:[NSString stringWithFormat:@"%d", [PKCUserInfo numberOfAddTimeCount]] fontName:@"PokemonNormal" fontSize:24];
     _countAddTimeLabel.anchorPoint = CGPointMake(1.0f, 0.5f);
     _countAddTimeLabel.position = CGPointMake(250.0f, 700.0f);
     [self addChild:_countAddTimeLabel];

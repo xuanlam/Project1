@@ -29,6 +29,10 @@
         SinglePlayerGameBackgroundLayer *backgroundLayer = [SinglePlayerGameBackgroundLayer node];
         [self addChild:backgroundLayer z:0];
         
+        self.interfaceLayer = [SinglePlayerGameInterfaceLayer node];
+        _interfaceLayer.delegate = self;
+        [self addChild:_interfaceLayer z:3];
+        
         self.gamePlayLayer = [SinglePlayerGamePlayLayer node];
         _gamePlayLayer.delegate = self;
         [self addChild:_gamePlayLayer z:1];
@@ -36,9 +40,6 @@
         self.effectLayer = [EffectLayer node];
         [self addChild:_effectLayer z:2];
         
-        self.interfaceLayer = [SinglePlayerGameInterfaceLayer node];
-        _interfaceLayer.delegate = self;
-        [self addChild:_interfaceLayer z:3];
     }
     return self;
 }
