@@ -18,6 +18,7 @@ const int CardSizeH = 80;
 #import "GameManager.h"
 #import "KSArray2D.h"
 #import "SimpleAudioEngine.h"
+#import "PKCUserInfo.h"
 
 @interface SinglePlayerGamePlayLayer()
 
@@ -74,9 +75,9 @@ const int CardSizeH = 80;
         _level = 1;
         // init for score, count Hint & Random
         _score = 0;
-        _countHint = 10;
-        _countRandom = 10;
-        _countRushTime = 10;
+        _countHint = [PKCUserInfo numberOfHintCount];
+        _countRandom = [PKCUserInfo numberOfRandomCount];
+        _countRushTime = [PKCUserInfo numberOfAddTimeCount];
         
         [self setUpNewGameWithLevel:1];
         
@@ -391,24 +392,38 @@ const int CardSizeH = 80;
     }
 }
 
-- (void)addTime {
+
+
+
+
+#pragma mark - Power Up
+
+- (void)showHint {
     
-    if (_countRushTime > 0 && _timeLeft <= _maxTime - 30.0f) {
-        _countRushTime--;
+    if ([self isNoWay] || _countHint <= 0) {
         
-        _timeLeft += 30.0f;
+        CCLOG(@"No way");
+        return;
         
-        if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateCountAddTimeWithNumber:)]) {
-            [_delegate gamePlayLayer:self needUpdateCountAddTimeWithNumber:_countRushTime];
+    } else {
+        
+        [self drawLineConnect];
+        
+        _countHint -= 1;
+        [PKCUserInfo setNumberOfHintCount:_countHint];
+        
+        if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateCountHintWithNumber:)]) {
+            [_delegate gamePlayLayer:self needUpdateCountHintWithNumber:_countHint];
         }
-        
     }
 }
 
 - (void)randomMap {
     
     if (_countRandom > 0) {
+        
         _countRandom--;
+        [PKCUserInfo setNumberOfRandomCount:_countRandom];
         
         if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateCountRandomWithNumber:)]) {
             [_delegate gamePlayLayer:self needUpdateCountRandomWithNumber:_countRandom];
@@ -459,6 +474,25 @@ const int CardSizeH = 80;
     }
 }
 
+- (void)addTime {
+    
+    if (_countRushTime > 0 && _timeLeft <= _maxTime - 30.0f) {
+        
+        _countRushTime--;
+        [PKCUserInfo setNumberOfAddTimeCount:_countRushTime];
+        
+        _timeLeft += 30.0f;
+        
+        if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateCountAddTimeWithNumber:)]) {
+            [_delegate gamePlayLayer:self needUpdateCountAddTimeWithNumber:_countRushTime];
+        }
+        
+    }
+}
+
+
+#pragma mark - Support Logic Methods
+
 - (BOOL)isNoWay {
     
     for (int type = 0; type < CardNo; type++) {
@@ -484,25 +518,12 @@ const int CardSizeH = 80;
                         
                         return NO;
                     }
-                }                
+                }
             }
         }
     }
-
+    
     return YES;
-}
-
-- (void)showHint {
-    if ([self isNoWay] || _countHint <= 0) {
-        CCLOG(@"No way");
-        return;
-    } else {
-        [self drawLineConnect];
-        _countHint -= 1;
-        if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateCountHintWithNumber:)]) {
-            [_delegate gamePlayLayer:self needUpdateCountHintWithNumber:_countHint];
-        }
-    }
 }
 
 - (BOOL)checkRouteFormX1:(NSInteger)x1 Y1:(NSInteger)y1 toX2:(NSInteger)x2 Y2:(NSInteger)y2 {
@@ -525,5 +546,6 @@ const int CardSizeH = 80;
     
     return NO;
 }
+
 
 @end
