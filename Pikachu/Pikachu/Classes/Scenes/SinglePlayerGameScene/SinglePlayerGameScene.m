@@ -78,6 +78,11 @@
     [_interfaceLayer setRandom:countRandom];
 }
 
+- (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needUpdateCountAddTimeWithNumber:(NSInteger)countAddTime {
+    [_interfaceLayer setAddTimeCount:countAddTime];
+}
+
+
 #pragma mark - SinglePlayerGameInterfaceLayer
 
 - (void)gameInterfaceDidSelectHintButton:(SinglePlayerGameInterfaceLayer *)gameInterface {
@@ -86,6 +91,10 @@
 
 - (void)gameInterfaceDidSelectRandomButton:(SinglePlayerGameInterfaceLayer *)gameInterface {
     [_gamePlayLayer randomMap];
+}
+
+- (void)gameInterfaceDidSelectAddTimeButton:(SinglePlayerGameInterfaceLayer *)gameInterface {
+    [_gamePlayLayer addTime];
 }
 
 @end

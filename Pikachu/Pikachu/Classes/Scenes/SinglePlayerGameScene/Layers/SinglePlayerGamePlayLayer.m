@@ -40,6 +40,7 @@ const int CardSizeH = 80;
 @property (nonatomic)           int             countRandom;
 @property (nonatomic)           int             countRushTime;
 @property (nonatomic)           float           timeLeft;
+@property (nonatomic)           float           maxTime;
 
 @end
 
@@ -70,12 +71,12 @@ const int CardSizeH = 80;
         self.tY = [NSMutableArray arrayWithCapacity:MAX];
         self.d = [NSMutableArray arrayWithCapacity:MAX];        
         
-        _timeLeft = 100.0f;
         _level = 1;
         // init for score, count Hint & Random
         _score = 0;
         _countHint = 10;
         _countRandom = 10;
+        _countRushTime = 10;
         
         [self setUpNewGameWithLevel:1];
         
@@ -86,7 +87,16 @@ const int CardSizeH = 80;
 
 - (void)setUpNewGameWithLevel:(NSInteger)level {
     [self removeAllChildrenWithCleanup:YES];
-    _timeLeft = 100.0f;
+    
+#warning This is hack code ~.~
+    _timeLeft = 600.0f - (_level-1) * 60.0f;
+    
+    if (_timeLeft < 300.0f) {
+        _timeLeft = 300.0f;
+    }
+    
+    _maxTime = _timeLeft;
+
     
     int i, j, k;
     
@@ -192,13 +202,9 @@ const int CardSizeH = 80;
                             [self drawGame];
                             
                             if (_RemainingCount == 0) {
-                                _level += 1;
                                 
-                                if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateLevelWithLevel:)]) {
-                                    [_delegate gamePlayLayer:self needUpdateLevelWithLevel:_level];
-                                }
+                                [self upLevel];
                                 
-                                [self setUpNewGameWithLevel:_level];
                             }
                             
                         } else {  //nếu không tìm thấy đường đi
@@ -361,62 +367,96 @@ const int CardSizeH = 80;
 
 #pragma mark - Actions
 
+- (void)upLevel {
+
+    _level += 1;
+    
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateLevelWithLevel:)]) {
+        [_delegate gamePlayLayer:self needUpdateLevelWithLevel:_level];
+    }
+    
+    [self setUpNewGameWithLevel:_level];
+}
+
 - (void)updateTime {
-    _timeLeft -= (_level * 0.2f);
+    _timeLeft -= 1.0f;
     
     if (_timeLeft <= 0.0f) {
         [self setUpNewGameWithLevel:_level];
     }
     
     if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateTimeLeftWithValue:)]) {
-        [_delegate gamePlayLayer:self needUpdateTimeLeftWithValue:_timeLeft];
+        [_delegate gamePlayLayer:self needUpdateTimeLeftWithValue:_timeLeft/_maxTime];
+    }
+}
+
+- (void)addTime {
+    
+    if (_countRushTime > 0 && _timeLeft <= _maxTime - 30.0f) {
+        _countRushTime--;
+        
+        _timeLeft += 30.0f;
+        
+        if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateCountAddTimeWithNumber:)]) {
+            [_delegate gamePlayLayer:self needUpdateCountAddTimeWithNumber:_countRushTime];
+        }
+        
     }
 }
 
 - (void)randomMap {
-    [self removeAllChildrenWithCleanup:YES];
     
-    NSMutableArray *CardCount = [NSMutableArray arrayWithCapacity:CardNo];
-    for (int type = 0; type < CardNo; type++) {
-        int count = 0;
-        for (int i = 1; i <= GameHeight; i++) {
-            for (int j = 1; j <= GameWidth; j++) {
-                if ([[_CardMatrix objectForRow:i atColumn:j] intValue] == type) {
-                    count++;
-                }
-            }
+    if (_countRandom > 0) {
+        _countRandom--;
+        
+        if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateCountRandomWithNumber:)]) {
+            [_delegate gamePlayLayer:self needUpdateCountRandomWithNumber:_countRandom];
         }
         
-        [CardCount addObject:[NSNumber numberWithInt:count]];
-    }
-    
-    for (int l = 1; l <= GameHeight; l++) {
-        for (int h = 1; h <= GameWidth; h++)
-        {
-            if ([[_CardMatrix objectForRow:l atColumn:h] intValue] != -1) {
-                int k;
-                
-                do
-                {
-                    k = arc4random() % CardNo;
-                } while ([[CardCount objectAtIndex:k] intValue] == 0);    // Nếu CardCount[k] == 0 nghĩa là
-                //hình thứ k đã sử dụng hết
-                //các thẻ hình, cần tìm k khác.
-                [_CardMatrix setObject:[NSNumber numberWithInt:k] forRow:l atColumn:h];    //thẻ hình tại ô i, j là hình thứ k
-                
-                GameCell *cell = [self cellForRow:l atColumn:h];
-                if (cell) {
-                    [self addChild:cell z:1 tag:cell.cellID];
+        [self removeAllChildrenWithCleanup:YES];
+        
+        NSMutableArray *CardCount = [NSMutableArray arrayWithCapacity:CardNo];
+        for (int type = 0; type < CardNo; type++) {
+            int count = 0;
+            for (int i = 1; i <= GameHeight; i++) {
+                for (int j = 1; j <= GameWidth; j++) {
+                    if ([[_CardMatrix objectForRow:i atColumn:j] intValue] == type) {
+                        count++;
+                    }
                 }
-                
-                int cCount = [[CardCount objectAtIndex:k] intValue];
-                
-                [CardCount replaceObjectAtIndex:k withObject:[NSNumber numberWithInt:cCount - 1]];                   //hình thứ k đã dùng 1 thẻ
-
+            }
+            
+            [CardCount addObject:[NSNumber numberWithInt:count]];
+        }
+        
+        for (int l = 1; l <= GameHeight; l++) {
+            for (int h = 1; h <= GameWidth; h++)
+            {
+                if ([[_CardMatrix objectForRow:l atColumn:h] intValue] != -1) {
+                    int k;
+                    
+                    do
+                    {
+                        k = arc4random() % CardNo;
+                    } while ([[CardCount objectAtIndex:k] intValue] == 0);    // Nếu CardCount[k] == 0 nghĩa là
+                    //hình thứ k đã sử dụng hết
+                    //các thẻ hình, cần tìm k khác.
+                    [_CardMatrix setObject:[NSNumber numberWithInt:k] forRow:l atColumn:h];    //thẻ hình tại ô i, j là hình thứ k
+                    
+                    GameCell *cell = [self cellForRow:l atColumn:h];
+                    if (cell) {
+                        [self addChild:cell z:1 tag:cell.cellID];
+                    }
+                    
+                    int cCount = [[CardCount objectAtIndex:k] intValue];
+                    
+                    [CardCount replaceObjectAtIndex:k withObject:[NSNumber numberWithInt:cCount - 1]];                   //hình thứ k đã dùng 1 thẻ
+                    
+                }
             }
         }
     }
-
 }
 
 - (BOOL)isNoWay {

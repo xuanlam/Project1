@@ -19,6 +19,7 @@
 - (void)setLevel:(NSInteger)level;
 - (void)setRandom:(NSInteger)countRandom;
 - (void)setHint:(NSInteger)countHint;
+- (void)setAddTimeCount:(NSInteger)addTimeCount;
 
 @end
 
@@ -26,6 +27,7 @@
 
 - (void)gameInterfaceDidSelectHintButton:(SinglePlayerGameInterfaceLayer *)gameInterface;
 - (void)gameInterfaceDidSelectRandomButton:(SinglePlayerGameInterfaceLayer *)gameInterface;
+- (void)gameInterfaceDidSelectAddTimeButton:(SinglePlayerGameInterfaceLayer *)gameInterface;
 
 
 @end

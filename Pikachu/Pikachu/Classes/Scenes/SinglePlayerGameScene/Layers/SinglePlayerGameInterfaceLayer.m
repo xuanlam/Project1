@@ -19,6 +19,7 @@
 @property (nonatomic, strong) CCLabelTTF    *scoreLabel;
 @property (nonatomic, strong) CCLabelTTF    *countHintLabel;
 @property (nonatomic, strong) CCLabelTTF    *countRandomLabel;
+@property (nonatomic, strong) CCLabelTTF    *countAddTimeLabel;
 
 @end
 
@@ -31,17 +32,17 @@
 - (void)setUpInterface {
     
     //Button Hint & Random & Add 30s Button
-    CCMenuItemImage *button = [CCMenuItemImage itemWithNormalImage:@"buttonHint-Normal.png" selectedImage:@"buttonHint-Highlighted.png" disabledImage:@"buttonHint-Highlighted.png" target:self selector:@selector(buttonHintSender)];
+    CCMenuItemImage *button = [CCMenuItemImage itemWithNormalImage:@"buttonHint-Normal.png" selectedImage:@"buttonHint-Highlighted.png" disabledImage:@"buttonHint-Highlighted.png" target:self selector:@selector(buttonHintPressed)];
     CCMenu *hintButton = [CCMenu menuWithItems:button, nil];
     hintButton.position = ccp(55.0f, 735.0f);
     [self addChild:hintButton];
     
-    CCMenuItemImage *button2 = [CCMenuItemImage itemWithNormalImage:@"buttonRandom-Normal.png" selectedImage:@"buttonRandom-Highlighted.png" disabledImage:@"buttonRandom-Highlighted.png" target:self selector:@selector(buttonRandomSender)];
+    CCMenuItemImage *button2 = [CCMenuItemImage itemWithNormalImage:@"buttonRandom-Normal.png" selectedImage:@"buttonRandom-Highlighted.png" disabledImage:@"buttonRandom-Highlighted.png" target:self selector:@selector(buttonRandomPressed)];
     CCMenu *randomButton = [CCMenu menuWithItems:button2, nil];
     randomButton.position = ccp(150.0f, 735.0f);
     [self addChild:randomButton];
     
-    CCMenuItemImage *button3 = [CCMenuItemImage itemWithNormalImage:@"button30s.png" selectedImage:@"button30s_down.png" disabledImage:@"button30s_down.png" target:self selector:@selector(buttonAdd30sSender)];
+    CCMenuItemImage *button3 = [CCMenuItemImage itemWithNormalImage:@"button30s.png" selectedImage:@"button30s_down.png" disabledImage:@"button30s_down.png" target:self selector:@selector(buttonAddTimePressed)];
     CCMenu *add30sButton = [CCMenu menuWithItems:button3, nil];
     add30sButton.position = ccp(250.0f, 735.0f);
     [self addChild:add30sButton];
@@ -58,6 +59,12 @@
     _countRandomLabel.position = CGPointMake(150.0f, 700.0f);
     [self addChild:_countRandomLabel];
 
+    _countAddTimeLabel = [[CCLabelTTF alloc]initWithString:@"10" fontName:@"PokemonNormal" fontSize:24];
+    _countAddTimeLabel.anchorPoint = CGPointMake(1.0f, 0.5f);
+    _countAddTimeLabel.position = CGPointMake(250.0f, 700.0f);
+    [self addChild:_countAddTimeLabel];
+
+    
     
     //Label
     self.levelLabel = [[CCLabelTTF alloc] initWithString:@"1 :Level" fontName:@"PokemonNormal" fontSize:24];
@@ -104,7 +111,7 @@
     [_timeBarRight setAnchorPoint:ccp(0, 0.5)];
     [self addChild:_timeBarRight];
         
-    [self updateTimeBarWithValue:100.0f];
+    [self updateTimeBarWithValue:1.0f];
 }
 
 - (id)init {
@@ -118,20 +125,26 @@
 
 #pragma mark - Actions
 
-- (void)buttonHintSender {
+- (void)buttonHintPressed {
     if (_delegate && [_delegate respondsToSelector:@selector(gameInterfaceDidSelectHintButton:)]) {
         [_delegate gameInterfaceDidSelectHintButton:self];
     }
 }
 
-- (void)buttonRandomSender {
+- (void)buttonRandomPressed {
     if (_delegate && [_delegate respondsToSelector:@selector(gameInterfaceDidSelectRandomButton:)]) {
         [_delegate gameInterfaceDidSelectRandomButton:self];
     }
 }
 
+- (void)buttonAddTimePressed {
+    if (_delegate && [_delegate respondsToSelector:@selector(gameInterfaceDidSelectAddTimeButton:)]) {
+        [_delegate gameInterfaceDidSelectAddTimeButton:self];
+    }
+}
+
 - (void)updateTimeBarWithValue:(float)value {
-    float width = value * PKCTIMEBAR_WIDTH / 100;
+    float width = value * PKCTIMEBAR_WIDTH;
     [_timeBar setScaleX:width];
     _timeBarRight.position = ccp(_timeBar.position.x + _timeBar.boundingBox.size.width, 735.0f);
 }
@@ -150,6 +163,10 @@
 
 - (void)setHint:(NSInteger)countHint {
     _countHintLabel.string = [NSString stringWithFormat:@"%d", countHint];
+}
+
+- (void)setAddTimeCount:(NSInteger)addTimeCount {
+    _countAddTimeLabel.string = [NSString stringWithFormat:@"%d", addTimeCount];
 }
 
 @end

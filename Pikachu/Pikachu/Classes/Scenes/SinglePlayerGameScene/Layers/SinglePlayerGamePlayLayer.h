@@ -25,6 +25,7 @@ typedef enum {
 
 - (void)showHint;
 - (void)randomMap;
+- (void)addTime;
 
 @end
 
@@ -36,5 +37,7 @@ typedef enum {
 - (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needUpdateLevelWithLevel:(NSInteger)level;
 - (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needUpdateCountHintWithNumber:(NSInteger)countHint;
 - (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needUpdateCountRandomWithNumber:(NSInteger)countRandom;
+- (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needUpdateCountAddTimeWithNumber:(NSInteger)countAddTime;
+
 
 @end
