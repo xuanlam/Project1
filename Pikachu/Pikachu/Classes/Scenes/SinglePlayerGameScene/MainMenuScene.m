@@ -8,21 +8,29 @@
 
 #import "MainMenuScene.h"
 #import "MainMenuLayer.h"
-#import "StoreMenuLayer.h"
 
 @implementation MainMenuScene
 
 - (id)init {
     self = [super init];
     if (self) {
-//        MainMenuLayer *layer = [MainMenuLayer node];
-//        [self addChild:layer];
+        MainMenuLayer *mainMenulayer = [MainMenuLayer node];
+        [self addChild:mainMenulayer];
         
         //test Store Menu Layer
-        StoreMenuLayer *layer = [StoreMenuLayer node];
-        [self addChild:layer];
+//        StoreMenuLayer *storeLayer = [StoreMenuLayer node];
+//        storeLayer.delegate = self;
+//        [self addChild:storeLayer];
     }
     return self;
 }
+
+
+#pragma mark - StoreMenuLayerDelegate
+
+- (void)storeMenuLayerDidSelectCloseButton:(StoreMenuLayer *)storeMenuLayer {
+    [storeMenuLayer removeFromParentAndCleanup:YES];
+}
+
 
 @end

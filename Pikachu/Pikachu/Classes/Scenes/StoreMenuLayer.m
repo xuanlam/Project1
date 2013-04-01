@@ -7,12 +7,20 @@
 //
 
 #import "StoreMenuLayer.h"
+#import "StoreItemDetailLayer.h"
 
 @implementation StoreMenuLayer
 
 - (id)init {
     self = [super init];
     if (self) {
+        
+        //Add background
+        CCSprite *background = [CCSprite spriteWithFile:@"MainMenuBackground.jpg"];
+        [background setAnchorPoint:CGPointZero];
+        background.scale = CC_CONTENT_SCALE_FACTOR();
+        [self addChild:background];
+        
         // add navigation status bar
         CCSprite *statusBar = [CCSprite spriteWithFile:@"background_statusbar.png"];
         statusBar.anchorPoint = ccp(0.0f, 1.0f);
@@ -48,11 +56,12 @@
         [self addChild:shopWood1];
         
         // add list 5 shope piece pack on wood 1
-        CCMenuItemImage *pack1 = [CCMenuItemImage itemWithNormalImage:@"b_0009_Shop_Piece_Pack.png" selectedImage:@"b_0009_Shop_Piece_Pack.png" disabledImage:@"b_0009_Shop_Piece_Pack.png" target:self selector:@selector(buttonPack1Sender)];
-        CCMenuItemImage *pack2 = [CCMenuItemImage itemWithNormalImage:@"b_0008_Shop_Piece_Pack_Buy.png" selectedImage:@"b_0008_Shop_Piece_Pack_Buy.png" disabledImage:@"b_0008_Shop_Piece_Pack_Buy.png" target:self selector:@selector(buttonPack1Sender)];
-        CCMenuItemImage *pack3 = [CCMenuItemImage itemWithNormalImage:@"b_0009_Shop_Piece_Pack.png" selectedImage:@"b_0009_Shop_Piece_Pack.png" disabledImage:@"b_0009_Shop_Piece_Pack.png" target:self selector:@selector(buttonPack1Sender)];
-        CCMenuItemImage *pack4 = [CCMenuItemImage itemWithNormalImage:@"b_0009_Shop_Piece_Pack.png" selectedImage:@"b_0009_Shop_Piece_Pack.png" disabledImage:@"b_0009_Shop_Piece_Pack.png" target:self selector:@selector(buttonPack1Sender)];
-        CCMenuItemImage *pack5 = [CCMenuItemImage itemWithNormalImage:@"b_0009_Shop_Piece_Pack.png" selectedImage:@"b_0009_Shop_Piece_Pack.png" disabledImage:@"b_0009_Shop_Piece_Pack.png" target:self selector:@selector(buttonPack1Sender)];
+        CCMenuItemImage *pack1 = [CCMenuItemImage itemWithNormalImage:@"b_0009_Shop_Piece_Pack.png" selectedImage:@"b_0009_Shop_Piece_Pack.png" disabledImage:@"b_0009_Shop_Piece_Pack.png" target:self selector:@selector(buttonPackPressed:)];
+        pack1.tag = 0;
+        CCMenuItemImage *pack2 = [CCMenuItemImage itemWithNormalImage:@"b_0008_Shop_Piece_Pack_Buy.png" selectedImage:@"b_0008_Shop_Piece_Pack_Buy.png" disabledImage:@"b_0008_Shop_Piece_Pack_Buy.png" target:self selector:@selector(buttonPackPressed:)];
+        CCMenuItemImage *pack3 = [CCMenuItemImage itemWithNormalImage:@"b_0009_Shop_Piece_Pack.png" selectedImage:@"b_0009_Shop_Piece_Pack.png" disabledImage:@"b_0009_Shop_Piece_Pack.png" target:self selector:@selector(buttonPackPressed:)];
+        CCMenuItemImage *pack4 = [CCMenuItemImage itemWithNormalImage:@"b_0009_Shop_Piece_Pack.png" selectedImage:@"b_0009_Shop_Piece_Pack.png" disabledImage:@"b_0009_Shop_Piece_Pack.png" target:self selector:@selector(buttonPackPressed:)];
+        CCMenuItemImage *pack5 = [CCMenuItemImage itemWithNormalImage:@"b_0009_Shop_Piece_Pack.png" selectedImage:@"b_0009_Shop_Piece_Pack.png" disabledImage:@"b_0009_Shop_Piece_Pack.png" target:self selector:@selector(buttonPackPressed:)];
         CCMenu *packShop1 = [CCMenu menuWithItems:pack1, pack2, pack3, pack4, pack5, nil];
         [packShop1 alignItemsHorizontallyWithPadding:20];
         packShop1.position = ccp(520.0f, 545.0f);
@@ -79,16 +88,49 @@
     return self;
 }
 
-- (void)buttonBackSender {    
+- (void)buttonBackSender {
+    if (_delegate && [_delegate respondsToSelector:@selector(storeMenuLayerDidSelectCloseButton:)]) {
+        [_delegate storeMenuLayerDidSelectCloseButton:self];
+    } else {
+        NSLog(@"Dis me chua init delegate kia");
+    }
 }
 
 - (void)buttonPauseSender {
 }
 
-- (void)buttonPack1Sender {
-}
-
-- (void)buttonPack2Sender {
+- (void)buttonPackPressed:(id)sender {
+    
+    CCMenuItemImage *itemImage = (CCMenuItemImage *)sender;
+    
+    switch (itemImage.tag) {
+        case 0: {
+            
+            break;
+        }
+        case 1: {
+            
+            break;
+        }
+        case 2: {
+            
+            break;
+        }
+        case 3: {
+            
+            break;
+        }
+        case 4: {
+            
+            break;
+        }
+        default:
+            break;
+    }
+    
+    StoreItemDetailLayer *itemDetailLayer = [[StoreItemDetailLayer alloc] init];
+    [self addChild:itemDetailLayer];
+    
 }
 
 @end
