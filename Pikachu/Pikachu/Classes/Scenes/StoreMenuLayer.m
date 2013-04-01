@@ -15,11 +15,11 @@
     self = [super init];
     if (self) {
         
-        //Add background
-        CCSprite *background = [CCSprite spriteWithFile:@"MainMenuBackground.jpg"];
-        [background setAnchorPoint:CGPointZero];
-        background.scale = CC_CONTENT_SCALE_FACTOR();
-        [self addChild:background];
+//        //Add background
+//        CCSprite *background = [CCSprite spriteWithFile:@"MainMenuBackground.jpg"];
+//        [background setAnchorPoint:CGPointZero];
+//        background.scale = CC_CONTENT_SCALE_FACTOR();
+//        [self addChild:background];
         
         // add navigation status bar
         CCSprite *statusBar = [CCSprite spriteWithFile:@"background_statusbar.png"];
@@ -74,11 +74,11 @@
         [self addChild:shopWood2];
         
         // add list 5 shope piece pack on wood 2
-        CCMenuItemImage *pack6 = [CCMenuItemImage itemWithNormalImage:@"b_0009_Shop_Piece_Pack.png" selectedImage:@"b_0009_Shop_Piece_Pack.png" disabledImage:@"b_0009_Shop_Piece_Pack.png" target:self selector:@selector(buttonPack2Sender)];
-        CCMenuItemImage *pack7 = [CCMenuItemImage itemWithNormalImage:@"b_0008_Shop_Piece_Pack_Buy.png" selectedImage:@"b_0008_Shop_Piece_Pack_Buy.png" disabledImage:@"b_0008_Shop_Piece_Pack_Buy.png" target:self selector:@selector(buttonPack2Sender)];
-        CCMenuItemImage *pack8 = [CCMenuItemImage itemWithNormalImage:@"b_0009_Shop_Piece_Pack.png" selectedImage:@"b_0009_Shop_Piece_Pack.png" disabledImage:@"b_0009_Shop_Piece_Pack.png" target:self selector:@selector(buttonPack2Sender)];
-        CCMenuItemImage *pack9 = [CCMenuItemImage itemWithNormalImage:@"b_0009_Shop_Piece_Pack.png" selectedImage:@"b_0009_Shop_Piece_Pack.png" disabledImage:@"b_0009_Shop_Piece_Pack.png" target:self selector:@selector(buttonPack2Sender)];
-        CCMenuItemImage *pack10 = [CCMenuItemImage itemWithNormalImage:@"b_0009_Shop_Piece_Pack.png" selectedImage:@"b_0009_Shop_Piece_Pack.png" disabledImage:@"b_0009_Shop_Piece_Pack.png" target:self selector:@selector(buttonPack2Sender)];
+        CCMenuItemImage *pack6 = [CCMenuItemImage itemWithNormalImage:@"b_0009_Shop_Piece_Pack.png" selectedImage:@"b_0009_Shop_Piece_Pack.png" disabledImage:@"b_0009_Shop_Piece_Pack.png" target:self selector:@selector(buttonPack2Pressed)];
+        CCMenuItemImage *pack7 = [CCMenuItemImage itemWithNormalImage:@"b_0008_Shop_Piece_Pack_Buy.png" selectedImage:@"b_0008_Shop_Piece_Pack_Buy.png" disabledImage:@"b_0008_Shop_Piece_Pack_Buy.png" target:self selector:@selector(buttonPack2Pressed)];
+        CCMenuItemImage *pack8 = [CCMenuItemImage itemWithNormalImage:@"b_0009_Shop_Piece_Pack.png" selectedImage:@"b_0009_Shop_Piece_Pack.png" disabledImage:@"b_0009_Shop_Piece_Pack.png" target:self selector:@selector(buttonPack2Pressed)];
+        CCMenuItemImage *pack9 = [CCMenuItemImage itemWithNormalImage:@"b_0009_Shop_Piece_Pack.png" selectedImage:@"b_0009_Shop_Piece_Pack.png" disabledImage:@"b_0009_Shop_Piece_Pack.png" target:self selector:@selector(buttonPack2Pressed)];
+        CCMenuItemImage *pack10 = [CCMenuItemImage itemWithNormalImage:@"b_0009_Shop_Piece_Pack.png" selectedImage:@"b_0009_Shop_Piece_Pack.png" disabledImage:@"b_0009_Shop_Piece_Pack.png" target:self selector:@selector(buttonPack2Pressed)];
         CCMenu *packShop2 = [CCMenu menuWithItems:pack6, pack7, pack8, pack9, pack10, nil];
         [packShop2 alignItemsHorizontallyWithPadding:20];
         packShop2.position = ccp(520.0f, 245.0f);
@@ -130,6 +130,10 @@
     
     StoreItemDetailLayer *itemDetailLayer = [[StoreItemDetailLayer alloc] init];
     [self addChild:itemDetailLayer];
+    
+}
+
+- (void)buttonPack2Pressed:(id)sender {
     
 }
 
