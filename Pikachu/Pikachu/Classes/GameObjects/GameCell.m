@@ -8,19 +8,26 @@
 
 #import "GameCell.h"
 
+@interface GameCell()
+
+@property (nonatomic, strong) CCSprite *highlightedLight;
+
+@end
+
 @implementation GameCell
-@synthesize selected = _selected;
-@synthesize cellID = _cellID;
-@synthesize type = _type;
-@synthesize row = _row;
-@synthesize column = _column;
 
 - (void)setUpCell {
-    _selected = NO;
+    _highlighted = NO;
     _cellID = -1;
     _type = -1;
     _row = -1;
     _column = -1;
+    
+    _highlightedLight = [[CCSprite alloc] initWithFile:@"cellHighlightedLight.png"];
+    _highlightedLight.opacity = 0.0f;
+    _highlightedLight.anchorPoint = CGPointZero;
+    _highlightedLight.scale = CC_CONTENT_SCALE_FACTOR() / 2;
+    [self addChild:_highlightedLight];
 }
 
 - (id)init {
@@ -42,6 +49,18 @@
 
 - (BOOL)isContainPoint:(CGPoint)point {
     return CGRectContainsPoint(self.boundingBox, point);
+}
+
+
+#pragma mark - Setters
+
+- (void)setHighlighted:(BOOL)highlighted {
+    _highlighted = highlighted;
+    if (highlighted) {
+        _highlightedLight.opacity = 255.0f;
+    } else {
+        _highlightedLight.opacity = 0.0f;
+    }
 }
 
 @end

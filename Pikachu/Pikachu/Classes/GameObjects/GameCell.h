@@ -11,7 +11,7 @@
 
 @interface GameCell : CCSprite 
 
-@property (nonatomic) BOOL selected;
+@property (nonatomic) BOOL highlighted;
 @property (nonatomic) NSInteger cellID;
 @property (nonatomic) NSInteger type;
 @property (nonatomic) NSInteger row;

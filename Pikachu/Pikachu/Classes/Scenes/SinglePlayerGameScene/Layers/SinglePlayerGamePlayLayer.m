@@ -152,7 +152,7 @@ const int CardSizeH = 80;
     }
     
     _RemainingCount = GameWidth * GameHeight;  //60 thẻ hình chưa được 'ăn'
-    _highlightedCellIndex = 0;      //Thẻ hình thứ nhất chưa được chọn
+    _highlightedCellIndex = NSNotFound;      //Thẻ hình thứ nhất chưa được chọn
 }
 
 
@@ -160,7 +160,19 @@ const int CardSizeH = 80;
 #pragma mark - Handle Taps
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    
+//    CGPoint touchLocation = [touch locationInView: [touch view]];
+//    touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
+//    touchLocation = [self convertToNodeSpace:touchLocation];
+
+    
     return YES;
+}
+
+- (void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
+//    CGPoint touchLocation = [touch locationInView: [touch view]];
+//    touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
+//    touchLocation = [self convertToNodeSpace:touchLocation];
 }
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
@@ -171,11 +183,13 @@ const int CardSizeH = 80;
     for (GameCell *cell in [self children]) {
         if ([cell isContainPoint:touchLocation]) {
             
-            if (!_highlightedCellIndex) {
+            if (_highlightedCellIndex == NSNotFound) {
                 
-                _highlightedCellIndex = 1;
+                _highlightedCellIndex = cell.cellID;
                 _CardColumn = cell.column;
                 _CardRow = cell.row;
+                
+                cell.highlighted = YES;
                 
             } else {
                 
@@ -192,7 +206,7 @@ const int CardSizeH = 80;
                             [_CardMatrix setObject:[NSNumber numberWithInt:-1] forRow:_CardRow atColumn:_CardColumn];
                             
                             _RemainingCount -= 2;
-                            _highlightedCellIndex = 0;
+                            _highlightedCellIndex = NSNotFound;
                             // eat and add score throung delegate
                             _score += 10;
                             if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateScoreWithScore:)]) {
@@ -210,15 +224,19 @@ const int CardSizeH = 80;
                             
                         } else {  //nếu không tìm thấy đường đi
                             
-                            _highlightedCellIndex = 0;   // hủy chọn thẻ hình thứ nhất
-                            [self drawGame];
+                            [self deselectHighlightedCell];
+
                         }
                         
                     } else {
                         
-                        _highlightedCellIndex = 0;
-                        [self drawGame];
+                        [self deselectHighlightedCell];
+                        
                     }
+                    
+                } else {
+                    
+                    [self deselectHighlightedCell];
                 }
             }
             
@@ -360,6 +378,20 @@ const int CardSizeH = 80;
     return cell;
 }
 
+- (GameCell *)cellForCellID:(NSInteger)cellID {
+    
+    GameCell *cell = (GameCell *)[self getChildByTag:cellID];
+    
+    if (cell) {
+        
+        return cell;
+        
+    }
+    
+    return nil;
+}
+
+
 - (CGPoint)pointForCellWithRow:(NSInteger)row andColumn:(NSInteger)column {
     CGPoint location = CGPointMake((column -1 ) * 60 + 62, (row - 1) * 80 + 85);
     return location;
@@ -392,8 +424,21 @@ const int CardSizeH = 80;
     }
 }
 
-
-
+- (void)deselectHighlightedCell {
+    
+    GameCell *highlightedCell = [self cellForCellID:_highlightedCellIndex];
+    
+    if (highlightedCell) {
+        
+        highlightedCell.highlighted = NO;
+        
+    } else {
+        
+        NSLog(@"There is no highlighted cell");
+    }
+    
+    _highlightedCellIndex = NSNotFound;
+}
 
 
 #pragma mark - Power Up
