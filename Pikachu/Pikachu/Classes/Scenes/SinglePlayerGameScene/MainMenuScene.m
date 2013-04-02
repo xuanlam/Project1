@@ -14,13 +14,13 @@
 - (id)init {
     self = [super init];
     if (self) {
-        MainMenuLayer *mainMenulayer = [MainMenuLayer node];
-        [self addChild:mainMenulayer];
+//        MainMenuLayer *mainMenulayer = [MainMenuLayer node];
+//        [self addChild:mainMenulayer];
         
         //test Store Menu Layer
-//        StoreMenuLayer *storeLayer = [StoreMenuLayer node];
-//        storeLayer.delegate = self;
-//        [self addChild:storeLayer];
+        StoreMenuLayer *storeLayer = [StoreMenuLayer node];
+        storeLayer.delegate = self;
+        [self addChild:storeLayer];
     }
     return self;
 }

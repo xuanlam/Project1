@@ -26,16 +26,16 @@
 @synthesize fAnimSpeed;
 
 
-- (id)init {
-    self = [super init];
-    if (self) {
-        CCSprite *background = [CCSprite spriteWithFile:@"MainMenuBackground.jpg"];
-        [background setAnchorPoint:CGPointZero];
-        background.scale = CC_CONTENT_SCALE_FACTOR();
-        [self addChild:background];
-    }
-    return self;
-}
+//- (id)init {
+//    self = [super init];
+//    if (self) {
+//        CCSprite *background = [CCSprite spriteWithFile:@"MainMenuBackground.jpg"];
+//        [background setAnchorPoint:CGPointZero];
+//        background.scale = CC_CONTENT_SCALE_FACTOR();
+//        [self addChild:background];
+//    }
+//    return self;
+//}
 
 +(id) menuWithArray:(NSMutableArray*)items cols:(int)cols rows:(int)rows position:(CGPoint)pos padding:(CGPoint)pad
 {
