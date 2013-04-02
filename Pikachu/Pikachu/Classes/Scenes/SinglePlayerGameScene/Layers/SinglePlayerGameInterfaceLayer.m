@@ -68,13 +68,13 @@
     
     
     //Label
-    self.levelLabel = [[CCLabelTTF alloc] initWithString:@"1 :Level" fontName:@"PokemonNormal" fontSize:24];
+    self.levelLabel = [[CCLabelTTF alloc] initWithString:@"Level: 1" fontName:@"PokemonNormal" fontSize:24];
     _levelLabel.anchorPoint = CGPointMake(1.0f, 0.5f);
     _levelLabel.horizontalAlignment = CCTextAlignmentRight;
     _levelLabel.position = CGPointMake(1010, 750.0f);
     [self addChild:_levelLabel];
     
-    self.scoreLabel = [[CCLabelTTF alloc] initWithString:@"0 :Score" fontName:@"PokemonNormal" fontSize:24];
+    self.scoreLabel = [[CCLabelTTF alloc] initWithString:@"Score: 0" fontName:@"PokemonNormal" fontSize:24];
     _scoreLabel.anchorPoint = CGPointMake(1.0f, 0.5f);
     _scoreLabel.horizontalAlignment = CCTextAlignmentRight;
     _scoreLabel.position = CGPointMake(1010, 720.0f);
@@ -151,11 +151,11 @@
 }
 
 - (void)setScore:(NSInteger)score {
-    _scoreLabel.string = [NSString stringWithFormat:@"%d :Score", score];
+    _scoreLabel.string = [NSString stringWithFormat:@"Score: %d", score];
 }
 
 - (void)setLevel:(NSInteger)level {
-    _levelLabel.string = [NSString stringWithFormat:@"%d :Level", level];
+    _levelLabel.string = [NSString stringWithFormat:@"Level: %d", level];
 }
 
 - (void)setRandom:(NSInteger)countRandom {

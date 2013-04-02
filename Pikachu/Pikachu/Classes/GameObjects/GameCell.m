@@ -26,7 +26,8 @@
     _column = -1;
     
     CCSprite *image = [CCSprite spriteWithFile:_fileName];
-    image.position = CGPointMake(self.boundingBox.size.width / 2, self.boundingBox.size.height / 2);
+    image.anchorPoint = CGPointZero;
+    image.position = CGPointMake(roundf((self.boundingBox.size.width - image.boundingBox.size.width) /2), roundf((self.boundingBox.size.height - image.boundingBox.size.height) / 2));
     [self addChild:image];
     
     _highlightedLight = [[CCSprite alloc] initWithFile:@"cellHighlightedLight.png"];
