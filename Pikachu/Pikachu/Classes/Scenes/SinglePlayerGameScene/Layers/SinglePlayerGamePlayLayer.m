@@ -7,12 +7,13 @@
 //
 #define PKCBOARD_COLUMN 16
 #define PKCBOARD_ROW 8
+#define PKCGAME_CELL_SIZE CGSizeMake(60.0f, 76.0f)
+#define PKCBOARD_PADDING CGSizeMake(32.0f, 60.0f)
+
 
 const int CardNo = 32;
 const int GameWidth = 16;
 const int GameHeight = 8;
-const int CardSizeW = 60;
-const int CardSizeH = 80;
 
 #import "SinglePlayerGamePlayLayer.h"
 #import "GameManager.h"
@@ -366,7 +367,7 @@ const int CardSizeH = 80;
         int type = [[_CardMatrix objectForRow:row atColumn:column] intValue];
         cell = [GameCell spriteWithFile:[array objectAtIndex:type]];
         
-        CGPoint cellPosition = CGPointMake((column -1 ) * 60 + 32, (row - 1) * 80 + 45);
+        CGPoint cellPosition = CGPointMake((column -1 ) * PKCGAME_CELL_SIZE.width + PKCBOARD_PADDING.width, (row - 1) * PKCGAME_CELL_SIZE.height + PKCBOARD_PADDING.height);
         cell.anchorPoint = CGPointZero;
         [cell setPosition:cellPosition];
         cell.cellID = cellTag;
@@ -393,7 +394,7 @@ const int CardSizeH = 80;
 
 
 - (CGPoint)pointForCellWithRow:(NSInteger)row andColumn:(NSInteger)column {
-    CGPoint location = CGPointMake((column -1 ) * 60 + 62, (row - 1) * 80 + 85);
+    CGPoint location = CGPointMake((column -1 ) * PKCGAME_CELL_SIZE.width + PKCGAME_CELL_SIZE.width/2 + PKCBOARD_PADDING.width, (row - 1) * PKCGAME_CELL_SIZE.height + PKCGAME_CELL_SIZE.height / 2 + PKCBOARD_PADDING.height);
     return location;
 }
 
