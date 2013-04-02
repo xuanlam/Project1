@@ -413,6 +413,7 @@ const int CardSizeH = 80;
 }
 
 - (void)updateTime {
+    
     _timeLeft -= 1.0f;
     
     if (_timeLeft <= 0.0f) {
