@@ -132,22 +132,13 @@
     [self addChild:itemDetailLayer];
     
     // add Store Detail
-    id target = self;
-    //objc_selector* selector = @selector(LaunchLevel:);
-    int iMaxLevels = 45;
+    // init max store item detail = 40 items
+    int iMaxLevels = 40;
     
     NSMutableArray* allItems = [NSMutableArray arrayWithCapacity:51];
-    for (int i = 1; i <= iMaxLevels; ++i)
-    {
-        // create a menu item for each character
-        NSString* image = [NSString stringWithFormat:@"b_0009_Shop_Piece_Pack"];
-        NSString* normalImage = [NSString stringWithFormat:@"%@.png", image];
-        NSString* selectedImage = [NSString stringWithFormat:@"%@.png", image];
-        
-        CCSprite* normalSprite = [CCSprite spriteWithFile:normalImage];
-        CCSprite* selectedSprite = [CCSprite spriteWithFile:selectedImage];
-        CCMenuItemSprite* item =[CCMenuItemSprite itemFromNormalSprite:normalSprite selectedSprite:selectedSprite target:target selector:@selector(LaunchLevel:)];
-        [allItems addObject:item];
+    for (int i = 1; i <= iMaxLevels; ++i) {
+        CCMenuItemImage *button = [CCMenuItemImage itemWithNormalImage:@"b_0009_Shop_Piece_Pack.png" selectedImage:@"b_0009_Shop_Piece_Pack.png" disabledImage:@"b_0009_Shop_Piece_Pack.png" target:self selector:@selector(buttonStoreItemDetailPressed)];
+        [allItems addObject:button];
     }
     
     StoreItemDetailLayer* menuGrid = [StoreItemDetailLayer menuWithArray:allItems cols:5 rows:4 position:CGPointMake(120.f, 600.f) padding:CGPointMake(180.f, 170.f) verticalPages:true];
@@ -157,6 +148,10 @@
 
 - (void)buttonPack2Pressed:(id)sender {
     
+}
+
+- (void)buttonStoreItemDetailPressed {
+    NSLog(@"buttonStoreItemDetailPressed");
 }
 
 @end
