@@ -9,9 +9,8 @@
 #import "StoreItemDetailView.h"
 #import "ItemDetailView.h"
 
-#define NumberOfPages   3
-
-static NSUInteger kNumberItemPerPage = 20;
+#define NumberOfPages       3
+#define NumberItemPerPage   24
 
 @implementation StoreItemDetailView
 
@@ -120,10 +119,10 @@ static NSUInteger kNumberItemPerPage = 20;
 		frame.origin.x = frame.size.width * pageIndex;
 		frame.origin.y = 0;
 		NSRange range;
-		range.location = pageIndex * NumberOfPages;
-		range.length = fmin(NumberOfPages, 60 - range.location);
+		range.location = pageIndex * NumberItemPerPage;
+		range.length = fmin(NumberItemPerPage, [items count] - range.location);
 		
-		ItemDetailView* itemView = [[ItemDetailView alloc] initWithFrame:frame items:items];
+		ItemDetailView* itemView = [[ItemDetailView alloc] initWithFrame:frame items:[items subarrayWithRange:range]];
 //		itemView.delegate = self;
 		[scrollView addSubview:itemView];
 		[pageViews replaceObjectAtIndex:pageIndex withObject:itemView];
@@ -133,6 +132,7 @@ static NSUInteger kNumberItemPerPage = 20;
 
 - (void)buttonBackPressed:(id)sender {
 	NSLog(@"button Back clicked");
+    [self removeFromSuperview];
 }
 
 - (void)buttonPausePressed:(id)sender {
