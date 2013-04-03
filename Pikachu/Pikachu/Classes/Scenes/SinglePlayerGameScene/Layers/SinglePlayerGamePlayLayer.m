@@ -52,18 +52,6 @@ const int GameHeight = 8;
 @end
 
 @implementation SinglePlayerGamePlayLayer
-@synthesize delegate = _delegate;
-@synthesize highlightedCellIndex = _highlightedCellIndex;
-@synthesize RemainingCount = _RemainingCount;
-@synthesize CardColumn = _CardColumn;
-@synthesize CardRow = _CardRow;
-@synthesize rCount = _rCount;
-@synthesize tX = _tX;
-@synthesize tY = _tY;
-@synthesize d = _d;
-
-@synthesize level = _level;
-@synthesize timeLeft = _timeLeft;
 
 - (id)init {
     self = [super init];
@@ -271,8 +259,8 @@ const int GameHeight = 8;
     return count;
 }
 
-- (void)findRouteWithCard1X:(NSInteger)x1 Card1Y:(NSInteger)y1 andCard2X:(NSInteger)x andCard2Y:(NSInteger)y direction:(Direction)direct
-{
+- (void)findRouteWithCard1X:(NSInteger)x1 Card1Y:(NSInteger)y1 andCard2X:(NSInteger)x andCard2Y:(NSInteger)y direction:(Direction)direct {
+    
     if ((x < 0) || (x > (GameHeight + 1))) return;
     if ((y < 0) || (y > (GameWidth + 1))) return;    // nếu ra khỏi ma trận, thoát
     if ([[_CardMatrix objectForRow:x atColumn:y] intValue] != -1) return;         // không phải ô trống, thoát (1)
@@ -350,6 +338,7 @@ const int GameHeight = 8;
 #pragma mark - Getters
 
 - (GameCell *)cellForRow:(NSInteger)row atColumn:(NSInteger)column {
+    
     int cellTag = row * (GameWidth + 2) + column;
     
     GameCell *cell = (GameCell *)[self getChildByTag:cellTag];
