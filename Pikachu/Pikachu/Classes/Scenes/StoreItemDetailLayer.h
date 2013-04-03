@@ -9,6 +9,8 @@
 #import "CCLayer.h"
 #import "cocos2d.h"
 
+@protocol StoreItemDetailLayerDelegate;
+
 @interface StoreItemDetailLayer : CCLayer {
     tCCMenuState state; // State of our menu grid. (Eg. waiting, tracking touch, cancelled, etc)
 	CCMenuItem *selectedItem; // Menu item that was selected/active.
@@ -28,7 +30,10 @@
 	float fMoveDelta; // Distance from origin of touch and current frame.
 	float fMoveDeadZone; // Amount they need to slide the grid in order to move to a new page.
 	float fAnimSpeed; // 0.0-1.0 value determining how slow/fast to animate the paging.
+    
+    NSMutableArray *allItems;
 }
+@property (nonatomic, unsafe_unretained) id<StoreItemDetailLayerDelegate> delegate;
 
 +(id) menuWithArray:(NSMutableArray*)items cols:(int)cols rows:(int)rows position:(CGPoint)pos padding:(CGPoint)pad;
 +(id) menuWithArray:(NSMutableArray*)items cols:(int)cols rows:(int)rows position:(CGPoint)pos padding:(CGPoint)pad verticalPages:(bool)vertical;
@@ -62,5 +67,14 @@
 @property (nonatomic, readwrite) float fMoveDelta;
 @property (nonatomic, readwrite) float fMoveDeadZone;
 @property (nonatomic, readwrite) float fAnimSpeed;
+
+@end
+
+
+
+@protocol StoreItemDetailLayerDelegate <NSObject>
+
+@required
+- (void)storeItemDetailLayerDidSelectCloseButton:(StoreItemDetailLayer *)storeItemDetailLayer;
 
 @end

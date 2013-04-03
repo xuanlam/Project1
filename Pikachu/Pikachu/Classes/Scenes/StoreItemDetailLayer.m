@@ -26,16 +26,45 @@
 @synthesize fAnimSpeed;
 
 
-//- (id)init {
-//    self = [super init];
-//    if (self) {
-//        CCSprite *background = [CCSprite spriteWithFile:@"MainMenuBackground.jpg"];
-//        [background setAnchorPoint:CGPointZero];
-//        background.scale = CC_CONTENT_SCALE_FACTOR();
-//        [self addChild:background];
-//    }
-//    return self;
-//}
+- (id)init {
+    self = [super init];
+    if (self) {
+
+        //Add background
+        CCSprite *background = [CCSprite spriteWithFile:@"MainMenuBackground.jpg"];
+        [background setAnchorPoint:CGPointZero];
+        background.scale = CC_CONTENT_SCALE_FACTOR();
+        [self addChild:background];
+        
+        // add navigation status bar
+        CCSprite *statusBar = [CCSprite spriteWithFile:@"background_statusbar.png"];
+        statusBar.anchorPoint = ccp(0.0f, 1.0f);
+        statusBar.position = ccp(0.0f, 768.0f);
+        [self addChild:statusBar];
+        
+        // add button Back
+        CCMenuItemImage *button = [CCMenuItemImage itemWithNormalImage:@"b_0001_button_Back.png" selectedImage:@"b_0000_button_Back_down.png" disabledImage:@"b_0000_button_Back_down.png" target:self selector:@selector(buttonBackSender)];
+        CCMenu *backButton = [CCMenu menuWithItems:button, nil];
+        backButton.anchorPoint = ccp(0.0f, 1.0f);
+        backButton.position = ccp(35.0f, 745.0f);
+        [self addChild:backButton];
+        
+        // add Store Label
+        CCLabelTTF *storeLabel = [[CCLabelTTF alloc] initWithString:@" Store" fontName:@"PokemonNormal" fontSize:34];
+        //        storeLabel.anchorPoint = CGPointMake(0.5f, 1.0f);
+        //        storeLabel.horizontalAlignment = CCTextAlignmentRight;
+        storeLabel.position = CGPointMake(500.0f, 745.0f);
+        [self addChild:storeLabel];
+        
+        // add button Pause -- chua co Image button pause down
+        CCMenuItemImage *button2 = [CCMenuItemImage itemWithNormalImage:@"menu_button_pause.png" selectedImage:@"menu_button_pause.png" disabledImage:@"menu_button_pause.png" target:self selector:@selector(buttonPauseSender)];
+        CCMenu *pauseButton = [CCMenu menuWithItems:button2, nil];
+        pauseButton.anchorPoint = ccp(1.0f, 1.0f);
+        pauseButton.position = ccp(1000.0f, 745.0f);
+        [self addChild:pauseButton];
+    }
+    return self;
+}
 
 +(id) menuWithArray:(NSMutableArray*)items cols:(int)cols rows:(int)rows position:(CGPoint)pos padding:(CGPoint)pad
 {
@@ -52,7 +81,10 @@
 	if ((self = [super init]))
 	{
 		self.isTouchEnabled = YES;
-		
+        
+        // init array items
+		allItems = [NSMutableArray arrayWithCapacity:40];
+        
 		int z = 1;
 		for (id item in items)
 		{
@@ -136,7 +168,9 @@
 
 -(void) addChild:(CCMenuItem*)child z:(int)z tag:(int)aTag
 {
-	return [super addChild:child z:z tag:aTag];
+//	return [super addChild:child z:z tag:aTag];
+    [super addChild:child z:z tag:aTag];
+    [allItems addObject:child];
 }
 
 -(CCMenuItem*) GetItemWithinTouch:(UITouch*)touch
@@ -145,7 +179,8 @@
 	CGPoint touchLocation = [[CCDirector sharedDirector] convertToGL: [touch locationInView: [touch view]]];
 	
 	// Parse our menu items and see if our touch exists within one.
-	for (CCMenuItem* item in [self children])
+//	for (CCMenuItem* item in [self children])
+    for (CCMenuItem* item in allItems)
 	{
 		CGPoint local = [item convertToNodeSpace:touchLocation];
 		
@@ -319,6 +354,19 @@
 {
 	bVerticalPaging = bValue;
 //	[self buildGridVertical];
+}
+
+#pragma mark - button Back & Pause
+
+- (void)buttonBackSender {
+    if (_delegate && [_delegate respondsToSelector:@selector(storeItemDetailLayerDidSelectCloseButton:)]) {
+        [_delegate storeItemDetailLayerDidSelectCloseButton:self];
+    } else {
+        NSLog(@"Dis me chua init delegate kia");
+    }
+}
+
+- (void)buttonPauseSender {
 }
 
 @end

@@ -8,10 +8,11 @@
 
 #import "CCLayer.h"
 #import "cocos2d.h"
+#import "StoreItemDetailLayer.h"
 
 @protocol StoreMenuLayerDelegate;
 
-@interface StoreMenuLayer : CCLayer
+@interface StoreMenuLayer : CCLayer <StoreItemDetailLayerDelegate>
 
 @property (nonatomic, unsafe_unretained) id<StoreMenuLayerDelegate> delegate;
 
