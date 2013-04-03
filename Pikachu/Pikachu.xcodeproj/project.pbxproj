@@ -275,6 +275,7 @@
 		F8AD3EB917082D5E00F8277B /* b_0009_Shop_Piece_Pack.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3EB517082D5C00F8277B /* b_0009_Shop_Piece_Pack.png */; };
 		F8AD3EBA17082D5E00F8277B /* b_0009_Shop_Piece_Pack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3EB617082D5C00F8277B /* b_0009_Shop_Piece_Pack@2x.png */; };
 		F8E2BCE3170C417B00734DDD /* StoreItemDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8E2BCE2170C417B00734DDD /* StoreItemDetailView.m */; };
+		F8E2BCE6170C65C500734DDD /* ItemDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8E2BCE5170C65C400734DDD /* ItemDetailView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -697,6 +698,8 @@
 		F8AD3EB617082D5C00F8277B /* b_0009_Shop_Piece_Pack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "b_0009_Shop_Piece_Pack@2x.png"; sourceTree = "<group>"; };
 		F8E2BCE1170C417B00734DDD /* StoreItemDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreItemDetailView.h; sourceTree = "<group>"; };
 		F8E2BCE2170C417B00734DDD /* StoreItemDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreItemDetailView.m; sourceTree = "<group>"; };
+		F8E2BCE4170C65C400734DDD /* ItemDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailView.h; sourceTree = "<group>"; };
+		F8E2BCE5170C65C400734DDD /* ItemDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetailView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1464,6 +1467,8 @@
 				A0A813BD1709540C00F030BC /* StoreItemDetailLayer.m */,
 				F8E2BCE1170C417B00734DDD /* StoreItemDetailView.h */,
 				F8E2BCE2170C417B00734DDD /* StoreItemDetailView.m */,
+				F8E2BCE4170C65C400734DDD /* ItemDetailView.h */,
+				F8E2BCE5170C65C400734DDD /* ItemDetailView.m */,
 			);
 			name = Store;
 			sourceTree = "<group>";
@@ -1787,6 +1792,7 @@
 				A0A813BE1709540C00F030BC /* StoreItemDetailLayer.m in Sources */,
 				A04501A31709E2C0008730DC /* PKCUserInfo.m in Sources */,
 				F8E2BCE3170C417B00734DDD /* StoreItemDetailView.m in Sources */,
+				F8E2BCE6170C65C500734DDD /* ItemDetailView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import "StoreMenuLayer.h"
+#import "StoreItemDetailView.h"
 
 @implementation StoreMenuLayer
 
@@ -145,9 +146,9 @@
 //    [self addChild:storeItemDetail];
     
     // add UIView
-    UIView *myview=[[UIView alloc] initWithFrame: CGRectMake(0, 0, 1024, 768)];
-    myview.backgroundColor=[UIColor redColor];
-    [[[CCDirector sharedDirector] openGLView] addSubview:myview];
+    StoreItemDetailView *myview=[[StoreItemDetailView alloc] initWithFrame: CGRectMake(0, 0, 1024, 768)];
+    [[[CCDirector sharedDirector] view]addSubview:myview];
+//    [[[CCDirector sharedDirector] openGLView] addSubview:myview];
     [myview release];
     
 }

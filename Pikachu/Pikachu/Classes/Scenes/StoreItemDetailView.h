@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StoreItemDetailView : UIView
+@interface StoreItemDetailView : UIView <UIScrollViewDelegate> {
+    UIScrollView* scrollView;
+	UIPageControl* pageControl;
+	NSMutableArray* items;
+	NSInteger kNumberOfPages;
+	BOOL pageControlUsed;
+	NSMutableArray* pageViews;
+}
+
+- (void)loadPage:(int)pageIndex;
 
 @end
