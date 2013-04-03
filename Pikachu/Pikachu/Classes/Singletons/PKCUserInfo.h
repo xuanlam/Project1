@@ -19,4 +19,7 @@
 + (NSInteger)numberOfAddTimeCount;
 + (void)setNumberOfAddTimeCount:(NSInteger)numberOfAddTimeCount;
 
++ (NSInteger)currentPacketIndex;
++ (void)setCurrentPacketIndex:(NSInteger)currentPacketIndex;
+
 @end

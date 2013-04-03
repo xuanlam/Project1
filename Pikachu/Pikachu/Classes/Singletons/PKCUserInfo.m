@@ -58,5 +58,21 @@
     [NSUserDefaults resetStandardUserDefaults];
 }
 
++ (NSInteger)currentPacketIndex {
+    NSNumber *currentPacketIndex = [[NSUserDefaults standardUserDefaults] objectForKey:@"currentPacketIndex"];
+    if (!currentPacketIndex) {
+        NSInteger defaultValue = 0;
+        [self setCurrentPacketIndex:defaultValue];
+        return defaultValue;
+    } else {
+        return [currentPacketIndex intValue];
+    }
+}
+
++ (void)setCurrentPacketIndex:(NSInteger)currentPacketIndex {
+    [[NSUserDefaults standardUserDefaults] setObject:@(currentPacketIndex) forKey:@"currentPacketIndex"];
+    [NSUserDefaults resetStandardUserDefaults];
+}
+
 
 @end

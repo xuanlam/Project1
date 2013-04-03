@@ -342,8 +342,12 @@ const int GameHeight = 8;
     int cellTag = row * (GameWidth + 2) + column;
     
     GameCell *cell = (GameCell *)[self getChildByTag:cellTag];
+    
     if (!cell) {
-        NSArray *array = [[GameManager sharedGameManager] pathImagesForPacketIndex:0];
+        
+        NSInteger currentPackIndex = [PKCUserInfo currentPacketIndex];
+        
+        NSArray *array = [[GameManager sharedGameManager] pathImagesForPacketIndex:currentPackIndex];
         int type = [[_CardMatrix objectForRow:row atColumn:column] intValue];
         cell = [GameCell spriteWithFile:[array objectAtIndex:type]];
         
