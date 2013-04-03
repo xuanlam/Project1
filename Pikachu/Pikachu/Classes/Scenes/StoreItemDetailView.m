@@ -22,6 +22,28 @@ static NSUInteger kNumberItemPerPage = 20;
         // Initialization code
         self.backgroundColor = [UIColor whiteColor];
         
+        // add navigation bar UIImageView
+        UIImage *imageNavigationbar = [UIImage imageNamed:@"background_statusbar.png"];
+        UIImageView *imageViewNavigationbar = [[UIImageView alloc]initWithImage:imageNavigationbar];
+        [self addSubview:imageViewNavigationbar];
+        
+        // add button Back
+        UIImage *imageButtonBack = [UIImage imageNamed:@"b_0001_button_Back.png"];
+        UIButton *buttonBack = [UIButton buttonWithType:UIButtonTypeCustom];
+        buttonBack.frame = CGRectMake(0, 10, imageButtonBack.size.width, imageButtonBack.size.height);
+        [buttonBack setImage:imageButtonBack forState:UIControlStateNormal];
+        [buttonBack addTarget:self action:@selector(buttonBackPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:buttonBack];
+        
+        // add button Pause
+        UIImage *imageButtonPause = [UIImage imageNamed:@"menu_button_pause.png"];
+        UIButton *buttonPause = [UIButton buttonWithType:UIButtonTypeCustom];
+        buttonPause.frame = CGRectMake(990, 10, imageButtonPause.size.width, imageButtonPause.size.height);
+        [buttonPause setImage:imageButtonPause forState:UIControlStateNormal];
+        [buttonPause addTarget:self action:@selector(buttonPausePressed:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:buttonPause];
+
+        
         pageViews = [[NSMutableArray alloc] initWithCapacity:NumberOfPages];
 		for(int i = 0; i < NumberOfPages; i++) {
 			[pageViews addObject:[NSNull null]];
@@ -35,7 +57,7 @@ static NSUInteger kNumberItemPerPage = 20;
 		}
         
         // add scroll View
-        scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, imageNavigationbar.size.height, self.frame.size.width, self.frame.size.height - imageNavigationbar.size.height)];
         scrollView.pagingEnabled = YES;
         scrollView.contentSize = CGSizeMake(self.frame.size.width * NumberOfPages, self.frame.size.height);
         scrollView.showsHorizontalScrollIndicator = NO;
@@ -107,6 +129,14 @@ static NSUInteger kNumberItemPerPage = 20;
 		[pageViews replaceObjectAtIndex:pageIndex withObject:itemView];
 		[itemView release];
 	}
+}
+
+- (void)buttonBackPressed:(id)sender {
+	NSLog(@"button Back clicked");
+}
+
+- (void)buttonPausePressed:(id)sender {
+	NSLog(@"button Pause clicked");
 }
 
 @end
