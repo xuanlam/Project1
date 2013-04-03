@@ -6,6 +6,7 @@
 //
 //
 #define PKCTIMEBAR_WIDTH 300.0f
+#define PKCCOMBO_TIMEBAR_WIDTH 200.0f
 
 #import "SinglePlayerGameInterfaceLayer.h"
 #import "PKCUserInfo.h"
@@ -16,6 +17,11 @@
 @property (nonatomic, strong) CCSprite      *timeBarLeft;
 @property (nonatomic, strong) CCSprite      *timeBarRight;
 
+@property (nonatomic, strong) CCSprite      *comboTimeBar;
+@property (nonatomic, strong) CCSprite      *comboTimeBarLeft;
+@property (nonatomic, strong) CCSprite      *comboTimeBarRight;
+
+
 @property (nonatomic, strong) CCLabelTTF    *levelLabel;
 @property (nonatomic, strong) CCLabelTTF    *scoreLabel;
 @property (nonatomic, strong) CCLabelTTF    *countHintLabel;
@@ -25,10 +31,6 @@
 @end
 
 @implementation SinglePlayerGameInterfaceLayer
-@synthesize delegate = _delegate;
-@synthesize timeBar = _timeBar;
-@synthesize timeBarLeft = _timeBarLeft;
-@synthesize timeBarRight = _timeBarRight;
 
 - (void)setUpInterface {
     
@@ -113,6 +115,41 @@
     [self addChild:_timeBarRight];
         
     [self updateTimeBarWithValue:1.0f];
+    
+    //Combo timebar
+    CCSprite *backgroundComboTimeBarLeft = [CCSprite spriteWithFile:@"bgTime_left.png"];
+    backgroundComboTimeBarLeft.position = ccp(300.0f, 755.0f);
+    [backgroundComboTimeBarLeft setAnchorPoint:ccp(0, 0.5)];
+    [self addChild:backgroundComboTimeBarLeft];
+    
+    self.comboTimeBarLeft = [CCSprite spriteWithFile:@"bar_time_left.png"];
+    _comboTimeBarLeft.position = ccp(300.0f, 755.0f);
+    [_comboTimeBarLeft setAnchorPoint:ccp(0, 0.5)];
+    [self addChild:_comboTimeBarLeft];
+    
+    CCSprite *backgroundComboTimeBarCenter = [CCSprite spriteWithFile:@"bgTime_center.png"];
+    backgroundComboTimeBarCenter.position = ccp(_timeBarLeft.position.x + _timeBarLeft.boundingBox.size.width, 755.0f);
+    [backgroundComboTimeBarCenter setAnchorPoint:ccp(0, 0.5)];
+    backgroundComboTimeBarCenter.scaleX = PKCCOMBO_TIMEBAR_WIDTH;
+    [self addChild:backgroundComboTimeBarCenter];
+    
+    self.comboTimeBar = [CCSprite spriteWithFile:@"bar_time_center.png"];
+    _comboTimeBar.position = ccp(_timeBarLeft.position.x + _timeBarLeft.boundingBox.size.width, 755.0f);
+    [_comboTimeBar setAnchorPoint:ccp(0, 0.5)];
+    [self addChild:_comboTimeBar];
+    
+    CCSprite *backgroundComboTimeBarRight = [CCSprite spriteWithFile:@"bgTime_right.png"];
+    backgroundComboTimeBarRight.position = ccp(backgroundComboTimeBarCenter.position.x + backgroundComboTimeBarCenter.boundingBox.size.width, 755.0f);
+    [backgroundComboTimeBarRight setAnchorPoint:ccp(0, 0.5)];
+    [self addChild:backgroundComboTimeBarRight];
+    
+    self.comboTimeBarRight = [CCSprite spriteWithFile:@"bar_time_right.png"];
+    _comboTimeBarRight.position = ccp(backgroundComboTimeBarCenter.position.x + backgroundComboTimeBarCenter.boundingBox.size.width, 755.0f);
+    [_comboTimeBarRight setAnchorPoint:ccp(0, 0.5)];
+    [self addChild:_comboTimeBarRight];
+
+    
+    [self updateComboTimeBarWithValue:1.0f];
 }
 
 - (id)init {
@@ -148,6 +185,14 @@
     float width = value * PKCTIMEBAR_WIDTH;
     [_timeBar setScaleX:width];
     _timeBarRight.position = ccp(_timeBar.position.x + _timeBar.boundingBox.size.width, 735.0f);
+}
+
+- (void)updateComboTimeBarWithValue:(float)value {
+    
+    float width = value * PKCCOMBO_TIMEBAR_WIDTH;
+    [_comboTimeBar setScaleX:width];
+    _comboTimeBarRight.position = ccp(_comboTimeBar.position.x + _comboTimeBar.boundingBox.size.width, 755.0f);
+
 }
 
 - (void)setScore:(NSInteger)score {
