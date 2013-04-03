@@ -9,6 +9,7 @@
 #import "CCLayer.h"
 #import "cocos2d.h"
 
+
 @protocol StoreMenuLayerDelegate;
 
 @interface StoreMenuLayer : CCLayer

@@ -7,7 +7,7 @@
 //
 
 #import "StoreMenuLayer.h"
-#import "StoreItemDetailLayer.h"
+#import "StoreItemDetailView.h"
 
 @implementation StoreMenuLayer
 
@@ -15,11 +15,11 @@
     self = [super init];
     if (self) {
         
-//        //Add background
-//        CCSprite *background = [CCSprite spriteWithFile:@"MainMenuBackground.jpg"];
-//        [background setAnchorPoint:CGPointZero];
-//        background.scale = CC_CONTENT_SCALE_FACTOR();
-//        [self addChild:background];
+        //Add background
+        CCSprite *background = [CCSprite spriteWithFile:@"MainMenuBackground.jpg"];
+        [background setAnchorPoint:CGPointZero];
+        background.scale = CC_CONTENT_SCALE_FACTOR();
+        [self addChild:background];
         
         // add navigation status bar
         CCSprite *statusBar = [CCSprite spriteWithFile:@"background_statusbar.png"];
@@ -128,21 +128,28 @@
             break;
     }
     
-    StoreItemDetailLayer *itemDetailLayer = [[StoreItemDetailLayer alloc] init];
-    [self addChild:itemDetailLayer];
+//    StoreItemDetailLayer *itemDetailLayer = [[StoreItemDetailLayer alloc] init];
+//    [self addChild:itemDetailLayer];
+//    
+//    // add Store Detail
+//    // init max store item detail = 40 items
+//    int iMaxLevels = 40;
+//    
+//    NSMutableArray* allItems = [NSMutableArray arrayWithCapacity:51];
+//    for (int i = 1; i <= iMaxLevels; ++i) {
+//        CCMenuItemImage *button = [CCMenuItemImage itemWithNormalImage:@"b_0009_Shop_Piece_Pack.png" selectedImage:@"b_0009_Shop_Piece_Pack.png" disabledImage:@"b_0009_Shop_Piece_Pack.png" target:self selector:@selector(buttonStoreItemDetailPressed)];
+//        [allItems addObject:button];
+//    }
+//    
+//    StoreItemDetailLayer* storeItemDetail = [StoreItemDetailLayer menuWithArray:allItems cols:5 rows:4 position:CGPointMake(120.f, 600.f) padding:CGPointMake(180.f, 170.f) verticalPages:true];
+//    storeItemDetail.delegate = self;
+//    [self addChild:storeItemDetail];
     
-    // add Store Detail
-    // init max store item detail = 40 items
-    int iMaxLevels = 40;
-    
-    NSMutableArray* allItems = [NSMutableArray arrayWithCapacity:51];
-    for (int i = 1; i <= iMaxLevels; ++i) {
-        CCMenuItemImage *button = [CCMenuItemImage itemWithNormalImage:@"b_0009_Shop_Piece_Pack.png" selectedImage:@"b_0009_Shop_Piece_Pack.png" disabledImage:@"b_0009_Shop_Piece_Pack.png" target:self selector:@selector(buttonStoreItemDetailPressed)];
-        [allItems addObject:button];
-    }
-    
-    StoreItemDetailLayer* menuGrid = [StoreItemDetailLayer menuWithArray:allItems cols:5 rows:4 position:CGPointMake(120.f, 600.f) padding:CGPointMake(180.f, 170.f) verticalPages:true];
-    [self addChild:menuGrid];
+    // add UIView
+    StoreItemDetailView *myview=[[StoreItemDetailView alloc] initWithFrame: CGRectMake(0, 0, 1024, 768)];
+    [[[CCDirector sharedDirector] view]addSubview:myview];
+//    [[[CCDirector sharedDirector] openGLView] addSubview:myview];
+    [myview release];
     
 }
 
@@ -153,5 +160,6 @@
 - (void)buttonStoreItemDetailPressed {
     NSLog(@"buttonStoreItemDetailPressed");
 }
+
 
 @end
