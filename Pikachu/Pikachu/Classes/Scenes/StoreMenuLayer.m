@@ -162,10 +162,4 @@
 }
 
 
-#pragma mark - StoreItemDetailLayerDelegate
-
-- (void)storeItemDetailLayerDidSelectCloseButton:(StoreItemDetailLayer *)storeItemDetailLayer {
-    [storeItemDetailLayer removeFromParentAndCleanup:YES];
-}
-
 @end
