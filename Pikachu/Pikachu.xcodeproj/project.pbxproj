@@ -13,7 +13,6 @@
 		A02E5C3715D21D3F00656EC4 /* SinglePlayerGamePlayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A02E5C3615D21D3F00656EC4 /* SinglePlayerGamePlayLayer.m */; };
 		A02E5C3A15D21D8700656EC4 /* SinglePlayerGameBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A02E5C3915D21D8700656EC4 /* SinglePlayerGameBackgroundLayer.m */; };
 		A02E5C3D15D21EE400656EC4 /* SinglePlayerGameInterfaceLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A02E5C3C15D21EE400656EC4 /* SinglePlayerGameInterfaceLayer.m */; };
-		A02E5C4415D2335700656EC4 /* path1.plist in Resources */ = {isa = PBXBuildFile; fileRef = A02E5C4315D2335700656EC4 /* path1.plist */; };
 		A02E5C4815D2490B00656EC4 /* GameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A02E5C4715D2490B00656EC4 /* GameCell.m */; };
 		A041AAEF1706C158009277AF /* buttonHint-Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A041AAEE1706C158009277AF /* buttonHint-Normal@2x.png */; };
 		A041AAF11706C16F009277AF /* buttonHint-Highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A041AAF01706C16F009277AF /* buttonHint-Highlighted@2x.png */; };
@@ -287,7 +286,6 @@
 		A02E5C3915D21D8700656EC4 /* SinglePlayerGameBackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinglePlayerGameBackgroundLayer.m; sourceTree = "<group>"; };
 		A02E5C3B15D21EE400656EC4 /* SinglePlayerGameInterfaceLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinglePlayerGameInterfaceLayer.h; sourceTree = "<group>"; };
 		A02E5C3C15D21EE400656EC4 /* SinglePlayerGameInterfaceLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinglePlayerGameInterfaceLayer.m; sourceTree = "<group>"; };
-		A02E5C4315D2335700656EC4 /* path1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = path1.plist; sourceTree = "<group>"; };
 		A02E5C4615D2490B00656EC4 /* GameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCell.h; sourceTree = "<group>"; };
 		A02E5C4715D2490B00656EC4 /* GameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCell.m; sourceTree = "<group>"; };
 		A041AAEE1706C158009277AF /* buttonHint-Normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "buttonHint-Normal@2x.png"; path = "Retina/buttonHint-Normal@2x.png"; sourceTree = "<group>"; };
@@ -1359,7 +1357,6 @@
 		A090397815D180CA0042FE4E /* Path1 */ = {
 			isa = PBXGroup;
 			children = (
-				A02E5C4315D2335700656EC4 /* path1.plist */,
 				A090397915D181AA0042FE4E /* normal */,
 				A090399A15D181AA0042FE4E /* rentina */,
 			);
@@ -1595,7 +1592,6 @@
 				A09039F815D181AA0042FE4E /* 0029@2x.png in Resources */,
 				A09039F915D181AA0042FE4E /* 0030@2x.png in Resources */,
 				A09039FA15D181AA0042FE4E /* 0031@2x.png in Resources */,
-				A02E5C4415D2335700656EC4 /* path1.plist in Resources */,
 				A0A4B16D15DFBDA90011C45D /* volume_bar_button.png in Resources */,
 				A0A4B16F15DFBDD00011C45D /* volume_bar_button@2x.png in Resources */,
 				A0A4B17115DFC3640011C45D /* line.png in Resources */,

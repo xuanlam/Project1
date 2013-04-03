@@ -343,7 +343,7 @@ const int GameHeight = 8;
     
     GameCell *cell = (GameCell *)[self getChildByTag:cellTag];
     if (!cell) {
-        NSArray *array = [[GameManager sharedGameManager] pathImages];
+        NSArray *array = [[GameManager sharedGameManager] pathImagesForPacketIndex:0];
         int type = [[_CardMatrix objectForRow:row atColumn:column] intValue];
         cell = [GameCell spriteWithFile:[array objectAtIndex:type]];
         

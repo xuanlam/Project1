@@ -11,9 +11,6 @@
 #import "MainMenuScene.h"
 
 @implementation GameManager
-@synthesize currentScene = _currentScene;
-@synthesize oldScene = _oldScene;
-@synthesize pathImages = _pathImages;
 
 static GameManager* _sharedGameManager = nil;
 
@@ -104,20 +101,37 @@ static GameManager* _sharedGameManager = nil;
 
 #pragma mark - Getters
 
-- (NSArray *)pathImages {
-    NSMutableArray *array = [NSMutableArray array];
+//- (NSArray *)pathImages {
+//    NSMutableArray *array = [NSMutableArray array];
+//    
+//    NSString *path = [[NSBundle mainBundle] resourcePath];
+//    path = [path stringByAppendingPathComponent:@"path1.plist"];
+//    
+//    NSArray *data = [NSArray arrayWithContentsOfFile:path];
+//    
+//    for (NSDictionary *dic in data) {
+//        NSString *imagePath = [dic objectForKey:@"Path"];
+//        [array addObject:imagePath];
+//    }    
+//    
+//    return array;
+//}
+
+- (NSArray *)pathImagesForPacketIndex:(NSInteger)packetIndex {
     
-    NSString *path = [[NSBundle mainBundle] resourcePath];
-    path = [path stringByAppendingPathComponent:@"path1.plist"];
+    NSMutableArray *pathImages = [NSMutableArray array];
     
-    NSArray *data = [NSArray arrayWithContentsOfFile:path];
+    for (int i = 0; i < 32; i++) {
+        NSString *pathImage = [NSString stringWithFormat:@"%.2d%.2d.png", packetIndex, i];
+        [pathImages addObject:pathImage];
+    }
     
-    for (NSDictionary *dic in data) {
-        NSString *imagePath = [dic objectForKey:@"Path"];
-        [array addObject:imagePath];
-    }    
-    
-    return array;
+    return pathImages;
 }
+
+- (NSInteger)numberOfPackets {
+    return 9;
+}
+
 
 @end
