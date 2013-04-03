@@ -14,4 +14,6 @@
 
 @interface SinglePlayerGameScene : CCScene <SinglePlayerGamePlayDelegate, SinglePlayerGameInterfaceLayerDelegate>
 
+@property (nonatomic, strong) SinglePlayerGameInterfaceLayer *interfaceLayer;
+
 @end

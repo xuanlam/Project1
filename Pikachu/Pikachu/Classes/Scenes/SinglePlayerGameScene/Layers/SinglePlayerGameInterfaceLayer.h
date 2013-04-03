@@ -20,6 +20,11 @@
 - (void)setRandom:(NSInteger)countRandom;
 - (void)setHint:(NSInteger)countHint;
 - (void)setAddTimeCount:(NSInteger)addTimeCount;
+- (void)setComboLevel:(NSInteger)level;
+
+- (void)updateComboTimeBarWithValue:(CGFloat)value;
+- (void)showComboTimeBar;
+- (void)hideComboTimeBar;
 
 @end
 

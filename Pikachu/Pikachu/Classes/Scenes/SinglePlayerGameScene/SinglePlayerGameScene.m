@@ -14,7 +14,6 @@
 
 @property (nonatomic, strong) EffectLayer *effectLayer;
 @property (nonatomic, strong) SinglePlayerGamePlayLayer *gamePlayLayer;
-@property (nonatomic, strong) SinglePlayerGameInterfaceLayer *interfaceLayer;
 
 @end
 
@@ -83,6 +82,21 @@
     [_interfaceLayer setAddTimeCount:countAddTime];
 }
 
+- (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needUpdateComboLevelWithLevel:(NSInteger)level {
+    [_interfaceLayer setComboLevel:level];
+}
+
+- (void)gamePlayLayerNeedHideComboBar:(SinglePlayerGamePlayLayer *)gamePlayLayer {
+    [_interfaceLayer hideComboTimeBar];
+}
+
+- (void)gamePlayLayerNeedShowComboBar:(SinglePlayerGamePlayLayer *)gamePlayLayer {
+    [_interfaceLayer showComboTimeBar];
+}
+
+- (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needUpdateComboTimeLeftWithValue:(float)value {
+    [_interfaceLayer updateComboTimeBarWithValue:value];
+}
 
 #pragma mark - SinglePlayerGameInterfaceLayer
 

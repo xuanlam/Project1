@@ -10,8 +10,6 @@
 #define PKCGAME_CELL_SIZE CGSizeMake(60.0f, 76.0f)
 #define PKCBOARD_PADDING CGSizeMake(32.0f, 60.0f)
 
-
-const int CardNo = 32;
 const int GameWidth = 16;
 const int GameHeight = 8;
 
@@ -41,8 +39,15 @@ const int GameHeight = 8;
 @property (nonatomic)           int             countHint;
 @property (nonatomic)           int             countRandom;
 @property (nonatomic)           int             countRushTime;
+
 @property (nonatomic)           float           timeLeft;
 @property (nonatomic)           float           maxTime;
+//Combo
+@property (nonatomic)           float           comboTimeLeft;
+@property (nonatomic)           float           maxComboTimeLeft;
+@property (nonatomic)           int             comboLevel;
+
+@property (nonatomic)           int             numberOfCard;
 
 @end
 
@@ -66,6 +71,9 @@ const int GameHeight = 8;
         self.isTouchEnabled = YES;
         self.CardMatrix = [[KSArray2D alloc] initWithRows:GameHeight + 2 andColumn:GameWidth + 2];
         
+        
+        
+        //setup array
         int MAX = (GameHeight + 2) * (GameWidth + 2);
         self.rX = [NSMutableArray arrayWithCapacity:MAX];
         self.rY = [NSMutableArray arrayWithCapacity:MAX];
@@ -74,7 +82,7 @@ const int GameHeight = 8;
         self.d = [NSMutableArray arrayWithCapacity:MAX];        
         
         _level = 1;
-        // init for score, count Hint & Random
+        _numberOfCard = 32;
         _score = 0;
         _countHint = [PKCUserInfo numberOfHintCount];
         _countRandom = [PKCUserInfo numberOfRandomCount];
@@ -103,8 +111,8 @@ const int GameHeight = 8;
     int i, j, k;
     
     //Mảng này cho biết mỗi hình xuất hiện mấy lần
-    NSMutableArray *CardCount = [NSMutableArray arrayWithCapacity:CardNo];
-    for (k = 0; k < CardNo; k++) {
+    NSMutableArray *CardCount = [NSMutableArray arrayWithCapacity:_numberOfCard];
+    for (k = 0; k < _numberOfCard; k++) {
         [CardCount addObject:[NSNumber numberWithInt:4]];
     }//Thiết lập có 4 thẻ hình cho mỗi hình
     
@@ -122,7 +130,7 @@ const int GameHeight = 8;
     for (i = 1; i <= GameHeight; i++) {
         for (j = 1; j <= GameWidth; j++) {
             do {
-                k = arc4random() % CardNo;
+                k = arc4random() % _numberOfCard;
             } while ([[CardCount objectAtIndex:k] intValue] == 0);    // Nếu CardCount[k] == 0 nghĩa là
             //hình thứ k đã sử dụng hết
             //các thẻ hình, cần tìm k khác.
@@ -203,25 +211,8 @@ const int GameHeight = 8;
                         
                         //Process Result
                         if (canEat) {
-                            [_CardMatrix setObject:[NSNumber numberWithInt:-1] forRow:cell.row atColumn:cell.column];
-                            [_CardMatrix setObject:[NSNumber numberWithInt:-1] forRow:_CardRow atColumn:_CardColumn];
                             
-                            _RemainingCount -= 2;
-                            _highlightedCellIndex = NSNotFound;
-                            // eat and add score throung delegate
-                            _score += 10;
-                            if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateScoreWithScore:)]) {
-                                [_delegate gamePlayLayer:self needUpdateScoreWithScore:_score];
-                            }
-                            
-                            [self drawLineConnect];
-                            [self drawGame];
-                            
-                            if (_RemainingCount == 0) {
-                                
-                                [self upLevel];
-                                
-                            }
+                            [self doCombineForCell:cell];
                             
                         } else {  //nếu không tìm thấy đường đi
                             
@@ -426,6 +417,31 @@ const int GameHeight = 8;
     }
 }
 
+- (void)doCombineForCell:(GameCell *)cell {
+    
+    [_CardMatrix setObject:[NSNumber numberWithInt:-1] forRow:cell.row atColumn:cell.column];
+    [_CardMatrix setObject:[NSNumber numberWithInt:-1] forRow:_CardRow atColumn:_CardColumn];
+    
+    _RemainingCount -= 2;
+    _highlightedCellIndex = NSNotFound;
+    
+    // eat and add score throung delegate
+    _score += 10;
+    if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateScoreWithScore:)]) {
+        [_delegate gamePlayLayer:self needUpdateScoreWithScore:_score];
+    }
+    
+    [self drawLineConnect];
+    [self drawGame];
+    
+    if (_RemainingCount <= 0) {
+        
+        [self upLevel];
+    } else {
+        [self upComboLevel];
+    }
+}
+
 - (void)deselectHighlightedCell {
     
     GameCell *highlightedCell = [self cellForCellID:_highlightedCellIndex];
@@ -440,6 +456,62 @@ const int GameHeight = 8;
     }
     
     _highlightedCellIndex = NSNotFound;
+}
+
+
+#pragma mark - Combo logic
+
+- (void)setUpComboTimeForComboLevel:(NSInteger)level {
+    _comboTimeLeft = 150.0f - 10.0f;
+    
+    if (_comboTimeLeft < 30.0f) {
+        _comboTimeLeft = 30.0f;
+    }
+    
+    _maxComboTimeLeft = _comboTimeLeft;
+}
+
+- (void)updateComboTime {
+    _comboTimeLeft -= 1.0f;
+    
+    if (_comboTimeLeft <= 0.0f) {
+        [self doEndCombo];
+    } else {
+        
+        if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateComboTimeLeftWithValue:)]) {
+            [_delegate gamePlayLayer:self needUpdateComboTimeLeftWithValue:_comboTimeLeft / _maxComboTimeLeft];
+        }
+    }
+}
+
+- (void)upComboLevel {
+    
+    [self unschedule:@selector(updateComboTime)];
+    
+    _comboLevel++;
+    [self setUpComboTimeForComboLevel:_comboLevel];
+    
+    [self schedule:@selector(updateComboTime) interval:1.0f/30.0f];
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayerNeedShowComboBar:)]) {
+        [_delegate gamePlayLayerNeedShowComboBar:self];
+    }
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateComboLevelWithLevel:)]) {
+        [_delegate gamePlayLayer:self needUpdateComboLevelWithLevel:_comboLevel];
+    }
+
+}
+
+- (void)doEndCombo {
+    _comboLevel = 0;
+    _comboTimeLeft = 0.0f;
+    
+    [self unschedule:@selector(updateComboTime)];
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayerNeedHideComboBar:)]) {
+        [_delegate gamePlayLayerNeedHideComboBar:self];
+    }
 }
 
 
@@ -478,8 +550,8 @@ const int GameHeight = 8;
         
         [self removeAllChildrenWithCleanup:YES];
         
-        NSMutableArray *CardCount = [NSMutableArray arrayWithCapacity:CardNo];
-        for (int type = 0; type < CardNo; type++) {
+        NSMutableArray *CardCount = [NSMutableArray arrayWithCapacity:_numberOfCard];
+        for (int type = 0; type < _numberOfCard; type++) {
             int count = 0;
             for (int i = 1; i <= GameHeight; i++) {
                 for (int j = 1; j <= GameWidth; j++) {
@@ -500,7 +572,7 @@ const int GameHeight = 8;
                     
                     do
                     {
-                        k = arc4random() % CardNo;
+                        k = arc4random() % _numberOfCard;
                     } while ([[CardCount objectAtIndex:k] intValue] == 0);    // Nếu CardCount[k] == 0 nghĩa là
                     //hình thứ k đã sử dụng hết
                     //các thẻ hình, cần tìm k khác.
@@ -542,7 +614,7 @@ const int GameHeight = 8;
 
 - (BOOL)isNoWay {
     
-    for (int type = 0; type < CardNo; type++) {
+    for (int type = 0; type < _numberOfCard; type++) {
         NSMutableArray *arrayX = [NSMutableArray array];
         NSMutableArray *arrayY = [NSMutableArray array];
         

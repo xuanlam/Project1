@@ -18,6 +18,9 @@
 @property (nonatomic, strong) CCSprite      *timeBarRight;
 
 @property (nonatomic, strong) CCSprite      *comboTimeBar;
+@property (nonatomic, strong) CCSprite      *backgroundComboTimeBarLeft;
+@property (nonatomic, strong) CCSprite      *backgroundComboTimeBarCenter;
+@property (nonatomic, strong) CCSprite      *backgroundComboTimeBarRight;
 @property (nonatomic, strong) CCSprite      *comboTimeBarLeft;
 @property (nonatomic, strong) CCSprite      *comboTimeBarRight;
 
@@ -27,6 +30,7 @@
 @property (nonatomic, strong) CCLabelTTF    *countHintLabel;
 @property (nonatomic, strong) CCLabelTTF    *countRandomLabel;
 @property (nonatomic, strong) CCLabelTTF    *countAddTimeLabel;
+@property (nonatomic, strong) CCLabelTTF    *comboLevelLabel;
 
 @end
 
@@ -117,39 +121,43 @@
     [self updateTimeBarWithValue:1.0f];
     
     //Combo timebar
-    CCSprite *backgroundComboTimeBarLeft = [CCSprite spriteWithFile:@"bgTime_left.png"];
-    backgroundComboTimeBarLeft.position = ccp(300.0f, 755.0f);
-    [backgroundComboTimeBarLeft setAnchorPoint:ccp(0, 0.5)];
-    [self addChild:backgroundComboTimeBarLeft];
+    self.backgroundComboTimeBarLeft = [CCSprite spriteWithFile:@"bgTime_left.png"];
+    _backgroundComboTimeBarLeft.position = ccp(300.0f, 715.0f);
+    [_backgroundComboTimeBarLeft setAnchorPoint:ccp(0, 0.5)];
+    [self addChild:_backgroundComboTimeBarLeft];
+    
+    self.backgroundComboTimeBarCenter = [CCSprite spriteWithFile:@"bgTime_center.png"];
+    _backgroundComboTimeBarCenter.position = ccp(_backgroundComboTimeBarLeft.position.x + _backgroundComboTimeBarLeft.boundingBox.size.width, 715.0f);
+    [_backgroundComboTimeBarCenter setAnchorPoint:ccp(0, 0.5)];
+    _backgroundComboTimeBarCenter.scaleX = PKCCOMBO_TIMEBAR_WIDTH;
+    [self addChild:_backgroundComboTimeBarCenter];
+
+    self.backgroundComboTimeBarRight = [CCSprite spriteWithFile:@"bgTime_right.png"];
+    _backgroundComboTimeBarRight.position = ccp(_backgroundComboTimeBarCenter.position.x + _backgroundComboTimeBarCenter.boundingBox.size.width, 715.0f);
+    [_backgroundComboTimeBarRight setAnchorPoint:ccp(0, 0.5)];
+    [self addChild:_backgroundComboTimeBarRight];
     
     self.comboTimeBarLeft = [CCSprite spriteWithFile:@"bar_time_left.png"];
-    _comboTimeBarLeft.position = ccp(300.0f, 755.0f);
+    _comboTimeBarLeft.position = ccp(300.0f, 715.0f);
     [_comboTimeBarLeft setAnchorPoint:ccp(0, 0.5)];
     [self addChild:_comboTimeBarLeft];
     
-    CCSprite *backgroundComboTimeBarCenter = [CCSprite spriteWithFile:@"bgTime_center.png"];
-    backgroundComboTimeBarCenter.position = ccp(_timeBarLeft.position.x + _timeBarLeft.boundingBox.size.width, 755.0f);
-    [backgroundComboTimeBarCenter setAnchorPoint:ccp(0, 0.5)];
-    backgroundComboTimeBarCenter.scaleX = PKCCOMBO_TIMEBAR_WIDTH;
-    [self addChild:backgroundComboTimeBarCenter];
-    
     self.comboTimeBar = [CCSprite spriteWithFile:@"bar_time_center.png"];
-    _comboTimeBar.position = ccp(_timeBarLeft.position.x + _timeBarLeft.boundingBox.size.width, 755.0f);
+    _comboTimeBar.position = ccp(_backgroundComboTimeBarLeft.position.x + _backgroundComboTimeBarLeft.boundingBox.size.width, 715.0f);
     [_comboTimeBar setAnchorPoint:ccp(0, 0.5)];
     [self addChild:_comboTimeBar];
     
-    CCSprite *backgroundComboTimeBarRight = [CCSprite spriteWithFile:@"bgTime_right.png"];
-    backgroundComboTimeBarRight.position = ccp(backgroundComboTimeBarCenter.position.x + backgroundComboTimeBarCenter.boundingBox.size.width, 755.0f);
-    [backgroundComboTimeBarRight setAnchorPoint:ccp(0, 0.5)];
-    [self addChild:backgroundComboTimeBarRight];
-    
     self.comboTimeBarRight = [CCSprite spriteWithFile:@"bar_time_right.png"];
-    _comboTimeBarRight.position = ccp(backgroundComboTimeBarCenter.position.x + backgroundComboTimeBarCenter.boundingBox.size.width, 755.0f);
+    _comboTimeBarRight.position = ccp(_backgroundComboTimeBarCenter.position.x + _backgroundComboTimeBarCenter.boundingBox.size.width, 715.0f);
     [_comboTimeBarRight setAnchorPoint:ccp(0, 0.5)];
     [self addChild:_comboTimeBarRight];
-
+        
+    self.comboLevelLabel = [[CCLabelTTF alloc] initWithString:@"0" fontName:@"PokemonNormal" fontSize:24.0f];
+    _comboLevelLabel.anchorPoint = ccp(0, 0.5);
+    _comboLevelLabel.position = ccp(620.0f, 710.0f);
+    [self addChild:_comboLevelLabel];
     
-    [self updateComboTimeBarWithValue:1.0f];
+    [self hideComboTimeBar];    
 }
 
 - (id)init {
@@ -191,8 +199,35 @@
     
     float width = value * PKCCOMBO_TIMEBAR_WIDTH;
     [_comboTimeBar setScaleX:width];
-    _comboTimeBarRight.position = ccp(_comboTimeBar.position.x + _comboTimeBar.boundingBox.size.width, 755.0f);
+    _comboTimeBarRight.position = ccp(_comboTimeBar.position.x + _comboTimeBar.boundingBox.size.width, 715.0f);
 
+}
+
+- (void)showComboTimeBar {
+    
+    [self updateComboTimeBarWithValue:1.0f];
+    
+    _backgroundComboTimeBarLeft.opacity = 255.0f;
+    _backgroundComboTimeBarCenter.opacity = 255.0f;
+    _backgroundComboTimeBarRight.opacity = 255.0f;
+    
+    _comboTimeBar.opacity = 255.0f;
+    _comboTimeBarLeft.opacity = 255.0f;
+    _comboTimeBarRight.opacity = 255.0f;
+    
+    _comboLevelLabel.opacity = 255.0f;
+}
+
+- (void)hideComboTimeBar {
+    _backgroundComboTimeBarLeft.opacity = 0.0f;
+    _backgroundComboTimeBarCenter.opacity = 0.0f;
+    _backgroundComboTimeBarRight.opacity = 0.0f;
+    
+    _comboTimeBar.opacity = 0.0f;
+    _comboTimeBarLeft.opacity = 0.0f;
+    _comboTimeBarRight.opacity = 0.0f;
+    
+    _comboLevelLabel.opacity = 0.0f;
 }
 
 - (void)setScore:(NSInteger)score {
@@ -213,6 +248,10 @@
 
 - (void)setAddTimeCount:(NSInteger)addTimeCount {
     _countAddTimeLabel.string = [NSString stringWithFormat:@"%d", addTimeCount];
+}
+
+- (void)setComboLevel:(NSInteger)level {    
+    _comboLevelLabel.string = [NSString stringWithFormat:@"%d", level];
 }
 
 @end
