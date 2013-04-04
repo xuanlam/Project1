@@ -13,6 +13,13 @@ typedef enum {
     DirectionNone = 4
 } Direction;
 
+typedef enum {
+    PKCLogicAlignmentNone,
+    PKCLogicAlignmentTop,
+    PKCLogicAlignmentLeft,
+    PKCLogicAlignmentBottom,
+    PKCLogicAlignmentRight
+} PKCLogicAlignment;
 
 @protocol SinglePlayerGamePlayDelegate;
 

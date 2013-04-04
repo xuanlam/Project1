@@ -49,6 +49,8 @@ const int GameHeight = 8;
 
 @property (nonatomic)           int             numberOfCard;
 
+@property (nonatomic)           PKCLogicAlignment logicAlignment;
+
 @end
 
 @implementation SinglePlayerGamePlayLayer
@@ -305,17 +307,46 @@ const int GameHeight = 8;
 
 #pragma mark - Draw
 
-- (void)drawGame {
+- (void)updateBoard {
     for (int i = 1; i <= GameHeight; i++) {
         for (int j = 1; j <= GameWidth; j++) {
             if ([[_CardMatrix objectForRow:i atColumn:j] intValue] == -1) {
+            
                 GameCell *cell = (GameCell *)[self getChildByTag:i * (GameWidth + 2) + j];
-                if (cell && [cell isKindOfClass:[GameCell class]]) {
+                if (cell) {
                     [cell removeFromParentAndCleanup:YES];
                 }
             }
         }
     }
+    
+//    if (_logicAlignment == PKCLogicAlignmentLeft) {
+//        for (int i = 1; i <= GameHeight; i++) {
+//            for (int j = GameWidth; j > 0; j--) {
+//                if ([[_CardMatrix objectForRow:i atColumn:j] intValue] == -1) {
+//                    
+//                    for (int k = j; k < GameWidth; k++) {
+//                        
+//                        [_CardMatrix setObject:[_CardMatrix objectForRow:i atColumn:k + 1] forRow:i atColumn:k];
+//                        
+//                        int cellID = i * (GameWidth + 2) + k + 1;
+//                        GameCell *cell = [self cellForCellID:cellID];
+//                        
+//                        if (cell) {
+//                            cell.position = ccp(cell.position.x - 60.0f, cell.position.y);
+//                            cell.column -= 1;
+//                            cell.cellID = cellID - 1;
+//                            cell.tag = cellID - 1;
+//                        } else {
+//                            NSLog(@"");
+//                        }
+//                    }
+//                    
+//                    [_CardMatrix setObject:[NSNumber numberWithInt:-1] forRow:i atColumn:GameWidth];
+//                }
+//            }
+//        }
+//    }
 }
 
 - (void)drawLineConnect {
@@ -383,7 +414,7 @@ const int GameHeight = 8;
 }
 
 
-#pragma mark - Actions
+#pragma mark - Game Logic
 
 - (void)upLevel {
 
@@ -412,27 +443,35 @@ const int GameHeight = 8;
 
 - (void)doCombineForCell:(GameCell *)cell {
     
+    //Update matric
     [_CardMatrix setObject:[NSNumber numberWithInt:-1] forRow:cell.row atColumn:cell.column];
     [_CardMatrix setObject:[NSNumber numberWithInt:-1] forRow:_CardRow atColumn:_CardColumn];
-    
-    _RemainingCount -= 2;
-    _highlightedCellIndex = NSNotFound;
-    
-    // eat and add score throung delegate
+        
+    // Update score
     _score += 10;
     if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateScoreWithScore:)]) {
         [_delegate gamePlayLayer:self needUpdateScoreWithScore:_score];
     }
     
+    // Draw guide
     [self drawLineConnect];
-    [self drawGame];
+    
+    //Organize board
+    [self updateBoard];
+    
+    //Update count
+    _RemainingCount -= 2;
+    _highlightedCellIndex = NSNotFound;
     
     if (_RemainingCount <= 0) {
-        
         [self upLevel];
     } else {
         [self upComboLevel];
-    }
+        
+        if ([self isNoWay]) {
+            [self randomMap];
+        }
+    }    
 }
 
 - (void)deselectHighlightedCell {
