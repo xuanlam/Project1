@@ -50,11 +50,23 @@
 			[pageViews addObject:[NSNull null]];
 		}
         
-        // add array UIImage
+        pageViewsPacket = [[NSMutableArray alloc] initWithCapacity:NumberOfPagesPacket];
+		for(int i = 0; i < NumberOfPagesPacket; i++) {
+			[pageViewsPacket addObject:[NSNull null]];
+		}
+        
+        // add array UIImage item
         items = [[NSMutableArray alloc] initWithCapacity:14];
-        UIImage *image = [UIImage imageNamed:@"b_0009_Shop_Piece_Pack.png"];
-		for(int i = 0; i < 15; i++) {
-			[items addObject:image];
+        UIImage *imageItem = [UIImage imageNamed:@"b_0009_Shop_Piece_Pack.png"];
+		for(int i = 0; i < 14; i++) {
+			[items addObject:imageItem];
+		}
+        
+        // add array UIImage packet
+        packets = [[NSMutableArray alloc] initWithCapacity:14];
+        UIImage *imagePacket = [UIImage imageNamed:@"b_0009_Shop_Piece_Pack.png"];
+		for(int i = 0; i < 14; i++) {
+			[packets addObject:imagePacket];
 		}
         
         // add shop wood 1
@@ -71,10 +83,31 @@
         scrollViewItem.showsVerticalScrollIndicator = NO;
         scrollViewItem.scrollsToTop = NO;
         scrollViewItem.delegate = self;
+        scrollViewItem.tag = 0;
         
         [self addSubview:scrollViewItem];
         [self loadPage:0];
         [self loadPage:1];
+        
+        //add shop wood 2
+        UIImage *imageShopWood2 = [UIImage imageNamed:@"b_0011_Shop_WOOD.png"];
+        UIImageView *imageViewShopWood2 = [[UIImageView alloc]initWithImage:imageShopWood2];
+        imageViewShopWood2.frame = CGRectMake(130, 600, imageShopWood2.size.width, imageShopWood2.size.height);
+        [self addSubview:imageViewShopWood2];
+        
+        // add scrollview for shop wood 2
+        scrollViewPacket = [[UIScrollView alloc]initWithFrame:CGRectMake(180, 450, 650, 200)];
+        scrollViewPacket.pagingEnabled = YES;
+        scrollViewPacket.contentSize = CGSizeMake(650 * NumberOfPagesPacket, 200);
+        scrollViewPacket.showsHorizontalScrollIndicator = NO;
+        scrollViewPacket.showsVerticalScrollIndicator = NO;
+        scrollViewPacket.scrollsToTop = NO;
+        scrollViewPacket.delegate = self;
+        scrollViewPacket.tag = 1;
+        
+        [self addSubview:scrollViewPacket];
+        [self loadPagePacket:0];
+        [self loadPagePacket:1];
 
     }
     return self;
@@ -95,6 +128,10 @@
     [self loadPage:page - 1];
     [self loadPage:page];
     [self loadPage:page + 1];
+    
+    [self loadPagePacket:page - 1];
+    [self loadPagePacket:page];
+    [self loadPagePacket:page + 1];
     
 }
 
@@ -129,6 +166,28 @@
         //		itemView.delegate = self;
 		[scrollViewItem addSubview:itemView];
 		[pageViews replaceObjectAtIndex:pageIndex withObject:itemView];
+		[itemView release];
+	}
+}
+
+- (void)loadPagePacket:(int)pageIndex {
+	if (pageIndex < 0)
+        return;
+    if (pageIndex >= NumberOfPagesPacket)
+        return;
+    
+	if((NSNull*)[pageViewsPacket objectAtIndex:pageIndex] == [NSNull null]) {
+		CGRect frame = scrollViewPacket.frame;
+		frame.origin.x = frame.size.width * pageIndex;
+		frame.origin.y = 0;
+		NSRange range;
+		range.location = pageIndex * NumberItemPerPagePacket;
+		range.length = fmin(NumberItemPerPagePacket, [packets count] - range.location);
+		
+		StoreMenuItemView* itemView = [[StoreMenuItemView alloc] initWithFrame:frame items:[packets subarrayWithRange:range]];
+        //		itemView.delegate = self;
+		[scrollViewPacket addSubview:itemView];
+		[pageViewsPacket replaceObjectAtIndex:pageIndex withObject:itemView];
 		[itemView release];
 	}
 }

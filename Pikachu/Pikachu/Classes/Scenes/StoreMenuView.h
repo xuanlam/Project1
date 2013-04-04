@@ -13,7 +13,9 @@
     UIScrollView* scrollViewPacket;
     BOOL pageControlUsed;
     NSMutableArray* pageViews;
+    NSMutableArray* pageViewsPacket;
     NSMutableArray* items;
+    NSMutableArray* packets;
 }
 
 @end
