@@ -8,6 +8,7 @@
 
 #import "MainMenuLayer.h"
 #import "GameManager.h"
+#import "StoreMenuView.h"
 
 @implementation MainMenuLayer
 
@@ -40,7 +41,10 @@
 }
 
 - (void)buttonMoreSender {
-    [[GameManager sharedGameManager] runSceneWithID:kGameSinglePlayer animation:YES];
+//    [[GameManager sharedGameManager] runSceneWithID:kGameSinglePlayer animation:YES];
+    StoreMenuView *myview=[[StoreMenuView alloc] initWithFrame: CGRectMake(0, 0, 1024, 768)];
+    [[[CCDirector sharedDirector] view]addSubview:myview];
+    [myview release];
 }
 
 @end
