@@ -8,9 +8,10 @@
 
 #import "StoreItemDetailView.h"
 #import "ItemDetailView.h"
+#import "GameManager.h"
 
 #define NumberOfPages       3
-#define NumberItemPerPage   24
+#define NumberItemPerPage   12
 
 @implementation StoreItemDetailView
 
@@ -49,11 +50,20 @@
 		}
         
         // add array UIImage
-        items = [[NSMutableArray alloc] initWithCapacity:60];
-        UIImage *image = [UIImage imageNamed:@"b_0009_Shop_Piece_Pack.png"];
-		for(int i = 0; i < 60; i++) {
-			[items addObject:image];
-		}
+//        items = [[NSMutableArray alloc] initWithCapacity:60];
+//        UIImage *image = [UIImage imageNamed:@"b_0009_Shop_Piece_Pack.png"];
+//		for(int i = 0; i < 60; i++) {
+//			[items addObject:image];
+//		}
+        
+        // add array item
+        NSMutableArray *imageItem  = [[NSMutableArray alloc]initWithArray:[[GameManager sharedGameManager] pathImagesForPacketIndex:1]];
+        items = [[NSMutableArray alloc] initWithCapacity:[imageItem count]];
+        for (int i = 0; i < [imageItem count]; i++) {
+            UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[imageItem objectAtIndex:i]]];
+            [items addObject:image];
+        }
+        
         
         // add scroll View
         scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, imageNavigationbar.size.height, self.frame.size.width, self.frame.size.height - imageNavigationbar.size.height)];
@@ -68,11 +78,6 @@
         
         [self loadPage:0];
         [self loadPage:1];
-        
-        
-//        UIImage *image = [UIImage imageNamed:@"b_0009_Shop_Piece_Pack.png"];
-//        UIImageView *imageView = [[UIImageView alloc]initWithImage:image];
-//        [self addSubview:imageView];
     }
     return self;
 }

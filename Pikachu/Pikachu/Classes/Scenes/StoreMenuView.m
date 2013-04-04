@@ -108,6 +108,10 @@
         [self addSubview:scrollViewPacket];
         [self loadPagePacket:0];
         [self loadPagePacket:1];
+        
+        // add array item
+//        items = [[GameManager sharedGameManager] pathImagesForPacketIndex:1];
+//        NSLog(@"items count: %d",[items count]);
 
     }
     return self;
