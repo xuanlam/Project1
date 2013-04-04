@@ -58,7 +58,7 @@
         // add scroll View
         scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, imageNavigationbar.size.height, self.frame.size.width, self.frame.size.height - imageNavigationbar.size.height)];
         scrollView.pagingEnabled = YES;
-        scrollView.contentSize = CGSizeMake(self.frame.size.width * NumberOfPages, self.frame.size.height);
+        scrollView.contentSize = CGSizeMake(self.frame.size.width * NumberOfPages, self.frame.size.height - imageNavigationbar.size.height);
         scrollView.showsHorizontalScrollIndicator = NO;
         scrollView.showsVerticalScrollIndicator = NO;
         scrollView.scrollsToTop = NO;
