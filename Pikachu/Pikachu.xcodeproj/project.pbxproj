@@ -321,7 +321,6 @@
 		A0EECC731706E13900BDC4E9 /* Pokemon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0EECC721706E13900BDC4E9 /* Pokemon.ttf */; };
 		F804836C170F2DD500AAB3D9 /* StoreMenuPacketView.m in Sources */ = {isa = PBXBuildFile; fileRef = F804836B170F2DD500AAB3D9 /* StoreMenuPacketView.m */; };
 		F804836F170F2E4800AAB3D9 /* StorePacketDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = F804836E170F2E4800AAB3D9 /* StorePacketDetailView.m */; };
-		F85A5E2F170D6E3500E7DC56 /* StoreMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = F85A5E2E170D6E3500E7DC56 /* StoreMenuItemView.m */; };
 		F88D1A53170CD6A20054E60D /* StoreMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = F88D1A52170CD6A20054E60D /* StoreMenuView.m */; };
 		F8AD3E9A170820AE00F8277B /* button_Store_down.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3E96170820AC00F8277B /* button_Store_down.png */; };
 		F8AD3E9B170820AE00F8277B /* button_Store_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3E97170820AD00F8277B /* button_Store_down@2x.png */; };
@@ -807,8 +806,6 @@
 		F804836B170F2DD500AAB3D9 /* StoreMenuPacketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreMenuPacketView.m; sourceTree = "<group>"; };
 		F804836D170F2E4800AAB3D9 /* StorePacketDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorePacketDetailView.h; sourceTree = "<group>"; };
 		F804836E170F2E4800AAB3D9 /* StorePacketDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorePacketDetailView.m; sourceTree = "<group>"; };
-		F85A5E2D170D6E3500E7DC56 /* StoreMenuItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreMenuItemView.h; sourceTree = "<group>"; };
-		F85A5E2E170D6E3500E7DC56 /* StoreMenuItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreMenuItemView.m; sourceTree = "<group>"; };
 		F88D1A51170CD6A20054E60D /* StoreMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreMenuView.h; sourceTree = "<group>"; };
 		F88D1A52170CD6A20054E60D /* StoreMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreMenuView.m; sourceTree = "<group>"; };
 		F8AD3E96170820AC00F8277B /* button_Store_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_Store_down.png; sourceTree = "<group>"; };
@@ -1638,8 +1635,6 @@
 			children = (
 				F88D1A51170CD6A20054E60D /* StoreMenuView.h */,
 				F88D1A52170CD6A20054E60D /* StoreMenuView.m */,
-				F85A5E2D170D6E3500E7DC56 /* StoreMenuItemView.h */,
-				F85A5E2E170D6E3500E7DC56 /* StoreMenuItemView.m */,
 				F804836A170F2DD500AAB3D9 /* StoreMenuPacketView.h */,
 				F804836B170F2DD500AAB3D9 /* StoreMenuPacketView.m */,
 				F804836D170F2E4800AAB3D9 /* StorePacketDetailView.h */,
@@ -2031,7 +2026,6 @@
 				A04501A31709E2C0008730DC /* PKCUserInfo.m in Sources */,
 				F8E2BCE6170C65C500734DDD /* ItemDetailView.m in Sources */,
 				F88D1A53170CD6A20054E60D /* StoreMenuView.m in Sources */,
-				F85A5E2F170D6E3500E7DC56 /* StoreMenuItemView.m in Sources */,
 				F804836C170F2DD500AAB3D9 /* StoreMenuPacketView.m in Sources */,
 				F804836F170F2E4800AAB3D9 /* StorePacketDetailView.m in Sources */,
 			);

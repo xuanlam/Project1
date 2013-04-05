@@ -8,7 +8,6 @@
 
 #import "CCScene.h"
 #import "cocos2d.h"
-#import "StoreMenuLayer.h"
 
 @interface MainMenuScene : CCScene
 
