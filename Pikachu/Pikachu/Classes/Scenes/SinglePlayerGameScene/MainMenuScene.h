@@ -10,6 +10,6 @@
 #import "cocos2d.h"
 #import "StoreMenuLayer.h"
 
-@interface MainMenuScene : CCScene <StoreMenuLayerDelegate>
+@interface MainMenuScene : CCScene
 
 @end

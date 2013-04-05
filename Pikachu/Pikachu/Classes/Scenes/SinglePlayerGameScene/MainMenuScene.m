@@ -16,21 +16,12 @@
     if (self) {
         MainMenuLayer *mainMenulayer = [MainMenuLayer node];
         [self addChild:mainMenulayer];
-        
-        //test Store Menu Layer
-//        StoreMenuLayer *storeLayer = [StoreMenuLayer node];
-//        storeLayer.delegate = self;
-//        [self addChild:storeLayer];
+
     }
     return self;
 }
 
 
-#pragma mark - StoreMenuLayerDelegate
-
-- (void)storeMenuLayerDidSelectCloseButton:(StoreMenuLayer *)storeMenuLayer {
-    [storeMenuLayer removeFromParentAndCleanup:YES];
-}
 
 
 @end

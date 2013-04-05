@@ -7,7 +7,7 @@
 //
 
 #import "StoreMenuItemView.h"
-#import "StoreItemDetailView.h"
+#import "StorePacketDetailView.h"
 
 @implementation StoreMenuItemView
 
@@ -51,7 +51,7 @@
 
 - (void)itemDidClick:(id)sender {
 	// add UIView
-    StoreItemDetailView *myview=[[StoreItemDetailView alloc] initWithFrame: CGRectMake(0, 0, 1024, 768)];
+    StorePacketDetailView *myview=[[StorePacketDetailView alloc] initWithFrame: CGRectMake(0, 0, 1024, 768)];
     [self.superview.superview addSubview:myview];
     [myview release];
 }

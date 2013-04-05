@@ -7,7 +7,7 @@
 //
 
 #import "StoreMenuLayer.h"
-#import "StoreItemDetailView.h"
+#import "StorePacketDetailView.h"
 
 @implementation StoreMenuLayer
 
@@ -146,7 +146,7 @@
 //    [self addChild:storeItemDetail];
     
     // add UIView
-    StoreItemDetailView *myview=[[StoreItemDetailView alloc] initWithFrame: CGRectMake(0, 0, 1024, 768)];
+    StorePacketDetailView *myview=[[StorePacketDetailView alloc] initWithFrame: CGRectMake(0, 0, 1024, 768)];
     [[[CCDirector sharedDirector] view]addSubview:myview];
 //    [[[CCDirector sharedDirector] openGLView] addSubview:myview];
     [myview release];
