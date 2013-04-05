@@ -10,8 +10,8 @@
 #import "PacketDetailView.h"
 #import "GameManager.h"
 
-#define NumberOfPages       3
-#define NumberPacketPerPage   12
+#define NumberOfPages           1
+#define NumberPacketPerPage     32
 
 @implementation StorePacketDetailView
 
