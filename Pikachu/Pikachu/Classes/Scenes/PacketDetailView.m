@@ -19,36 +19,36 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame items:(NSArray *)items {
+- (id)initWithFrame:(CGRect)frame packets:(NSArray *)packets {
     self = [super initWithFrame:frame];
     if (self) {
-        _items = [[NSArray alloc]initWithArray:items];
-        int count = [items count];
+        _packets = [[NSArray alloc]initWithArray:packets];
+        int count = [packets count];
         NSLog(@"count: %d",count);
         int width = self.frame.size.width;
         
-        UIImage *item;
+        UIImage *packet;
         int x = 10;
         int y = 0;
         
-        _itemWidth = 123;
-        _itemHeight = 157;
+        _packetWidth = 123;
+        _packetHeight = 157;
         
         for (int i = 0; i < count; i++) {
-            item = [items objectAtIndex:i];
+            packet = [packets objectAtIndex:i];
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            if (x + _itemWidth > width) {
-                y += _itemHeight;
+            if (x + _packetWidth > width) {
+                y += _packetHeight;
                 x = 10;
             }
             
-            button.frame = CGRectMake(x, y, _itemWidth, _itemHeight);
+            button.frame = CGRectMake(x, y, _packetWidth, _packetHeight);
             button.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
-            [button setImage:item forState:UIControlStateNormal];
+            [button setImage:packet forState:UIControlStateNormal];
             button.tag = i;
 			[button addTarget:self action:@selector(packetDidClick:) forControlEvents:UIControlEventTouchUpInside];
 			[self addSubview:button];
-			x += _itemWidth;
+			x += _packetWidth;
         }
     }
     return self;

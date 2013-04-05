@@ -7,11 +7,11 @@
 //
 
 #import "StorePacketDetailView.h"
-#import "ItemDetailView.h"
+#import "PacketDetailView.h"
 #import "GameManager.h"
 
 #define NumberOfPages       3
-#define NumberItemPerPage   12
+#define NumberPacketPerPage   12
 
 @implementation StorePacketDetailView
 
@@ -58,10 +58,10 @@
         
         // add array item
         NSMutableArray *imageItem  = [[NSMutableArray alloc]initWithArray:[[GameManager sharedGameManager] pathImagesForPacketIndex:1]];
-        items = [[NSMutableArray alloc] initWithCapacity:[imageItem count]];
+        packets = [[NSMutableArray alloc] initWithCapacity:[imageItem count]];
         for (int i = 0; i < [imageItem count]; i++) {
             UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[imageItem objectAtIndex:i]]];
-            [items addObject:image];
+            [packets addObject:image];
         }
         
         
@@ -124,10 +124,10 @@
 		frame.origin.x = frame.size.width * pageIndex;
 		frame.origin.y = 0;
 		NSRange range;
-		range.location = pageIndex * NumberItemPerPage;
-		range.length = fmin(NumberItemPerPage, [items count] - range.location);
+		range.location = pageIndex * NumberPacketPerPage;
+		range.length = fmin(NumberPacketPerPage, [packets count] - range.location);
 		
-		ItemDetailView* itemView = [[ItemDetailView alloc] initWithFrame:frame items:[items subarrayWithRange:range]];
+		PacketDetailView* itemView = [[PacketDetailView alloc] initWithFrame:frame packets:[packets subarrayWithRange:range]];
         //		itemView.delegate = self;
 		[scrollView addSubview:itemView];
 		[pageViews replaceObjectAtIndex:pageIndex withObject:itemView];

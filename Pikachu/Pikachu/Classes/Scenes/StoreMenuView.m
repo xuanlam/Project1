@@ -9,10 +9,9 @@
 #import "StoreMenuView.h"
 #import "StoreMenuPacketView.h"
 
-#define NumberOfPagesItem           3
-#define NumberOfPagesPacket         3
-#define NumberItemPerPageItem       5
-#define NumberItemPerPagePacket     5
+
+#define NumberOfPagesPacket         2
+#define NumberItemPerPagePacket     4
 
 @implementation StoreMenuView
 
@@ -44,22 +43,10 @@
         [buttonPause addTarget:self action:@selector(buttonPausePressed:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonPause];
         
-        // add pageview
-        pageViews = [[NSMutableArray alloc] initWithCapacity:NumberOfPagesItem];
-		for(int i = 0; i < NumberOfPagesItem; i++) {
-			[pageViews addObject:[NSNull null]];
-		}
-        
+        // pageViews packet (just code, not add view)
         pageViewsPacket = [[NSMutableArray alloc] initWithCapacity:NumberOfPagesPacket];
 		for(int i = 0; i < NumberOfPagesPacket; i++) {
 			[pageViewsPacket addObject:[NSNull null]];
-		}
-        
-        // add array UIImage item
-        items = [[NSMutableArray alloc] initWithCapacity:14];
-        UIImage *imageItem = [UIImage imageNamed:@"b_0009_Shop_Piece_Pack.png"];
-		for(int i = 0; i < 14; i++) {
-			[items addObject:imageItem];
 		}
         
         // add array UIImage packet
@@ -75,19 +62,64 @@
         imageViewShopWood1.frame = CGRectMake(130, 300, imageShopWood1.size.width, imageShopWood1.size.height);
         [self addSubview:imageViewShopWood1];
         
-        // add scrollview for shop wood 1
-        scrollViewItem = [[UIScrollView alloc]initWithFrame:CGRectMake(180, 150, 650, 200)];
-        scrollViewItem.pagingEnabled = YES;
-        scrollViewItem.contentSize = CGSizeMake(650 * NumberOfPagesItem, 200);
-        scrollViewItem.showsHorizontalScrollIndicator = NO;
-        scrollViewItem.showsVerticalScrollIndicator = NO;
-        scrollViewItem.scrollsToTop = NO;
-        scrollViewItem.delegate = self;
-        scrollViewItem.tag = 0;
+        // add 3 item for wood 1
+        UIImage *imageItem = [UIImage imageNamed:@"b_0009_Shop_Piece_Pack.png"];
+        UIImage *imageBuyNow = [UIImage imageNamed:@"b_0003_Shop_BUY-NOW.png"];
         
-        [self addSubview:scrollViewItem];
-        [self loadPage:0];
-        [self loadPage:1];
+        // add button Item 1
+        UIButton *buttonItem1 = [UIButton buttonWithType:UIButtonTypeCustom];
+        buttonItem1.frame = CGRectMake(330, 150, imageItem.size.width, imageItem.size.height);
+        buttonItem1.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
+        [buttonItem1 setImage:imageItem forState:UIControlStateNormal];
+        buttonItem1.tag = 1;
+        [buttonItem1 addTarget:self action:@selector(buttonItemDidClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:buttonItem1];
+        
+        // add button buy Item 1
+        UIButton *buttonBuyItem1 = [UIButton buttonWithType:UIButtonTypeCustom];
+        buttonBuyItem1.frame = CGRectMake(330, 330, 80, 40);
+        buttonBuyItem1.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
+        [buttonBuyItem1 setImage:imageBuyNow forState:UIControlStateNormal];
+        buttonBuyItem1.tag = 11;
+        [buttonBuyItem1 addTarget:self action:@selector(buttonBuyItemDidClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:buttonBuyItem1];
+        
+        // add button Item 2
+        UIButton *buttonItem2 = [UIButton buttonWithType:UIButtonTypeCustom];
+        buttonItem2.frame = CGRectMake(460, 150, imageItem.size.width, imageItem.size.height);
+        buttonItem2.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
+        [buttonItem2 setImage:imageItem forState:UIControlStateNormal];
+        buttonItem2.tag = 2;
+        [buttonItem2 addTarget:self action:@selector(buttonItemDidClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:buttonItem2];
+        
+        // add button buy Item 2
+        UIButton *buttonBuyItem2 = [UIButton buttonWithType:UIButtonTypeCustom];
+        buttonBuyItem2.frame = CGRectMake(460, 330, 80, 40);
+        buttonBuyItem2.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
+        [buttonBuyItem2 setImage:imageBuyNow forState:UIControlStateNormal];
+        buttonBuyItem2.tag = 22;
+        [buttonBuyItem2 addTarget:self action:@selector(buttonBuyItemDidClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:buttonBuyItem2];
+        
+        // add button Item 3
+        UIButton *buttonItem3 = [UIButton buttonWithType:UIButtonTypeCustom];
+        buttonItem3.frame = CGRectMake(590, 150, imageItem.size.width, imageItem.size.height);
+        buttonItem3.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
+        [buttonItem3 setImage:imageItem forState:UIControlStateNormal];
+        buttonItem3.tag = 3;
+        [buttonItem3 addTarget:self action:@selector(buttonItemDidClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:buttonItem3];
+        
+        // add button buy Item 3
+        UIButton *buttonBuyItem3 = [UIButton buttonWithType:UIButtonTypeCustom];
+        buttonBuyItem3.frame = CGRectMake(590, 330, 80, 40);
+        buttonBuyItem3.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
+        [buttonBuyItem3 setImage:imageBuyNow forState:UIControlStateNormal];
+        buttonBuyItem3.tag = 33;
+        [buttonBuyItem3 addTarget:self action:@selector(buttonBuyItemDidClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:buttonBuyItem3];
+        
         
         //add shop wood 2
         UIImage *imageShopWood2 = [UIImage imageNamed:@"b_0011_Shop_WOOD.png"];
@@ -95,10 +127,42 @@
         imageViewShopWood2.frame = CGRectMake(130, 600, imageShopWood2.size.width, imageShopWood2.size.height);
         [self addSubview:imageViewShopWood2];
         
+        // add button buy Packet 1
+        UIButton *buttonBuyPacket1 = [UIButton buttonWithType:UIButtonTypeCustom];
+        buttonBuyPacket1.frame = CGRectMake(310, 630, 80, 40);
+        buttonBuyPacket1.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
+        [buttonBuyPacket1 setImage:imageBuyNow forState:UIControlStateNormal];
+        [buttonBuyPacket1 addTarget:self action:@selector(buttonBuyPacketDidClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:buttonBuyPacket1];
+        
+        // add button buy Packet 2
+        UIButton *buttonBuyPacket2 = [UIButton buttonWithType:UIButtonTypeCustom];
+        buttonBuyPacket2.frame = CGRectMake(430, 630, 80, 40);
+        buttonBuyPacket1.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
+        [buttonBuyPacket2 setImage:imageBuyNow forState:UIControlStateNormal];
+        [buttonBuyPacket2 addTarget:self action:@selector(buttonBuyPacketDidClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:buttonBuyPacket2];
+        
+        // add button buy Packet 3
+        UIButton *buttonBuyPacket3 = [UIButton buttonWithType:UIButtonTypeCustom];
+        buttonBuyPacket3.frame = CGRectMake(550, 630, 80, 40);
+        buttonBuyPacket1.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
+        [buttonBuyPacket3 setImage:imageBuyNow forState:UIControlStateNormal];
+        [buttonBuyPacket3 addTarget:self action:@selector(buttonBuyPacketDidClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:buttonBuyPacket3];
+        
+        // add button buy Packet 4
+        UIButton *buttonBuyPacket4 = [UIButton buttonWithType:UIButtonTypeCustom];
+        buttonBuyPacket4.frame = CGRectMake(680, 630, 80, 40);
+        buttonBuyPacket1.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
+        [buttonBuyPacket4 setImage:imageBuyNow forState:UIControlStateNormal];
+        [buttonBuyPacket4 addTarget:self action:@selector(buttonBuyPacketDidClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:buttonBuyPacket4];
+        
         // add scrollview for shop wood 2
-        scrollViewPacket = [[UIScrollView alloc]initWithFrame:CGRectMake(180, 450, 650, 200)];
+        scrollViewPacket = [[UIScrollView alloc]initWithFrame:CGRectMake(280, 450, 512, 200)];
         scrollViewPacket.pagingEnabled = YES;
-        scrollViewPacket.contentSize = CGSizeMake(650 * NumberOfPagesPacket, 200);
+        scrollViewPacket.contentSize = CGSizeMake(512 * NumberOfPagesPacket, 200);
         scrollViewPacket.showsHorizontalScrollIndicator = NO;
         scrollViewPacket.showsVerticalScrollIndicator = NO;
         scrollViewPacket.scrollsToTop = NO;
@@ -108,10 +172,6 @@
         [self addSubview:scrollViewPacket];
         [self loadPagePacket:0];
         [self loadPagePacket:1];
-        
-        // add array item
-//        items = [[GameManager sharedGameManager] pathImagesForPacketIndex:1];
-//        NSLog(@"items count: %d",[items count]);
 
     }
     return self;
@@ -125,13 +185,9 @@
         return;
     }
     
-    CGFloat pageWidth = scrollViewItem.frame.size.width;
-    int page = floor((scrollViewItem.contentOffset.x - pageWidth/2) / pageWidth) + 1;
+    CGFloat pageWidth = scrollViewPacket.frame.size.width;
+    int page = floor((scrollViewPacket.contentOffset.x - pageWidth/2) / pageWidth) + 1;
 //    pageControl.currentPage = page;
-    
-    [self loadPage:page - 1];
-    [self loadPage:page];
-    [self loadPage:page + 1];
     
     [self loadPagePacket:page - 1];
     [self loadPagePacket:page];
@@ -151,28 +207,6 @@
 
 
 #pragma mark - action
-
-- (void)loadPage:(int)pageIndex {
-	if (pageIndex < 0)
-        return;
-    if (pageIndex >= NumberOfPagesItem)
-        return;
-    
-	if((NSNull*)[pageViews objectAtIndex:pageIndex] == [NSNull null]) {
-		CGRect frame = scrollViewItem.frame;
-		frame.origin.x = frame.size.width * pageIndex;
-		frame.origin.y = 0;
-		NSRange range;
-		range.location = pageIndex * NumberItemPerPageItem;
-		range.length = fmin(NumberItemPerPageItem, [items count] - range.location);
-		
-		StoreMenuPacketView* itemView = [[StoreMenuPacketView alloc] initWithFrame:frame items:[items subarrayWithRange:range]];
-        //		itemView.delegate = self;
-		[scrollViewItem addSubview:itemView];
-		[pageViews replaceObjectAtIndex:pageIndex withObject:itemView];
-		[itemView release];
-	}
-}
 
 - (void)loadPagePacket:(int)pageIndex {
 	if (pageIndex < 0)
@@ -203,6 +237,18 @@
 
 - (void)buttonPausePressed:(id)sender {
 	NSLog(@"button Pause clicked");
+}
+
+- (void)buttonItemDidClick:(id)sender {
+    NSLog(@"button Item clicked");
+}
+
+- (void)buttonBuyItemDidClick:(id)sender {
+    NSLog(@"button Buy Item clicked");
+}
+
+- (void)buttonBuyPacketDidClick:(id)sender {
+    NSLog(@"button Buy Packet clicked");
 }
 
 @end

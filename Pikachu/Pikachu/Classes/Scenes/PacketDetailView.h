@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface PacketDetailView : UIView {
-    CGFloat _itemWidth;
-	CGFloat _itemHeight;
-	NSArray* _items;
+    CGFloat _packetWidth;
+	CGFloat _packetHeight;
+	NSArray* _packets;
 }
 
-- (id)initWithFrame:(CGRect)frame items:(NSArray*) items;
+- (id)initWithFrame:(CGRect)frame packets:(NSArray*)packets;
 
 @end

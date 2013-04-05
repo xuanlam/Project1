@@ -11,7 +11,7 @@
 @interface StorePacketDetailView : UIView <UIScrollViewDelegate> {
     UIScrollView* scrollView;
 	UIPageControl* pageControl;
-	NSMutableArray* items;
+	NSMutableArray* packets;
 	NSInteger kNumberOfPages;
 	BOOL pageControlUsed;
 	NSMutableArray* pageViews;
