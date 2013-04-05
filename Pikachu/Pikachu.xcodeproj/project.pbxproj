@@ -327,7 +327,6 @@
 		F8AD3E9B170820AE00F8277B /* button_Store_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3E97170820AD00F8277B /* button_Store_down@2x.png */; };
 		F8AD3E9C170820AE00F8277B /* button_Store.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3E98170820AD00F8277B /* button_Store.png */; };
 		F8AD3E9D170820AE00F8277B /* button_Store@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3E99170820AD00F8277B /* button_Store@2x.png */; };
-		F8AD3EA11708218A00F8277B /* StoreMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F8AD3EA01708218A00F8277B /* StoreMenuLayer.m */; };
 		F8AD3EA7170826C300F8277B /* b_0000_button_Back_down.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3EA3170826C000F8277B /* b_0000_button_Back_down.png */; };
 		F8AD3EA8170826C300F8277B /* b_0000_button_Back_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3EA4170826C100F8277B /* b_0000_button_Back_down@2x.png */; };
 		F8AD3EA9170826C300F8277B /* b_0001_button_Back.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3EA5170826C200F8277B /* b_0001_button_Back.png */; };
@@ -816,8 +815,6 @@
 		F8AD3E97170820AD00F8277B /* button_Store_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_Store_down@2x.png"; sourceTree = "<group>"; };
 		F8AD3E98170820AD00F8277B /* button_Store.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_Store.png; sourceTree = "<group>"; };
 		F8AD3E99170820AD00F8277B /* button_Store@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_Store@2x.png"; sourceTree = "<group>"; };
-		F8AD3E9F1708218A00F8277B /* StoreMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreMenuLayer.h; sourceTree = "<group>"; };
-		F8AD3EA01708218A00F8277B /* StoreMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreMenuLayer.m; sourceTree = "<group>"; };
 		F8AD3EA3170826C000F8277B /* b_0000_button_Back_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b_0000_button_Back_down.png; sourceTree = "<group>"; };
 		F8AD3EA4170826C100F8277B /* b_0000_button_Back_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "b_0000_button_Back_down@2x.png"; sourceTree = "<group>"; };
 		F8AD3EA5170826C200F8277B /* b_0001_button_Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b_0001_button_Back.png; sourceTree = "<group>"; };
@@ -1639,8 +1636,6 @@
 		F8AD3E9E1708210300F8277B /* Store */ = {
 			isa = PBXGroup;
 			children = (
-				F8AD3E9F1708218A00F8277B /* StoreMenuLayer.h */,
-				F8AD3EA01708218A00F8277B /* StoreMenuLayer.m */,
 				F88D1A51170CD6A20054E60D /* StoreMenuView.h */,
 				F88D1A52170CD6A20054E60D /* StoreMenuView.m */,
 				F85A5E2D170D6E3500E7DC56 /* StoreMenuItemView.h */,
@@ -2033,7 +2028,6 @@
 				A08A963C16047D850051A733 /* MainMenuScene.m in Sources */,
 				A08A964116047E4C0051A733 /* MainMenuLayer.m in Sources */,
 				A0239D571706E71000BD5242 /* UIFont+NAB.m in Sources */,
-				F8AD3EA11708218A00F8277B /* StoreMenuLayer.m in Sources */,
 				A04501A31709E2C0008730DC /* PKCUserInfo.m in Sources */,
 				F8E2BCE6170C65C500734DDD /* ItemDetailView.m in Sources */,
 				F88D1A53170CD6A20054E60D /* StoreMenuView.m in Sources */,
