@@ -321,6 +321,7 @@
 		A0EECC731706E13900BDC4E9 /* Pokemon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0EECC721706E13900BDC4E9 /* Pokemon.ttf */; };
 		F804836C170F2DD500AAB3D9 /* StoreMenuPacketView.m in Sources */ = {isa = PBXBuildFile; fileRef = F804836B170F2DD500AAB3D9 /* StoreMenuPacketView.m */; };
 		F804836F170F2E4800AAB3D9 /* StorePacketDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = F804836E170F2E4800AAB3D9 /* StorePacketDetailView.m */; };
+		F8048372170F369A00AAB3D9 /* PacketDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8048371170F369A00AAB3D9 /* PacketDetailView.m */; };
 		F88D1A53170CD6A20054E60D /* StoreMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = F88D1A52170CD6A20054E60D /* StoreMenuView.m */; };
 		F8AD3E9A170820AE00F8277B /* button_Store_down.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3E96170820AC00F8277B /* button_Store_down.png */; };
 		F8AD3E9B170820AE00F8277B /* button_Store_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3E97170820AD00F8277B /* button_Store_down@2x.png */; };
@@ -806,6 +807,8 @@
 		F804836B170F2DD500AAB3D9 /* StoreMenuPacketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreMenuPacketView.m; sourceTree = "<group>"; };
 		F804836D170F2E4800AAB3D9 /* StorePacketDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorePacketDetailView.h; sourceTree = "<group>"; };
 		F804836E170F2E4800AAB3D9 /* StorePacketDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorePacketDetailView.m; sourceTree = "<group>"; };
+		F8048370170F369900AAB3D9 /* PacketDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketDetailView.h; sourceTree = "<group>"; };
+		F8048371170F369A00AAB3D9 /* PacketDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketDetailView.m; sourceTree = "<group>"; };
 		F88D1A51170CD6A20054E60D /* StoreMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreMenuView.h; sourceTree = "<group>"; };
 		F88D1A52170CD6A20054E60D /* StoreMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreMenuView.m; sourceTree = "<group>"; };
 		F8AD3E96170820AC00F8277B /* button_Store_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_Store_down.png; sourceTree = "<group>"; };
@@ -1641,6 +1644,8 @@
 				F804836E170F2E4800AAB3D9 /* StorePacketDetailView.m */,
 				F8E2BCE4170C65C400734DDD /* ItemDetailView.h */,
 				F8E2BCE5170C65C400734DDD /* ItemDetailView.m */,
+				F8048370170F369900AAB3D9 /* PacketDetailView.h */,
+				F8048371170F369A00AAB3D9 /* PacketDetailView.m */,
 			);
 			name = Store;
 			sourceTree = "<group>";
@@ -2028,6 +2033,7 @@
 				F88D1A53170CD6A20054E60D /* StoreMenuView.m in Sources */,
 				F804836C170F2DD500AAB3D9 /* StoreMenuPacketView.m in Sources */,
 				F804836F170F2E4800AAB3D9 /* StorePacketDetailView.m in Sources */,
+				F8048372170F369A00AAB3D9 /* PacketDetailView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

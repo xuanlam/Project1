@@ -7,7 +7,7 @@
 //
 
 #import "StoreMenuView.h"
-#import "StoreMenuItemView.h"
+#import "StoreMenuPacketView.h"
 
 #define NumberOfPagesItem           3
 #define NumberOfPagesPacket         3
@@ -166,7 +166,7 @@
 		range.location = pageIndex * NumberItemPerPageItem;
 		range.length = fmin(NumberItemPerPageItem, [items count] - range.location);
 		
-		StoreMenuItemView* itemView = [[StoreMenuItemView alloc] initWithFrame:frame items:[items subarrayWithRange:range]];
+		StoreMenuPacketView* itemView = [[StoreMenuPacketView alloc] initWithFrame:frame items:[items subarrayWithRange:range]];
         //		itemView.delegate = self;
 		[scrollViewItem addSubview:itemView];
 		[pageViews replaceObjectAtIndex:pageIndex withObject:itemView];
@@ -188,7 +188,7 @@
 		range.location = pageIndex * NumberItemPerPagePacket;
 		range.length = fmin(NumberItemPerPagePacket, [packets count] - range.location);
 		
-		StoreMenuItemView* itemView = [[StoreMenuItemView alloc] initWithFrame:frame items:[packets subarrayWithRange:range]];
+		StoreMenuPacketView* itemView = [[StoreMenuPacketView alloc] initWithFrame:frame items:[packets subarrayWithRange:range]];
         //		itemView.delegate = self;
 		[scrollViewPacket addSubview:itemView];
 		[pageViewsPacket replaceObjectAtIndex:pageIndex withObject:itemView];
