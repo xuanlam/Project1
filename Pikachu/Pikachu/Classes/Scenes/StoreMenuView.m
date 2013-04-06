@@ -77,7 +77,7 @@
         
         // add button buy Item 1
         UIButton *buttonBuyItem1 = [UIButton buttonWithType:UIButtonTypeCustom];
-        buttonBuyItem1.frame = CGRectMake(330, 330, 80, 40);
+        buttonBuyItem1.frame = CGRectMake(350, 330, 80, 40);
         buttonBuyItem1.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
         [buttonBuyItem1 setImage:imageBuyNow forState:UIControlStateNormal];
         buttonBuyItem1.tag = 11;
@@ -95,7 +95,7 @@
         
         // add button buy Item 2
         UIButton *buttonBuyItem2 = [UIButton buttonWithType:UIButtonTypeCustom];
-        buttonBuyItem2.frame = CGRectMake(460, 330, 80, 40);
+        buttonBuyItem2.frame = CGRectMake(480, 330, 80, 40);
         buttonBuyItem2.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
         [buttonBuyItem2 setImage:imageBuyNow forState:UIControlStateNormal];
         buttonBuyItem2.tag = 22;
@@ -113,7 +113,7 @@
         
         // add button buy Item 3
         UIButton *buttonBuyItem3 = [UIButton buttonWithType:UIButtonTypeCustom];
-        buttonBuyItem3.frame = CGRectMake(590, 330, 80, 40);
+        buttonBuyItem3.frame = CGRectMake(610, 330, 80, 40);
         buttonBuyItem3.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
         [buttonBuyItem3 setImage:imageBuyNow forState:UIControlStateNormal];
         buttonBuyItem3.tag = 33;
@@ -126,38 +126,6 @@
         UIImageView *imageViewShopWood2 = [[UIImageView alloc]initWithImage:imageShopWood2];
         imageViewShopWood2.frame = CGRectMake(130, 600, imageShopWood2.size.width, imageShopWood2.size.height);
         [self addSubview:imageViewShopWood2];
-        
-        // add button buy Packet 1
-        UIButton *buttonBuyPacket1 = [UIButton buttonWithType:UIButtonTypeCustom];
-        buttonBuyPacket1.frame = CGRectMake(310, 630, 80, 40);
-        buttonBuyPacket1.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
-        [buttonBuyPacket1 setImage:imageBuyNow forState:UIControlStateNormal];
-        [buttonBuyPacket1 addTarget:self action:@selector(buttonBuyPacketDidClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:buttonBuyPacket1];
-        
-        // add button buy Packet 2
-        UIButton *buttonBuyPacket2 = [UIButton buttonWithType:UIButtonTypeCustom];
-        buttonBuyPacket2.frame = CGRectMake(430, 630, 80, 40);
-        buttonBuyPacket1.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
-        [buttonBuyPacket2 setImage:imageBuyNow forState:UIControlStateNormal];
-        [buttonBuyPacket2 addTarget:self action:@selector(buttonBuyPacketDidClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:buttonBuyPacket2];
-        
-        // add button buy Packet 3
-        UIButton *buttonBuyPacket3 = [UIButton buttonWithType:UIButtonTypeCustom];
-        buttonBuyPacket3.frame = CGRectMake(550, 630, 80, 40);
-        buttonBuyPacket1.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
-        [buttonBuyPacket3 setImage:imageBuyNow forState:UIControlStateNormal];
-        [buttonBuyPacket3 addTarget:self action:@selector(buttonBuyPacketDidClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:buttonBuyPacket3];
-        
-        // add button buy Packet 4
-        UIButton *buttonBuyPacket4 = [UIButton buttonWithType:UIButtonTypeCustom];
-        buttonBuyPacket4.frame = CGRectMake(680, 630, 80, 40);
-        buttonBuyPacket1.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
-        [buttonBuyPacket4 setImage:imageBuyNow forState:UIControlStateNormal];
-        [buttonBuyPacket4 addTarget:self action:@selector(buttonBuyPacketDidClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:buttonBuyPacket4];
         
         // add scrollview for shop wood 2
         scrollViewPacket = [[UIScrollView alloc]initWithFrame:CGRectMake(280, 450, 512, 200)];
@@ -245,10 +213,6 @@
 
 - (void)buttonBuyItemDidClick:(id)sender {
     NSLog(@"button Buy Item clicked");
-}
-
-- (void)buttonBuyPacketDidClick:(id)sender {
-    NSLog(@"button Buy Packet clicked");
 }
 
 @end
