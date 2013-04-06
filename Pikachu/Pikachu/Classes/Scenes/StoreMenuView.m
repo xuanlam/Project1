@@ -50,9 +50,9 @@
 		}
         
         // add array UIImage packet
-        packets = [[NSMutableArray alloc] initWithCapacity:14];
+        packets = [[NSMutableArray alloc] initWithCapacity:NumberOfPagesPacket * NumberItemPerPagePacket];
         UIImage *imagePacket = [UIImage imageNamed:@"b_0009_Shop_Piece_Pack.png"];
-		for(int i = 0; i < 14; i++) {
+		for(int i = 0; i < NumberOfPagesPacket * NumberItemPerPagePacket; i++) {
 			[packets addObject:imagePacket];
 		}
         
