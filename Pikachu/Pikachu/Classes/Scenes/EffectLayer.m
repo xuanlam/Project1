@@ -27,15 +27,13 @@
     [self addChild:line];
 }
 
-- (void)drawLineWithPoints:(NSArray *)arrayPoint andDirections:(NSArray *)arrayDirection onCompletion:(void (^)())completion {
+- (void)drawGuideWithPoints:(NSArray *)arrayPoint andDirections:(NSArray *)arrayDirection withTimeInterval:(CGFloat)timeInterval onCompletion:(void (^)())completion {
     
     for (int i = 1; i < arrayPoint.count; i++) {
         [self drawLineFromPoint:[[arrayPoint objectAtIndex:i - 1] CGPointValue] toPoint:[[arrayPoint objectAtIndex:i] CGPointValue]];
     }
     
-    double delayInSeconds = 0.2f;
-    
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, timeInterval * NSEC_PER_SEC);
     
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         

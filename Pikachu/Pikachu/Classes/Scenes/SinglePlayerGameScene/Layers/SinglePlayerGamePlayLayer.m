@@ -478,6 +478,19 @@ const int GameHeight = 8;
 //    [[SimpleAudioEngine sharedEngine] playEffect:@"click.mp3"];
 }
 
+- (void)drawHintOnCompletion:(void(^)())completion {
+    NSMutableArray *points = [NSMutableArray array];
+    
+    for (int i = 0; i < _rCount; i ++) {
+        CGPoint point = [self pointForCellWithRow:[[_rX objectAtIndex:i] intValue] andColumn:[[_rY objectAtIndex:i] intValue]];
+        [points addObject:[NSValue valueWithCGPoint:point]];
+    }
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needDrawHintWithPoints:andDirections:onCompletion:)]) {
+        [_delegate gamePlayLayer:self needDrawHintWithPoints:points andDirections:_d onCompletion:completion];
+    }
+}
+
 
 #pragma mark - Getters
 
@@ -674,14 +687,15 @@ const int GameHeight = 8;
         
     } else {
         
-        [self drawLineConnectOnCompletion:^{
+        [self drawHintOnCompletion:^{
+            
             _countHint -= 1;
+            
             [PKCUserInfo setNumberOfHintCount:_countHint];
             
             if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateCountHintWithNumber:)]) {
                 [_delegate gamePlayLayer:self needUpdateCountHintWithNumber:_countHint];
             }
-
         }];
     }
 }

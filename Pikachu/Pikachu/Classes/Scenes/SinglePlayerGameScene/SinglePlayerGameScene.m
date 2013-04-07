@@ -55,7 +55,12 @@
 //}
 
 - (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needDrawGuideWithPoints:(NSArray *)points andDirections:(NSArray *)directions onCompletion:(void (^)())completion {
-    [_effectLayer drawLineWithPoints:points andDirections:directions onCompletion:completion];
+    [_effectLayer drawGuideWithPoints:points andDirections:directions withTimeInterval:0.2f onCompletion:completion];
+}
+
+- (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needDrawHintWithPoints:(NSArray *)points andDirections:(NSArray *)directions onCompletion:(void (^)())completion {
+    
+    [_effectLayer drawGuideWithPoints:points andDirections:directions withTimeInterval:0.5f onCompletion:completion];
 }
 
 - (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needUpdateTimeLeftWithValue:(float)value {

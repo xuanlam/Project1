@@ -11,6 +11,6 @@
 
 @interface EffectLayer : CCLayer
 
-- (void)drawLineWithPoints:(NSArray *)arrayPoint andDirections:(NSArray *)arrayDirection onCompletion:(void(^)())completion;
+- (void)drawGuideWithPoints:(NSArray *)arrayPoint andDirections:(NSArray *)arrayDirection withTimeInterval:(CGFloat)timeInterval onCompletion:(void (^)())completion;
 
 @end
