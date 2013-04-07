@@ -582,24 +582,27 @@ const int GameHeight = 8;
         [_delegate gamePlayLayer:self needUpdateScoreWithScore:_score];
     }
     
+    //Update count
+    _RemainingCount -= 2;
+    _highlightedCellIndex = NSNotFound;
+
+    [self upComboLevel];
+    
     // Draw guide
     [self drawLineConnectOnCompletion:^{
         //Organize board
         [self updateBoard];
         
-        //Update count
-        _RemainingCount -= 2;
-        _highlightedCellIndex = NSNotFound;
-        
         if (_RemainingCount <= 0) {
+            
             [self upLevel];
+            
         } else {
-            [self upComboLevel];
             
             if ([self isNoWay]) {
                 [self randomMap];
             }
-        }    
+        }
     }];
 }
 
@@ -687,16 +690,16 @@ const int GameHeight = 8;
         
     } else {
         
-        [self drawHintOnCompletion:^{
-            
-            _countHint -= 1;
-            
-            [PKCUserInfo setNumberOfHintCount:_countHint];
-            
-            if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateCountHintWithNumber:)]) {
-                [_delegate gamePlayLayer:self needUpdateCountHintWithNumber:_countHint];
-            }
-        }];
+        [self drawHintOnCompletion:nil];
+        
+        _countHint -= 1;
+        
+        [PKCUserInfo setNumberOfHintCount:_countHint];
+        
+        if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateCountHintWithNumber:)]) {
+            [_delegate gamePlayLayer:self needUpdateCountHintWithNumber:_countHint];
+        }
+
     }
 }
 
