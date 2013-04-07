@@ -27,17 +27,22 @@
     [self addChild:line];
 }
 
-- (void)drawLineWithPoints:(NSArray *)arrayPoint andDirections:(NSArray *)arrayDirection {
+- (void)drawLineWithPoints:(NSArray *)arrayPoint andDirections:(NSArray *)arrayDirection onCompletion:(void (^)())completion {
+    
     for (int i = 1; i < arrayPoint.count; i++) {
         [self drawLineFromPoint:[[arrayPoint objectAtIndex:i - 1] CGPointValue] toPoint:[[arrayPoint objectAtIndex:i] CGPointValue]];
-//        [self drawLineWithPoints:[arrayPoint objectAtIndex:i - 1] andDirections:[arrayPoint objectAtIndex:i]];
     }
     
-    [self performSelector:@selector(cleanUpEffect) withObject:nil afterDelay:0.5f];
-}
-
-- (void)cleanUpEffect {
-    [self removeAllChildrenWithCleanup:YES];
+    double delayInSeconds = 0.2f;
+    
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        
+        if (completion) completion();
+        
+        [self removeAllChildrenWithCleanup:YES];
+    });
 }
 
 @end

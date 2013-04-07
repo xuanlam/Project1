@@ -54,8 +54,8 @@
 //    [_interfaceLayer updateTimeBarWithValue:value];
 //}
 
-- (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needDrawLineWithPoints:(NSArray *)points andDirections:(NSArray *)directions {
-    [_effectLayer drawLineWithPoints:points andDirections:directions];
+- (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needDrawGuideWithPoints:(NSArray *)points andDirections:(NSArray *)directions onCompletion:(void (^)())completion {
+    [_effectLayer drawLineWithPoints:points andDirections:directions onCompletion:completion];
 }
 
 - (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needUpdateTimeLeftWithValue:(float)value {

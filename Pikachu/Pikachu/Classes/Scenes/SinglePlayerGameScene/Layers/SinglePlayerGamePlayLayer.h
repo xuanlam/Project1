@@ -38,7 +38,7 @@ typedef enum {
 
 @protocol SinglePlayerGamePlayDelegate <NSObject>
 
-- (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needDrawLineWithPoints:(NSArray *)points andDirections:(NSArray *)directions;
+- (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needDrawGuideWithPoints:(NSArray *)points andDirections:(NSArray *)directions onCompletion:(void(^)())completion;
 - (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needUpdateTimeLeftWithValue:(float)value;
 - (void)gamePlayLayer:(SinglePlayerGamePlayLayer *)gamePlayLayer needUpdateComboTimeLeftWithValue:(float)value;
 - (void)gamePlayLayerNeedHideComboBar:(SinglePlayerGamePlayLayer *)gamePlayLayer;

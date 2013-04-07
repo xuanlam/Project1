@@ -11,6 +11,6 @@
 
 @interface EffectLayer : CCLayer
 
-- (void)drawLineWithPoints:(NSArray *)arrayPoint andDirections:(NSArray *)arrayDirection;
+- (void)drawLineWithPoints:(NSArray *)arrayPoint andDirections:(NSArray *)arrayDirection onCompletion:(void(^)())completion;
 
 @end

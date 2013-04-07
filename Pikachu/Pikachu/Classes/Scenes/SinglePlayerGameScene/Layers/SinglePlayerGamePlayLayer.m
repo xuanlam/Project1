@@ -81,6 +81,8 @@ const int GameHeight = 8;
         [self setUpNewGameWithLevel:1];
         
         [self schedule:@selector(updateTime) interval:1.0f];
+        
+        _logicAlignment = PKCLogicAlignmentNone;
     }
     return self;
 }
@@ -320,36 +322,145 @@ const int GameHeight = 8;
         }
     }
     
-//    if (_logicAlignment == PKCLogicAlignmentLeft) {
-//        for (int i = 1; i <= GameHeight; i++) {
-//            for (int j = GameWidth; j > 0; j--) {
-//                if ([[_CardMatrix objectForRow:i atColumn:j] intValue] == -1) {
-//                    
-//                    for (int k = j; k < GameWidth; k++) {
-//                        
-//                        [_CardMatrix setObject:[_CardMatrix objectForRow:i atColumn:k + 1] forRow:i atColumn:k];
-//                        
-//                        int cellID = i * (GameWidth + 2) + k + 1;
-//                        GameCell *cell = [self cellForCellID:cellID];
-//                        
-//                        if (cell) {
-//                            cell.position = ccp(cell.position.x - 60.0f, cell.position.y);
-//                            cell.column -= 1;
-//                            cell.cellID = cellID - 1;
-//                            cell.tag = cellID - 1;
-//                        } else {
-//                            NSLog(@"");
-//                        }
-//                    }
-//                    
-//                    [_CardMatrix setObject:[NSNumber numberWithInt:-1] forRow:i atColumn:GameWidth];
-//                }
-//            }
-//        }
-//    }
+    switch (_logicAlignment) {
+        case PKCLogicAlignmentLeft: {
+            
+            for (int i = 1; i <= GameHeight; i++) {
+                
+                for (int j = GameWidth; j > 0; j--) {
+                    
+                    if ([[_CardMatrix objectForRow:i atColumn:j] intValue] == -1) {
+                        
+                        for (int k = j; k < GameWidth; k++) {
+                            
+                            [_CardMatrix setObject:[_CardMatrix objectForRow:i atColumn:k + 1] forRow:i atColumn:k];
+                            
+                            int cellID = i * (GameWidth + 2) + k + 1;
+                            GameCell *cell = [self cellForCellID:cellID];
+                            
+                            if (cell) {
+                                cell.position = ccp(cell.position.x - 60.0f, cell.position.y);
+                                cell.column -= 1;
+                                cell.cellID = cellID - 1;
+                                cell.tag = cellID - 1;
+                            } else {
+                                NSLog(@"");
+                            }
+                        }
+                        
+                        [_CardMatrix setObject:[NSNumber numberWithInt:-1] forRow:i atColumn:GameWidth];
+                    }
+                }
+            }
+
+            break;
+        }
+            
+        case PKCLogicAlignmentRight : {
+            
+            for (int i = 1; i <= GameHeight; i++) {
+                
+                for (int j = 1; j <= GameWidth; j++) {
+                    
+                    if ([[_CardMatrix objectForRow:i atColumn:j] intValue] == -1) {
+                        
+                        for (int k = j; k > 0; k--) {
+                            
+                            [_CardMatrix setObject:[_CardMatrix objectForRow:i atColumn:k - 1] forRow:i atColumn:k];
+                            
+                            int cellID = i * (GameWidth + 2) + k - 1;
+                            GameCell *cell = [self cellForCellID:cellID];
+                            
+                            if (cell) {
+                                cell.position = ccp(cell.position.x + 60.0f, cell.position.y);
+                                cell.column += 1;
+                                cell.cellID = cellID + 1;
+                                cell.tag = cellID + 1;
+                            } else {
+                                NSLog(@"");
+                            }
+                        }
+                        
+                        [_CardMatrix setObject:[NSNumber numberWithInt:-1] forRow:i atColumn:1];
+                    }
+                }
+            }
+            
+            break;
+        }
+        
+        case PKCLogicAlignmentTop: {
+            
+            for (int i = 1; i <= GameWidth; i++) {
+                
+                for (int j = GameHeight; j > 0; j--) {
+                    
+                    if ([[_CardMatrix objectForRow:j atColumn:i] intValue] == -1) {
+                        
+                        for (int k = j; k < GameHeight; k++) {
+                            
+                            [_CardMatrix setObject:[_CardMatrix objectForRow:k + 1 atColumn:i] forRow:k atColumn:i];
+                            
+                            int cellID = (k + 1) * (GameWidth + 2) + i;
+                            GameCell *cell = [self cellForCellID:cellID];
+                            
+                            if (cell) {
+                                cell.position = ccp(cell.position.x, cell.position.y - PKCGAME_CELL_SIZE.height);
+                                cell.row -= 1;
+                                cell.cellID = cellID - GameWidth - 2;
+                                cell.tag = cellID - GameWidth - 2;
+                            } else {
+                                NSLog(@"");
+                            }
+                        }
+                        
+                        [_CardMatrix setObject:[NSNumber numberWithInt:-1] forRow:GameHeight atColumn:i];
+                    }
+                }
+            }
+            
+            break;
+        }
+            
+        case PKCLogicAlignmentBottom: {
+            
+            for (int i = 1; i <= GameWidth; i++) { //Column
+                
+                for (int j = 1; j <= GameHeight; j++) { //Row
+                    
+                    if ([[_CardMatrix objectForRow:j atColumn:i] intValue] == -1) {
+                        
+                        for (int k = j; k > 0; k--) {
+                            
+                            [_CardMatrix setObject:[_CardMatrix objectForRow:k - 1 atColumn:i] forRow:k atColumn:i];
+                            
+                            int cellID = (k - 1) * (GameWidth + 2) + i;
+                            GameCell *cell = [self cellForCellID:cellID];
+                            
+                            if (cell) {
+                                cell.position = ccp(cell.position.x, cell.position.y + PKCGAME_CELL_SIZE.height);
+                                cell.row += 1;
+                                cell.cellID = cellID + GameWidth + 2;
+                                cell.tag = cellID + GameWidth + 2;
+                            } else {
+                                NSLog(@"");
+                            }
+                        }
+
+                        [_CardMatrix setObject:[NSNumber numberWithInt:-1] forRow:1 atColumn:i];
+                    }
+                }
+            }
+
+            
+            break;
+        }
+        default:
+            break;
+    }
 }
 
-- (void)drawLineConnect {
+- (void)drawLineConnectOnCompletion:(void(^)())completion {
     NSMutableArray *points = [NSMutableArray array];
     
     for (int i = 0; i < _rCount; i ++) {
@@ -357,12 +468,14 @@ const int GameHeight = 8;
         [points addObject:[NSValue valueWithCGPoint:point]];
     }
     
-    if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needDrawLineWithPoints:andDirections:)]) {
-        [_delegate gamePlayLayer:self needDrawLineWithPoints:points andDirections:_d];
+    if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needDrawGuideWithPoints:andDirections:onCompletion:)]) {
+        [_delegate gamePlayLayer:self needDrawGuideWithPoints:points andDirections:_d onCompletion:^{
+            if (completion) completion();
+        }];
     }
 
     //Play effect sound
-    [[SimpleAudioEngine sharedEngine] playEffect:@"click.mp3"];
+//    [[SimpleAudioEngine sharedEngine] playEffect:@"click.mp3"];
 }
 
 
@@ -420,6 +533,7 @@ const int GameHeight = 8;
 
     _level += 1;
     
+    _logicAlignment = (_level - 1) % 5;
     
     if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateLevelWithLevel:)]) {
         [_delegate gamePlayLayer:self needUpdateLevelWithLevel:_level];
@@ -443,6 +557,8 @@ const int GameHeight = 8;
 
 - (void)doCombineForCell:(GameCell *)cell {
     
+    cell.highlighted = YES;
+    
     //Update matric
     [_CardMatrix setObject:[NSNumber numberWithInt:-1] forRow:cell.row atColumn:cell.column];
     [_CardMatrix setObject:[NSNumber numberWithInt:-1] forRow:_CardRow atColumn:_CardColumn];
@@ -454,24 +570,24 @@ const int GameHeight = 8;
     }
     
     // Draw guide
-    [self drawLineConnect];
-    
-    //Organize board
-    [self updateBoard];
-    
-    //Update count
-    _RemainingCount -= 2;
-    _highlightedCellIndex = NSNotFound;
-    
-    if (_RemainingCount <= 0) {
-        [self upLevel];
-    } else {
-        [self upComboLevel];
+    [self drawLineConnectOnCompletion:^{
+        //Organize board
+        [self updateBoard];
         
-        if ([self isNoWay]) {
-            [self randomMap];
-        }
-    }    
+        //Update count
+        _RemainingCount -= 2;
+        _highlightedCellIndex = NSNotFound;
+        
+        if (_RemainingCount <= 0) {
+            [self upLevel];
+        } else {
+            [self upComboLevel];
+            
+            if ([self isNoWay]) {
+                [self randomMap];
+            }
+        }    
+    }];
 }
 
 - (void)deselectHighlightedCell {
@@ -558,14 +674,15 @@ const int GameHeight = 8;
         
     } else {
         
-        [self drawLineConnect];
-        
-        _countHint -= 1;
-        [PKCUserInfo setNumberOfHintCount:_countHint];
-        
-        if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateCountHintWithNumber:)]) {
-            [_delegate gamePlayLayer:self needUpdateCountHintWithNumber:_countHint];
-        }
+        [self drawLineConnectOnCompletion:^{
+            _countHint -= 1;
+            [PKCUserInfo setNumberOfHintCount:_countHint];
+            
+            if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateCountHintWithNumber:)]) {
+                [_delegate gamePlayLayer:self needUpdateCountHintWithNumber:_countHint];
+            }
+
+        }];
     }
 }
 
