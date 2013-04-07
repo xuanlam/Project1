@@ -15,8 +15,7 @@
 
 @implementation StorePacketDetailView
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame andNumberPacket:(int)numberPacket {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
@@ -57,7 +56,7 @@
         //		}
         
         // add array item
-        NSMutableArray *imageItem  = [[NSMutableArray alloc]initWithArray:[[GameManager sharedGameManager] pathImagesForPacketIndex:1]];
+        NSMutableArray *imageItem  = [[NSMutableArray alloc]initWithArray:[[GameManager sharedGameManager] pathImagesForPacketIndex:numberPacket + 1]];
         packets = [[NSMutableArray alloc] initWithCapacity:[imageItem count]];
         for (int i = 0; i < [imageItem count]; i++) {
             UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[imageItem objectAtIndex:i]]];

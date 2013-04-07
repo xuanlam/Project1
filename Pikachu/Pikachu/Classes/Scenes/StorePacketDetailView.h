@@ -17,6 +17,7 @@
 	NSMutableArray* pageViews;
 }
 
+- (id)initWithFrame:(CGRect)frame andNumberPacket:(int)numberPacket;
 - (void)loadPage:(int)pageIndex;
 
 @end

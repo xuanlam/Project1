@@ -10,9 +10,6 @@
 #import "StoreMenuPacketView.h"
 
 
-#define NumberOfPagesPacket         2
-#define NumberItemPerPagePacket     4
-
 @implementation StoreMenuView
 
 - (id)initWithFrame:(CGRect)frame
@@ -139,7 +136,7 @@
         
         [self addSubview:scrollViewPacket];
         [self loadPagePacket:0];
-        [self loadPagePacket:1];
+//        [self loadPagePacket:1];
 
     }
     return self;
@@ -189,8 +186,8 @@
 		NSRange range;
 		range.location = pageIndex * NumberItemPerPagePacket;
 		range.length = fmin(NumberItemPerPagePacket, [packets count] - range.location);
-		
-		StoreMenuPacketView* itemView = [[StoreMenuPacketView alloc] initWithFrame:frame items:[packets subarrayWithRange:range]];
+        
+		StoreMenuPacketView* itemView = [[StoreMenuPacketView alloc] initWithFrame:frame items:[packets subarrayWithRange:range] pageIndex:pageIndex];
         //		itemView.delegate = self;
 		[scrollViewPacket addSubview:itemView];
 		[pageViewsPacket replaceObjectAtIndex:pageIndex withObject:itemView];

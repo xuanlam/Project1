@@ -20,7 +20,7 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame items:(NSArray *)items {
+- (id)initWithFrame:(CGRect)frame items:(NSArray *)items pageIndex:(int)pageIndex {
     self = [super initWithFrame:frame];
     if (self) {
         _items = [[NSArray alloc]initWithArray:items];
@@ -42,7 +42,7 @@
             button.frame = CGRectMake(x, y, _itemWidth, _itemHeight);
             button.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
             [button setImage:item forState:UIControlStateNormal];
-            button.tag = i;
+            button.tag = pageIndex * NumberItemPerPagePacket + i;
 			[button addTarget:self action:@selector(packetDidClick:) forControlEvents:UIControlEventTouchUpInside];
 			[self addSubview:button];
 			x += _itemWidth;
@@ -61,7 +61,10 @@
 
 - (void)packetDidClick:(id)sender {
 	// add UIView
-    StorePacketDetailView *myview=[[StorePacketDetailView alloc] initWithFrame: CGRectMake(0, 0, 1024, 768)];
+    UIButton *buttonClicked = (UIButton*)sender;
+    int tagButtonClicked = buttonClicked.tag;
+    
+    StorePacketDetailView *myview=[[StorePacketDetailView alloc] initWithFrame: CGRectMake(0, 0, 1024, 768) andNumberPacket:tagButtonClicked];
     [self.superview.superview addSubview:myview];
     [myview release];
 }
