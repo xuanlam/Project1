@@ -6,7 +6,6 @@
 //
 //
 
-#import "cocos2d.h"
 #import "CCLayer.h"
 
 @interface SinglePlayerGameBackgroundLayer : CCLayer

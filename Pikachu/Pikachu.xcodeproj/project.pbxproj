@@ -775,6 +775,7 @@
 		F8048379170F3FEB00AAB3D9 /* b_0003_Shop_BUY-NOW.png in Resources */ = {isa = PBXBuildFile; fileRef = F8048375170F3FE500AAB3D9 /* b_0003_Shop_BUY-NOW.png */; };
 		F804837A170F3FEB00AAB3D9 /* b_0003_Shop_BUY-NOW@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8048376170F3FE900AAB3D9 /* b_0003_Shop_BUY-NOW@2x.png */; };
 		F88D1A53170CD6A20054E60D /* StoreMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = F88D1A52170CD6A20054E60D /* StoreMenuView.m */; };
+		F8A05FC117157EB800876786 /* MyGameCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A05FC017157EB800876786 /* MyGameCenter.m */; };
 		F8AD3E9A170820AE00F8277B /* button_Store_down.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3E96170820AC00F8277B /* button_Store_down.png */; };
 		F8AD3E9B170820AE00F8277B /* button_Store_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3E97170820AD00F8277B /* button_Store_down@2x.png */; };
 		F8AD3E9C170820AE00F8277B /* button_Store.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AD3E98170820AD00F8277B /* button_Store.png */; };
@@ -1714,6 +1715,8 @@
 		F8048376170F3FE900AAB3D9 /* b_0003_Shop_BUY-NOW@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "b_0003_Shop_BUY-NOW@2x.png"; sourceTree = "<group>"; };
 		F88D1A51170CD6A20054E60D /* StoreMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreMenuView.h; sourceTree = "<group>"; };
 		F88D1A52170CD6A20054E60D /* StoreMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreMenuView.m; sourceTree = "<group>"; };
+		F8A05FBF17157EB800876786 /* MyGameCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGameCenter.h; sourceTree = "<group>"; };
+		F8A05FC017157EB800876786 /* MyGameCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGameCenter.m; sourceTree = "<group>"; };
 		F8AD3E96170820AC00F8277B /* button_Store_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_Store_down.png; sourceTree = "<group>"; };
 		F8AD3E97170820AD00F8277B /* button_Store_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_Store_down@2x.png"; sourceTree = "<group>"; };
 		F8AD3E98170820AD00F8277B /* button_Store.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_Store.png; sourceTree = "<group>"; };
@@ -1856,6 +1859,8 @@
 			children = (
 				A074875915D78AF800B02ACF /* KSArray2D.h */,
 				A074875A15D78AF800B02ACF /* KSArray2D.m */,
+				F8A05FBF17157EB800876786 /* MyGameCenter.h */,
+				F8A05FC017157EB800876786 /* MyGameCenter.m */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -3892,6 +3897,7 @@
 				F804836C170F2DD500AAB3D9 /* StoreMenuPacketView.m in Sources */,
 				F804836F170F2E4800AAB3D9 /* StorePacketDetailView.m in Sources */,
 				F8048372170F369A00AAB3D9 /* PacketDetailView.m in Sources */,
+				F8A05FC117157EB800876786 /* MyGameCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

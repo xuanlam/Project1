@@ -7,7 +7,6 @@
 //
 
 #import "CCSprite.h"
-#import "cocos2d.h"
 
 @interface GameCell : CCSprite 
 

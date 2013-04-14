@@ -12,6 +12,10 @@
 
 @implementation MainMenuLayer
 
+- (void)onEnter {
+    [[MyGameCenter sharedMyGameCenter]authenticateLocalPlayer];
+}
+
 - (id)init {
     self = [super init];
     if (self) {        

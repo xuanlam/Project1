@@ -7,7 +7,6 @@
 //
 
 #import "CCScene.h"
-#import "cocos2d.h"
 
 @interface MainMenuScene : CCScene
 
