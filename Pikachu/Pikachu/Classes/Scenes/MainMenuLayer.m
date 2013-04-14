@@ -12,13 +12,15 @@
 
 @implementation MainMenuLayer
 
-- (void)onEnter {
-    [[MyGameCenter sharedMyGameCenter]authenticateLocalPlayer];
-}
+//- (void)onEnter {
+//    [[MyGameCenter sharedMyGameCenter]authenticateLocalPlayer];
+//}
 
 - (id)init {
     self = [super init];
-    if (self) {        
+    if (self) {
+        // add check Game Center account
+        [[MyGameCenter sharedMyGameCenter]authenticateLocalPlayer];
         
         CCSprite *background = [CCSprite spriteWithFile:@"MainMenuBackground.jpg"];
         [background setAnchorPoint:CGPointZero];
@@ -45,7 +47,6 @@
 }
 
 - (void)buttonMoreSender {
-//    [[GameManager sharedGameManager] runSceneWithID:kGameSinglePlayer animation:YES];
     StoreMenuView *myview=[[StoreMenuView alloc] initWithFrame: CGRectMake(0, 0, 1024, 768)];
     [[[CCDirector sharedDirector] view]addSubview:myview];
     [myview release];

@@ -9,6 +9,7 @@
 #define PKCBOARD_ROW 8
 #define PKCGAME_CELL_SIZE CGSizeMake(60.0f, 76.0f)
 #define PKCBOARD_PADDING CGSizeMake(32.0f, 60.0f)
+#define kHighScoreLeaderboardCategory @"com.goldangry.pikachuHD.HighScores"
 
 const int GameWidth = 16;
 const int GameHeight = 8;
@@ -588,6 +589,8 @@ const int GameHeight = 8;
 
     [self upComboLevel];
     
+    NSLog(@"count: %d",_RemainingCount);
+    
     // Draw guide
     [self drawLineConnectOnCompletion:^{
         //Organize board
@@ -596,6 +599,8 @@ const int GameHeight = 8;
         if (_RemainingCount <= 0) {
             
             [self upLevel];
+#warning hack post high score in here
+            [[MyGameCenter sharedMyGameCenter]submitScore:_score category:kHighScoreLeaderboardCategory];
             
         } else {
             
