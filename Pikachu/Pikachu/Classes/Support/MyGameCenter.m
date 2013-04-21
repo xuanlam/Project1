@@ -77,7 +77,6 @@
     
     //3: Set the score value
     gkScore.value = score;
-    NSLog(@"score: %d",score);
     
     //4: Send the score to Game Center
     [gkScore reportScoreWithCompletionHandler:^(NSError* error) {
