@@ -778,6 +778,9 @@
 		F808302817CDA4D900376186 /* back3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F808302417CDA4D900376186 /* back3.mp3 */; };
 		F808302917CDA4D900376186 /* choose.wav in Resources */ = {isa = PBXBuildFile; fileRef = F808302517CDA4D900376186 /* choose.wav */; };
 		F808303317CDA92D00376186 /* NSMutableArray+Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = F808303217CDA92D00376186 /* NSMutableArray+Shuffling.m */; };
+		F808303617CDB3FD00376186 /* clean.wav in Resources */ = {isa = PBXBuildFile; fileRef = F808303417CDB3FD00376186 /* clean.wav */; };
+		F808303717CDB3FD00376186 /* disappear1.wav in Resources */ = {isa = PBXBuildFile; fileRef = F808303517CDB3FD00376186 /* disappear1.wav */; };
+		F808303917CDB43E00376186 /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F808303817CDB43E00376186 /* lose.mp3 */; };
 		F86BB907171FB53100D72FBF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86BB906171FB53100D72FBF /* StoreKit.framework */; };
 		F88D1A53170CD6A20054E60D /* StoreMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = F88D1A52170CD6A20054E60D /* StoreMenuView.m */; };
 		F8A05FC117157EB800876786 /* MyGameCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A05FC017157EB800876786 /* MyGameCenter.m */; };
@@ -1724,6 +1727,9 @@
 		F808302517CDA4D900376186 /* choose.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = choose.wav; sourceTree = "<group>"; };
 		F808303117CDA92C00376186 /* NSMutableArray+Shuffling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Shuffling.h"; sourceTree = "<group>"; };
 		F808303217CDA92D00376186 /* NSMutableArray+Shuffling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Shuffling.m"; sourceTree = "<group>"; };
+		F808303417CDB3FD00376186 /* clean.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = clean.wav; sourceTree = "<group>"; };
+		F808303517CDB3FD00376186 /* disappear1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = disappear1.wav; sourceTree = "<group>"; };
+		F808303817CDB43E00376186 /* lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lose.mp3; sourceTree = "<group>"; };
 		F86BB906171FB53100D72FBF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		F88D1A51170CD6A20054E60D /* StoreMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreMenuView.h; sourceTree = "<group>"; };
 		F88D1A52170CD6A20054E60D /* StoreMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreMenuView.m; sourceTree = "<group>"; };
@@ -3066,6 +3072,9 @@
 				F808302317CDA4D900376186 /* back2.mp3 */,
 				F808302417CDA4D900376186 /* back3.mp3 */,
 				F808302517CDA4D900376186 /* choose.wav */,
+				F808303417CDB3FD00376186 /* clean.wav */,
+				F808303517CDB3FD00376186 /* disappear1.wav */,
+				F808303817CDB43E00376186 /* lose.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -3793,6 +3802,9 @@
 				F808302717CDA4D900376186 /* back2.mp3 in Resources */,
 				F808302817CDA4D900376186 /* back3.mp3 in Resources */,
 				F808302917CDA4D900376186 /* choose.wav in Resources */,
+				F808303617CDB3FD00376186 /* clean.wav in Resources */,
+				F808303717CDB3FD00376186 /* disappear1.wav in Resources */,
+				F808303917CDB43E00376186 /* lose.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,7 +20,7 @@
     self = [super init];
     if (self) {
         // add check Game Center account
-        [[MyGameCenter sharedMyGameCenter]authenticateLocalPlayer];
+//        [[MyGameCenter sharedMyGameCenter]authenticateLocalPlayer];
         
         CCSprite *background = [CCSprite spriteWithFile:@"MainMenuBackground.jpg"];
         [background setAnchorPoint:CGPointZero];

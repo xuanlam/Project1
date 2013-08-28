@@ -85,7 +85,6 @@ const int GameHeight = 8;
         
         _logicAlignment = PKCLogicAlignmentNone;
         
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"back1.mp3"];
     }
     return self;
 }
@@ -157,6 +156,11 @@ const int GameHeight = 8;
     
     _RemainingCount = GameWidth * GameHeight;  //60 thẻ hình chưa được 'ăn'
     _highlightedCellIndex = NSNotFound;      //Thẻ hình thứ nhất chưa được chọn
+    
+    NSArray *soundArray = [NSArray arrayWithObjects:@"back1.mp3", @"back2.mp3", @"back3.mp3", nil];
+    int randomSoundNumber = arc4random() % [soundArray count];
+    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:[soundArray objectAtIndex:randomSoundNumber] loop:YES];
 }
 
 
@@ -602,7 +606,7 @@ const int GameHeight = 8;
             
             [self upLevel];
 #warning hack post high score in here
-            [[MyGameCenter sharedMyGameCenter]submitScore:_score category:kHighScoreLeaderboardCategory];
+//            [[MyGameCenter sharedMyGameCenter]submitScore:_score category:kHighScoreLeaderboardCategory];
             
         } else {
             
@@ -692,7 +696,7 @@ const int GameHeight = 8;
     
     if ([self isNoWay] || _countHint <= 0) {
         
-        CCLOG(@"No way");
+        [[SimpleAudioEngine sharedEngine]playEffect:@"lose.mp3"];
         return;
         
     } else {
@@ -706,7 +710,7 @@ const int GameHeight = 8;
         if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateCountHintWithNumber:)]) {
             [_delegate gamePlayLayer:self needUpdateCountHintWithNumber:_countHint];
         }
-
+        [[SimpleAudioEngine sharedEngine]playEffect:@"disappear1.wav"];
     }
 }
 
@@ -763,6 +767,11 @@ const int GameHeight = 8;
                 }
             }
         }
+        [[SimpleAudioEngine sharedEngine]playEffect:@"clean.wav"];
+    }
+    else {
+        [[SimpleAudioEngine sharedEngine]playEffect:@"lose.mp3"];
+        return;
     }
 }
 
