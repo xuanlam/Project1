@@ -7,6 +7,7 @@
 //
 
 #import "KSArray2D.h"
+#import "NSMutableArray+Shuffling.h"
 
 @implementation KSArray2D
 
@@ -34,4 +35,8 @@
     return [[sections objectAtIndex:row] objectAtIndex:column];
 }
 
+// random cho mang object 1 lan nua (chua su dung)
+- (void)randomObject {
+    [sections shuffle];
+}
 @end

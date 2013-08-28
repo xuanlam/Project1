@@ -15,4 +15,5 @@
 - (id)initWithRows:(NSUInteger)numberOfRow andColumn:(NSUInteger)numberOfColumn;
 - (id)objectForRow:(NSUInteger)row atColumn:(NSUInteger)column;
 - (void)setObject:(id)object forRow:(NSUInteger)row atColumn:(NSUInteger)column;
+- (void)randomObject;
 @end

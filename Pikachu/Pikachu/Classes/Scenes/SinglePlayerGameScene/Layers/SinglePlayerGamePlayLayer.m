@@ -84,6 +84,8 @@ const int GameHeight = 8;
         [self schedule:@selector(updateTime) interval:1.0f];
         
         _logicAlignment = PKCLogicAlignmentNone;
+        
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"back1.mp3"];
     }
     return self;
 }
@@ -476,7 +478,7 @@ const int GameHeight = 8;
     }
 
     //Play effect sound
-//    [[SimpleAudioEngine sharedEngine] playEffect:@"click.mp3"];
+    [[SimpleAudioEngine sharedEngine] playEffect:@"choose.wav"];
 }
 
 - (void)drawHintOnCompletion:(void(^)())completion {
