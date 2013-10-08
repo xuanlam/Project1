@@ -10,8 +10,8 @@
 
 #import "AppDelegate.h"
 #import "IntroLayer.h"
-#import "SinglePlayerGameScene.h"
-#import "GameManager.h"
+#import "CSSinglePlayerGameScene.h"
+#import "CSGameManager.h"
 #import "UIFont+NAB.h"
 
 @implementation AppController
@@ -78,7 +78,7 @@
 	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
 //    SinglePlayerGameScene *gameScene = [[SinglePlayerGameScene alloc] init];
 //	[director_ pushScene:[SinglePlayerGameScene node]];
-    [[GameManager sharedGameManager] runSceneWithID:kMainMenuScene];
+    [[CSGameManager sharedGameManager] runSceneWithID:kMainMenuScene];
 
 	
 	// Create a Navigation Controller with the Director
