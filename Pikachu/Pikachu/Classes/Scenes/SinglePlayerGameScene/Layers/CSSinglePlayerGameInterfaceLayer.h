@@ -33,5 +33,8 @@
 - (void)gameInterfaceDidSelectRandomButton:(CSSinglePlayerGameInterfaceLayer *)gameInterface;
 - (void)gameInterfaceDidSelectAddTimeButton:(CSSinglePlayerGameInterfaceLayer *)gameInterface;
 
+- (void)gameInterfaceDidSelectPauseButton:(CSSinglePlayerGameInterfaceLayer *)gameInterface;
+- (void)gameInterfaceDidSelectHelpButton:(CSSinglePlayerGameInterfaceLayer *)gameInterface;
+- (void)gameInterfaceDidSelectSettingsButton:(CSSinglePlayerGameInterfaceLayer *)gameInterface;
 
 @end

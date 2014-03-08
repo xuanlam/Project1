@@ -143,6 +143,4 @@
 	NSLog(@"button Pause clicked");
 }
 
-
-
 @end

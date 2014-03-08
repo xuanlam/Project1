@@ -75,4 +75,38 @@
 }
 
 
+#pragma mark - Settings
+
++ (BOOL)enableSound {
+    NSNumber *enableSound = [[NSUserDefaults standardUserDefaults] objectForKey:@"enableSound"];
+    if (!enableSound) {
+        BOOL defaultValue = YES;
+        [self setEnableSound:defaultValue];
+        return defaultValue;
+    } else {
+        return [enableSound boolValue];
+    }
+}
+
++ (void)setEnableSound:(BOOL)enableSound {
+    [[NSUserDefaults standardUserDefaults] setObject:@(enableSound) forKey:@"enableSound"];
+    [NSUserDefaults resetStandardUserDefaults];
+}
+
++ (BOOL)enableMusic {
+    NSNumber *enableMusic = [[NSUserDefaults standardUserDefaults] objectForKey:@"enableMusic"];
+    if (!enableMusic) {
+        BOOL defaultValue = YES;
+        [self setEnableMusic:defaultValue];
+        return defaultValue;
+    } else {
+        return [enableMusic boolValue];
+    }
+}
+
++ (void)setEnableMusic:(BOOL)enableMusic {
+    [[NSUserDefaults standardUserDefaults] setObject:@(enableMusic) forKey:@"enableMusic"];
+    [NSUserDefaults resetStandardUserDefaults];
+}
+
 @end

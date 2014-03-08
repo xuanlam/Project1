@@ -7,8 +7,8 @@
 //
 #define PKCBOARD_COLUMN 16
 #define PKCBOARD_ROW 8
-#define PKCGAME_CELL_SIZE CGSizeMake(60.0f, 76.0f)
-#define PKCBOARD_PADDING CGSizeMake(32.0f, 60.0f)
+#define PKCGAME_CELL_SIZE CGSizeMake(56.0f, 58.0f)
+#define PKCBOARD_PADDING CGSizeMake(27.0f, 90.0f)
 #define kHighScoreLeaderboardCategory @"com.goldangry.pikachuHD.HighScores"
 
 const int GameWidth = 16;
@@ -35,21 +35,24 @@ const int GameHeight = 8;
 @property (nonatomic, strong)   NSMutableArray  *tY;
 @property (nonatomic, strong)   NSMutableArray  *d;
 
+// Info
 @property (nonatomic)           int             level;
 @property (nonatomic)           int             score;
+@property (nonatomic)           float           timeLeft;
+@property (nonatomic)           float           maxTime;
+
+// Power Up
 @property (nonatomic)           int             countHint;
 @property (nonatomic)           int             countRandom;
 @property (nonatomic)           int             countRushTime;
 
-@property (nonatomic)           float           timeLeft;
-@property (nonatomic)           float           maxTime;
-//Combo
+// Combo
 @property (nonatomic)           float           comboTimeLeft;
 @property (nonatomic)           float           maxComboTimeLeft;
 @property (nonatomic)           int             comboLevel;
-
 @property (nonatomic)           int             numberOfCard;
 
+// gameplay alignment
 @property (nonatomic)           PKCLogicAlignment logicAlignment;
 
 @end
@@ -157,10 +160,14 @@ const int GameHeight = 8;
     _RemainingCount = GameWidth * GameHeight;  //60 thẻ hình chưa được 'ăn'
     _highlightedCellIndex = NSNotFound;      //Thẻ hình thứ nhất chưa được chọn
     
-    NSArray *soundArray = [NSArray arrayWithObjects:@"back1.mp3", @"back2.mp3", @"back3.mp3", nil];
-    int randomSoundNumber = arc4random() % [soundArray count];
-    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
-    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:[soundArray objectAtIndex:randomSoundNumber] loop:YES];
+
+    if ([CSUserInfo enableMusic]) {
+        NSArray *soundArray = [NSArray arrayWithObjects:@"back1.mp3", @"back2.mp3", @"back3.mp3", nil];
+        int randomSoundNumber = arc4random() % [soundArray count];
+        
+        [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:[soundArray objectAtIndex:randomSoundNumber] loop:YES];
+    }
 }
 
 
@@ -300,16 +307,16 @@ const int GameHeight = 8;
                 [_rY replaceObjectAtIndex:i withObject:[_tY objectAtIndex:i]];
             }
         }
+        
     } else {
+        
         [self findRouteWithCard1X:x1 Card1Y:y1 andCard2X:x - 1 andCard2Y:y direction:DirectionLeft];
         [self findRouteWithCard1X:x1 Card1Y:y1 andCard2X:x + 1 andCard2Y:y direction:DirectionRight];
         [self findRouteWithCard1X:x1 Card1Y:y1 andCard2X:x andCard2Y:y - 1 direction:DirectionUp];
         [self findRouteWithCard1X:x1 Card1Y:y1 andCard2X:x andCard2Y:y + 1 direction:DirectionDown];
     }
     
-    // ô [y,x] đã xét xong, quay lui nên loại ô [y,x] ra khỏi đường đi
     _tCount--;
-    // đánh dấu lại là ô [y,x] trống, có thể đi qua lại
     [_CardMatrix setObject:[NSNumber numberWithInt:-1] forRow:x atColumn:y];
 }
 
@@ -482,7 +489,9 @@ const int GameHeight = 8;
     }
 
     //Play effect sound
-    [[SimpleAudioEngine sharedEngine] playEffect:@"choose.wav"];
+    if ([CSUserInfo enableSound]) {
+        [[SimpleAudioEngine sharedEngine] playEffect:@"choose.wav"];
+    }
 }
 
 - (void)drawHintOnCompletion:(void(^)())completion {
@@ -515,8 +524,10 @@ const int GameHeight = 8;
         int type = [[_CardMatrix objectForRow:row atColumn:column] intValue];
         cell = [CSGameCell spriteWithFile:[array objectAtIndex:type]];
         
-        CGPoint cellPosition = CGPointMake((column -1 ) * PKCGAME_CELL_SIZE.width + PKCBOARD_PADDING.width, (row - 1) * PKCGAME_CELL_SIZE.height + PKCBOARD_PADDING.height);
-        cell.anchorPoint = CGPointZero;
+        CGPoint cellPosition = CGPointMake((column -1 ) * PKCGAME_CELL_SIZE.width + PKCGAME_CELL_SIZE.width/2 + PKCBOARD_PADDING.width,
+                                           (row - 1) * PKCGAME_CELL_SIZE.height + PKCGAME_CELL_SIZE.height/2 + PKCBOARD_PADDING.height);
+//        cell.anchorPoint = CGPointZero;
+        cell.scale = 0.65f;
         [cell setPosition:cellPosition];
         cell.cellID = cellTag;
         cell.type = type;
@@ -584,7 +595,8 @@ const int GameHeight = 8;
     [_CardMatrix setObject:[NSNumber numberWithInt:-1] forRow:_CardRow atColumn:_CardColumn];
         
     // Update score
-    _score += 10;
+    _score = _score + 10 + _comboLevel * 2;
+    
     if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateScoreWithScore:)]) {
         [_delegate gamePlayLayer:self needUpdateScoreWithScore:_score];
     }
@@ -696,7 +708,9 @@ const int GameHeight = 8;
     
     if ([self isNoWay] || _countHint <= 0) {
         
-        [[SimpleAudioEngine sharedEngine]playEffect:@"lose.mp3"];
+        if ([CSUserInfo enableSound]) {
+            [[SimpleAudioEngine sharedEngine]playEffect:@"lose.mp3"];
+        }
         return;
         
     } else {
@@ -710,7 +724,10 @@ const int GameHeight = 8;
         if (_delegate && [_delegate respondsToSelector:@selector(gamePlayLayer:needUpdateCountHintWithNumber:)]) {
             [_delegate gamePlayLayer:self needUpdateCountHintWithNumber:_countHint];
         }
-        [[SimpleAudioEngine sharedEngine]playEffect:@"disappear1.wav"];
+        
+        if ([CSUserInfo enableSound]) {
+            [[SimpleAudioEngine sharedEngine]playEffect:@"disappear1.wav"];
+        }
     }
 }
 
@@ -767,10 +784,17 @@ const int GameHeight = 8;
                 }
             }
         }
-        [[SimpleAudioEngine sharedEngine]playEffect:@"clean.wav"];
+        
+        if ([CSUserInfo enableSound]) {
+            [[SimpleAudioEngine sharedEngine]playEffect:@"clean.wav"];
+        }
     }
+    
     else {
-        [[SimpleAudioEngine sharedEngine]playEffect:@"lose.mp3"];
+        
+        if ([CSUserInfo enableSound]) {
+            [[SimpleAudioEngine sharedEngine]playEffect:@"lose.mp3"];
+        }
         return;
     }
 }

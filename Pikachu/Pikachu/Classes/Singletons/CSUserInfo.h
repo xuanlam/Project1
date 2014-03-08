@@ -22,4 +22,11 @@
 + (NSInteger)currentPacketIndex;
 + (void)setCurrentPacketIndex:(NSInteger)currentPacketIndex;
 
+// Settings
++ (BOOL)enableSound;
++ (void)setEnableSound:(BOOL)enableSound;
+
++ (BOOL)enableMusic;
++ (void)setEnableMusic:(BOOL)enableMusic;
+
 @end
